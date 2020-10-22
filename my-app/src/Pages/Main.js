@@ -57,54 +57,6 @@ function Main(){
         }
     ];
 
-    // const planetInfo = [
-    //     {
-    //         color: 'yellow',
-    //         size: [400,400,400],
-    //         position: [0,0,0]
-    //     },
-    //     {
-    //         color: 'grey',
-    //         size: [3.8,3.8,3.8],
-    //         position: [380,0,0]
-    //     },
-    //     {
-    //         color: 'brown',
-    //         size: [9.5,9.5,9.5],
-    //         position: [720,0,0]
-    //     },
-    //     {
-    //         color: 'blue',
-    //         size: [10,10,10],
-    //         position: [1000,0,0]
-    //     },
-    //     {
-    //         color: 'red',
-    //         size: [5.3,5.3,5.3],
-    //         position: [1500,0,0]
-    //     },
-    //     {
-    //         color: 'brown',
-    //         size: [110,110,110],
-    //         position: [5200,0,0]
-    //     },
-    //     {
-    //         color: 'brown',
-    //         size: [90.4,90.4,90.4],
-    //         position: [9500,0,0]
-    //     },
-    //     {
-    //         color: 'green',
-    //         size: [40,40,40],
-    //         position: [19000,0,0]
-    //     },
-    //     {
-    //         color: 'blue',
-    //         size: [38,38,38],
-    //         position: [30000,0,0]
-    //     }
-    // ];
-
     return (
         <div className='mainVisualization'>
             <Canvas
@@ -121,8 +73,6 @@ function Main(){
                         />
                     ))
                 }
-                {/*<Box position={[-1.2, 0, 0]} />*/}
-                {/*<Box position={[1.2, 0, 0]} />*/}
                 <OrbitControls/>
             </Canvas>
         </div>
