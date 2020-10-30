@@ -6,3 +6,17 @@
     height: 75%;
     background-color: black;
 }
+
+.miniMap {
+    position: fixed;
+    top: 0;
+    width: 20%;
+    height: 20%;
+    float: right;
+    background-color: black;
+    border: 5px solid white;
+}
+
+.toolbar {
+
+}
