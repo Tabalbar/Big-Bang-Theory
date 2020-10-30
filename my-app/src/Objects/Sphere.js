@@ -17,6 +17,7 @@ function Sphere(props) {
             if(tmpCameraMoving){
                 props.setCameraMoving(false)
             }
+        console.log(tmpCameraMoving)
         }
 
         camera.updateProjectionMatrix()

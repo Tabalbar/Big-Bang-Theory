@@ -22,18 +22,19 @@ export default function UpdateCameraPosition(camera, newPosition, {setCameraMovi
 
     }
 
-    if(camera.position.z < (newPosition.z+50)){
+    if(camera.position.z < (newPosition.z+100)){
         camera.position.z += .1
     }
     if(camera.position.z > newPosition.z){
         camera.position.z -= .1;
     }
     console.log(Math.round(camera.position.x),Math.round(camera.position.y),Math.round(camera.position.z), newPosition)
-    if(Math.round(camera.position.x) === newPosition.x && Math.round(camera.position.y) === newPosition.y && Math.round(camera.position.z) === (newPosition.z + 50)){
+    if(Math.round(camera.position.x) === newPosition.x && Math.round(camera.position.y) === newPosition.y && Math.round(camera.position.z) === (newPosition.z + 100)){
         camera.lookAt(new Vector3(newPosition.x,newPosition.y,newPosition.z));
 
         return true
     }
+    return true
     // if(camera.position.y > newPosition.y){
     //     camera.position.y += 1
     // } else if(camera.position.y > newPosition.y){

@@ -1,18 +1,24 @@
-import React, {useState} from "react";
-import {Canvas} from "react-three-fiber";
+import React, {useState, useRef} from "react";
+import {Canvas, extend, useFrame, useThree} from "react-three-fiber";
 import _ from "lodash";
 import Sphere from "../Objects/Sphere";
-import {OrbitControls} from "drei";
 import ToolbarWrapper from "./ToolbarWrapper";
 import {planetInfo} from '../PlanetData'
-import * as THREE from 'three'
+import {OrbitControls} from "three/examples/jsm/controls/OrbitControls";
+import CameraControls from "../HelperFunctions/CameraControls";
+
+
+
 
 function Visualization(
     {}
 ) {
 
-    const [cameraPosition, setCameraPosition] = useState({x: 0, y: 0, z: 50});
+    const [cameraPosition, setCameraPosition] = useState({x: 0, y: 0, z: 0});
     const [cameraMoving, setCameraMoving] = useState(false);
+
+
+
 
     const updatePosition = (indexNum) => {
         const tmpCameraPosition = {
@@ -24,7 +30,6 @@ function Visualization(
         setCameraPosition(tmpCameraPosition);
         setCameraMoving(true)
     };
-
     return (
         <>
             <div className='mainVisualization'>
@@ -47,12 +52,16 @@ function Visualization(
                             />
                         ))
                     }
-                    {/*{*/}
-                    {/*    cameraMoving ?*/}
-                    {/*        null*/}
-                    {/*        :*/}
-                    {/*        <OrbitControls/>*/}
-                    {/*}*/}
+                    {
+                        cameraMoving ?
+                            null
+                            :
+                            <CameraControls
+                                cameraPosition={cameraPosition}
+                            />
+                    }
+
+
                 </Canvas>
                 <ToolbarWrapper/>
             </div>
