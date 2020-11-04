@@ -4,9 +4,10 @@ let star_size = [.1, .1, .1]
 
 export const starInfo = [
     {
-    color: star_color,
-    size: star_size,
-    position: [10, 10, 10,]
+      color: star_color,
+      size: star_size,
+      position: [10, 10, 10,],
+      name: 'none',
   },
 
 ];
