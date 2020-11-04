@@ -4,6 +4,7 @@ import _ from "lodash";
 import Sphere from "../Objects/Sphere";
 import ToolbarWrapper from "./ToolbarWrapper";
 import {planetInfo} from '../PlanetData'
+import {starInfo} from '../StarData'
 import {OrbitControls} from "three/examples/jsm/controls/OrbitControls";
 import CameraControls from "../HelperFunctions/CameraControls";
 
@@ -50,6 +51,19 @@ function Visualization(
                                 cameraMoving={cameraMoving}
                                 setCameraMoving={setCameraMoving}
                             />
+                        ))},
+                  {
+                          _.times(starInfo.length, (i) => (
+                          <Sphere
+                          color={starInfo[i].color}
+                          size={starInfo[i].size}
+                          indexNum={i}
+                          position={starInfo[i].position}
+                          updatePosition={updatePosition}
+                          cameraPosition={cameraPosition}
+                          cameraMoving={cameraMoving}
+                          setCameraMoving={setCameraMoving}
+                          />
                         ))
                     }
                     {
