@@ -18,7 +18,7 @@ function Toolbar(){
             </div>
             <div className='miniMap'>
             <Canvas
-                camera={{far: 10000, position: [0, 0, 50], fov: 500}}
+                camera={{far: 10000, position: [0, 0, 400], fov: 75}}
             >
                 <ambientLight/>
                 <pointLight position={[10, 10, 10]}/>

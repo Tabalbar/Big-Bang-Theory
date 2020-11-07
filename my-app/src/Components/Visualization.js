@@ -35,7 +35,7 @@ function Visualization(
         <>
             <div className='mainVisualization'>
                 <Canvas
-                    camera={{far: 10000, position: [0, 0, 50], fov: 50}}
+                    camera={{far: 10000000000, position: [0, 0, 5000], fov: 75}}
                 >
                     <ambientLight/>
                     <pointLight position={[10, 10, 10]}/>
