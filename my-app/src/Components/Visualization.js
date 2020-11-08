@@ -7,8 +7,8 @@ import {planetInfo} from '../PlanetData'
 import {starInfo} from '../StarData'
 import {OrbitControls} from "three/examples/jsm/controls/OrbitControls";
 import CameraControls from "../HelperFunctions/CameraControls";
-
-
+import Star from "../Objects/Star";
+import StarArrow from "../Objects/StarArrow";
 
 
 function Visualization(
@@ -60,6 +60,29 @@ function Visualization(
             realColor: planetInfo[indexNum].realColor
         })
     };
+
+    const updateStarPosition = (indexNum) => {
+        console.log(indexNum)
+        const tmpCameraPosition = {
+            x: starInfo[indexNum].position[0],
+            y: starInfo[indexNum].position[1],
+            z: starInfo[indexNum].position[2]
+        };
+
+        setCameraPosition(tmpCameraPosition);
+        setCameraMoving(true)
+        setFocusDescription({
+            name: starInfo[indexNum].name,
+            funFact: starInfo[indexNum].funFact,
+            notable: starInfo[indexNum].notable,
+            realPosition: starInfo[indexNum].realPosition,
+            temperature: starInfo[indexNum].temperature,
+            brightness: starInfo[indexNum].brightness,
+            realSize: starInfo[indexNum].realSize,
+            realColor: starInfo[indexNum].realColor
+        })
+    };
+
     return (
         <>
             <div className='mainVisualization'>
@@ -80,19 +103,35 @@ function Visualization(
                                 cameraMoving={cameraMoving}
                                 setCameraMoving={setCameraMoving}
                             />
-                        ))},
-                  {
-                          _.times(starInfo.length, (i) => (
-                          <Sphere
-                          color={starInfo[i].color}
-                          size={starInfo[i].size}
-                          indexNum={i}
-                          position={starInfo[i].position}
-                          updatePosition={updatePosition}
-                          cameraPosition={cameraPosition}
-                          cameraMoving={cameraMoving}
-                          setCameraMoving={setCameraMoving}
-                          />
+                        ))
+                    },
+                    {
+                        _.times(starInfo.length, (i) => (
+                            <>
+                            <Star
+                                color={starInfo[i].color}
+                                size={starInfo[i].size}
+                                indexNum={i}
+                                position={starInfo[i].position}
+                                updateStarPosition={updateStarPosition}
+                                cameraPosition={cameraPosition}
+                                cameraMoving={cameraMoving}
+                                setCameraMoving={setCameraMoving}
+                                velocityDirection={starInfo[i].velocityDirection}
+                            />
+
+                            </>
+                        ))
+                    }
+                    {
+                        _.times(starInfo.length, (i) => (
+                            <>
+                                <StarArrow
+                                    position={starInfo[i].position}
+                                    velocityDirection={starInfo[i].velocityDirection}
+                                />
+
+                            </>
                         ))
                     }
                     {
@@ -114,7 +153,6 @@ function Visualization(
         </>
     )
 }
-
 
 
 export default Visualization
