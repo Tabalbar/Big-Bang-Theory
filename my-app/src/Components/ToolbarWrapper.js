@@ -4,7 +4,8 @@ import Toolbar from "./Toolbar";
 //todo This will hold all the functionality of the toolbar, see example below
 function ToolbarWrapper(
     {
-        handleHomeButton
+        handleHomeButton,
+        focusDescription,
     }
 ){
 
@@ -14,6 +15,7 @@ function ToolbarWrapper(
         <>
             <Toolbar
                 handleHomeButton={handleHomeButton}
+                focusDescription={focusDescription}
             />
         </>
     )

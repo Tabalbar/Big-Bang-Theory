@@ -17,6 +17,16 @@ function Visualization(
 
     const [cameraPosition, setCameraPosition] = useState({x: 0, y: 0, z: 0});
     const [cameraMoving, setCameraMoving] = useState(false);
+    const [focusDescription, setFocusDescription] = useState({
+        name: 'Sun',
+        funFact: 'A very small star',
+        notable: true,
+        realPosition: 'X =-9.256536737968663 E+05, Y = 9.520686612116818 E+05, Z = 1.366316508862237 E+04',
+        temperature: '5772 K',
+        brightness: 'N/A',
+        realSize: 'Volume: 10^12 km^3',
+        realColor: 'Yellow'
+    });
 
 
     const handleHomeButton = () => {
@@ -39,6 +49,16 @@ function Visualization(
 
         setCameraPosition(tmpCameraPosition);
         setCameraMoving(true)
+        setFocusDescription({
+            name: planetInfo[indexNum].name,
+            funFact: planetInfo[indexNum].funFact,
+            notable: planetInfo[indexNum].notable,
+            realPosition: planetInfo[indexNum].realPosition,
+            temperature: planetInfo[indexNum].temperature,
+            brightness: planetInfo[indexNum].brightness,
+            realSize: planetInfo[indexNum].realSize,
+            realColor: planetInfo[indexNum].realColor
+        })
     };
     return (
         <>
@@ -88,10 +108,13 @@ function Visualization(
                 </Canvas>
                 <ToolbarWrapper
                     handleHomeButton={handleHomeButton}
+                    focusDescription={focusDescription}
                 />
             </div>
         </>
     )
 }
+
+
 
 export default Visualization

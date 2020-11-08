@@ -2,46 +2,118 @@ export const planetInfo = [
     {
         color: 'yellow',
         size: [695,695,695],
-        position: [0,0,0]
+        position: [0,0,0],
+        name: 'Sun',
+        funFact: 'A very small star',
+        notable: true,
+        realPosition: 'X =-9.256536737968663 E+05, Y = 9.520686612116818 E+05, Z = 1.366316508862237 E+04',
+        temperature: '5772 K',
+        brightness: 'N/A',
+        realSize: 'Volume: 10^12 km^3',
+        realColor: 'Yellow'
     },
     {
         color: 'grey',
         size: [2400,2400,2400],
-        position: [35802,31401,-867]
+        position: [35802,31401,-867],
+        name: 'Mercury',
+        funFact: 'Very close to the Sun',
+        notable: true,
+        realPosition: 'X = 3.580275106204683 E+07, Y = 3.140185252154187 E+07, Z =-8.672649982336983 E+05',
+        temperature: 'N/A',
+        brightness: 'N/A',
+        realSize: 'Volume: 6.085 x 10^12 km^3',
+        realColor: 'Grey'
     },
     {
         color: 'brown',
         size: [6100,6100,6100],
-        position: [-62887,88641,4792]
+        position: [-62887,88641,4792],
+        name: 'Venus',
+        funFact: 'fun fact about venus',
+        notable: true,
+        realPosition: 'X =-6.288720619614173 E+07, Y = 8.864144020726459 E+07, Z = 4.792583921857379 E+06',
+        temperature: 'N/A',
+        brightness: 'N/A',
+        realSize: 'Volume: 92.843 x 10^12 km^3',
+        realColor: 'brown'
     },
     {
         color: 'blue',
         size: [6400,6400,6400],
-        position: [122695,83544,9.87]
+        position: [122695,83544,9.87],
+        name: 'Earth',
+        funFact: 'fun fact about earth',
+        notable: true,
+        realPosition: 'X = 1.226958517095139 E+08, Y = 8.354472940169995 E+07, Z = 9.872205695208162 E+03',
+        temperature: 'N/A',
+        brightness: 'N/A',
+        realSize: 'Volume: 1.08321 x 10^12 km^3',
+        realColor: 'Green and Blue'
     },
     {
         color: 'red',
         size: [3400,3400,3400],
-        position: [186782,103245,-2447]
+        position: [186782,103245,-2447],
+        name: 'Mars',
+        funFact: 'fun fact about mars',
+        notable: true,
+        realPosition: 'X = 1.226958517095139 E+08, Y = 8.354472940169995 E+07, Z = 9.872205695208162 E+03',
+        temperature: 'N/A',
+        brightness: 'N/A',
+        realSize: 'Volume: 16.318 x 10^10 km^3',
+        realColor: 'Red'
     },
     {
         color: 'brown',
         size: [71500,71500,71500],
-        position: [393020,-655622,-6073]
+        position: [393020,-655622,-6073],
+        name: 'Jupiter',
+        funFact: 'fun fact about Jupiter',
+        notable: true,
+        realPosition: 'X = 3.930197566374107 E+08, Y =-6.556226784739759 E+08, Z =-6.073209030277461 E+06',
+        temperature: 'N/A',
+        brightness: 'N/A',
+        realSize: 'Volume: unknown',
+        realColor: 'brown'
     },
     {
         color: 'brown',
         size: [60300,60300,60300],
-        position: [776881,-1276386,-8735]
+        position: [776881,-1276386,-8735],
+        name: 'Saturn',
+        funFact: 'fun fact about Saturn',
+        notable: true,
+        realPosition: 'X = 7.768806240203553 E+08, Y =-1.276385494759369 E+09, Z =-8.735240410260737 E+06',
+        temperature: 'N/A',
+        brightness: 'N/A',
+        realSize: 'Volume: unknown',
+        realColor: 'brown'
     },
     {
         color: 'green',
         size: [25600,25600,25600],
-        position: [2319920,1836644,-23234]
+        position: [2319920,1836644,-23234],
+        name: 'Uranus',
+        funFact: 'fun fact about Uranus',
+        notable: true,
+        realPosition: 'X = 2.319919930452971 E+09, Y = 1.836643611196167 E+09, Z =-2.323350049841690 E+07',
+        temperature: 'N/A',
+        brightness: 'N/A',
+        realSize: 'Volume: unknown',
+        realColor: 'Green'
     },
     {
         color: 'blue',
         size: [24800,24800,24800],
-        position: [4400922,-812454,-8469]
+        position: [4400922,-812454,-8469],
+        name: 'Neptune',
+        funFact: 'fun fact about Neptune',
+        notable: true,
+        realPosition: 'X = 4.400921737819191 E+09, Y =-8.124541318852953, E+08 Z =-8.469285735092562 E+07',
+        temperature: 'N/A',
+        brightness: 'N/A',
+        realSize: 'Volume: 24342 x 10 +- 30 Km',
+        realColor: 'Blue'
     }
 ];
