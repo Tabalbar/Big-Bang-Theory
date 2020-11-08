@@ -13,7 +13,7 @@ function Toolbar(
     return (
         <>
             <div className='toolbar'>
-                <button onClick={handleHomeButton}>Back to Sun</button>
+                <button onClick={handleHomeButton}>Point Camera to Sun</button>
             <h1>This is where all the code will go to define the look of the toolbar</h1>
             {
                 /*
