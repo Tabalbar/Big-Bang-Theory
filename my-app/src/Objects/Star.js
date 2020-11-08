@@ -11,21 +11,6 @@ function Star(props) {
     // Set up state for the hovered and active state
     // const [hovered, setHover] = useState(false);
     // const [active, setActive] = useState(false);
-    const camera = new THREE.PerspectiveCamera()
-    useFrame(({clock, camera}) => {
-        if (props.cameraMoving) {
-            let tmpCameraMoving = UpdateCameraPosition(camera, props.cameraPosition, props.setCameraMoving)
-            if (tmpCameraMoving) {
-                props.setCameraMoving(false)
-                console.log(tmpCameraMoving)
-
-            }
-            console.log(tmpCameraMoving)
-
-        }
-
-        camera.updateProjectionMatrix()
-    })
     // Rotate mesh every frame, this is outside of React without overhead
     // useFrame(() => (
     //     mesh.current.rotation.x = mesh.current.rotation.y += 0.01

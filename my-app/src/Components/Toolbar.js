@@ -18,7 +18,7 @@ function Toolbar(
     return (
         <>
             <div className='toolbar'>
-                <button onClick={handleHomeButton}>Point Camera to Sun</button>
+                <button onClick={handleHomeButton}>Back to Sun</button>
                 <h1>{focusDescription.name}</h1>
                 <h3>Description: {focusDescription.funFact}</h3>
                 <h3>{focusDescription.notable}</h3>

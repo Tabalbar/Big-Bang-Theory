@@ -17,6 +17,7 @@ function Visualization(
 
     const [cameraPosition, setCameraPosition] = useState({x: 0, y: 0, z: 0});
     const [cameraMoving, setCameraMoving] = useState(false);
+    const [cameraMovingToHome, setCameraMovingToHome] = useState(false);
     const [focusDescription, setFocusDescription] = useState({
         name: 'Sun',
         funFact: 'A very small star',
@@ -33,11 +34,20 @@ function Visualization(
         const tmpCameraPosition = {
             x: 0,
             y: 0,
-            z: 9500
+            z: 0
         };
-
+        setFocusDescription({
+            name: 'Sun',
+            funFact: 'A very small star',
+            notable: true,
+            realPosition: 'X =-9.256536737968663 E+05, Y = 9.520686612116818 E+05, Z = 1.366316508862237 E+04',
+            temperature: '5772 K',
+            brightness: 'N/A',
+            realSize: 'Volume: 10^12 km^3',
+            realColor: 'Yellow'
+        });
         setCameraPosition(tmpCameraPosition);
-        setCameraMoving(true)
+        setCameraMovingToHome(true)
     };
 
     const updatePosition = (indexNum) => {
@@ -140,6 +150,10 @@ function Visualization(
                             :
                             <CameraControls
                                 cameraPosition={cameraPosition}
+                                cameraMoving={cameraMoving}
+                                setCameraMoving={setCameraMoving}
+                                cameraMovingToHome={cameraMovingToHome}
+                                setCameraMovingToHome={setCameraMovingToHome}
                             />
                     }
 
@@ -148,6 +162,7 @@ function Visualization(
                 <ToolbarWrapper
                     handleHomeButton={handleHomeButton}
                     focusDescription={focusDescription}
+
                 />
             </div>
         </>

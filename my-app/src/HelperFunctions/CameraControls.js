@@ -2,6 +2,7 @@ import React, {useRef} from "react";
 import {extend, useFrame, useThree} from "react-three-fiber";
 import {OrbitControls} from "three/examples/jsm/controls/OrbitControls";
 import * as THREE from 'three'
+import UpdateCameraPosition from "./UpdateCameraPosition";
 extend({OrbitControls});
 
 
@@ -17,8 +18,12 @@ const CameraControls = (props) => {
     // Ref to the controls, so that we can update them on every frame using useFrame
     const controls = useRef();
     useFrame((state) => {
-
+        if(props.cameraMovingToHome){
+            camera.position.set(0,0,10000)
+            props.setCameraMovingToHome(false)
+        }
         controls.current.update();
+        camera.updateProjectionMatrix()
 
     });
     return <orbitControls

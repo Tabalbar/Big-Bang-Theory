@@ -2,7 +2,6 @@ import React, {useRef, useState} from 'react'
 import {Canvas, useFrame, useThree} from 'react-three-fiber'
 import UpdateCameraPosition from "../HelperFunctions/UpdateCameraPosition";
 import * as THREE from 'three'
-import ElipseCurve from "./ElipseCurve";
 import {Line} from "drei";
 
 function Sphere(props) {
@@ -18,19 +17,17 @@ function Sphere(props) {
             let tmpCameraMoving = UpdateCameraPosition(camera, props.cameraPosition, props.setCameraMoving)
             if (tmpCameraMoving) {
                 props.setCameraMoving(false)
-                console.log(tmpCameraMoving)
 
             }
-            console.log(tmpCameraMoving)
 
         }
 
         camera.updateProjectionMatrix()
     })
     // Rotate mesh every frame, this is outside of React without overhead
-    // useFrame(() => (
-    //     mesh.current.rotation.x = mesh.current.rotation.y += 0.01
-    // ));
+        // useFrame(() => (
+        //     mesh.current.rotation.x = mesh.current.rotation.y += 0.01
+        // ));
 
     const curve = new THREE.EllipseCurve(
         0, 0,
