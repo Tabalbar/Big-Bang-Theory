@@ -19,7 +19,16 @@ function Visualization(
     const [cameraMoving, setCameraMoving] = useState(false);
 
 
+    const handleHomeButton = () => {
+        const tmpCameraPosition = {
+            x: 0,
+            y: 0,
+            z: 9500
+        };
 
+        setCameraPosition(tmpCameraPosition);
+        setCameraMoving(true)
+    };
 
     const updatePosition = (indexNum) => {
         const tmpCameraPosition = {
@@ -35,7 +44,7 @@ function Visualization(
         <>
             <div className='mainVisualization'>
                 <Canvas
-                    camera={{far: 10000000000, position: [0, 0, 5000], fov: 75}}
+                    camera={{far: 10000000000, position: [0, 0, 10000], fov: 75}}
                 >
                     <ambientLight/>
                     <pointLight position={[10, 10, 10]}/>
@@ -77,7 +86,9 @@ function Visualization(
 
 
                 </Canvas>
-                <ToolbarWrapper/>
+                <ToolbarWrapper
+                    handleHomeButton={handleHomeButton}
+                />
             </div>
         </>
     )

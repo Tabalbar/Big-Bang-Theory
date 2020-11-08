@@ -5,10 +5,15 @@ import {planetInfo} from "../PlanetData";
 import Sphere from "../Objects/Sphere";
 
 //todo define what the wrapper will look like in here
-function Toolbar(){
+function Toolbar(
+    {
+        handleHomeButton
+    }
+){
     return (
         <>
             <div className='toolbar'>
+                <button onClick={handleHomeButton}>Back to Sun</button>
             <h1>This is where all the code will go to define the look of the toolbar</h1>
             {
                 /*

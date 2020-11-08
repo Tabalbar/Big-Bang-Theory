@@ -16,8 +16,11 @@ function Sphere(props) {
             let tmpCameraMoving = UpdateCameraPosition(camera, props.cameraPosition, props.setCameraMoving)
             if(tmpCameraMoving){
                 props.setCameraMoving(false)
+                console.log(tmpCameraMoving)
+
             }
-        console.log(tmpCameraMoving)
+            console.log(tmpCameraMoving)
+
         }
 
         camera.updateProjectionMatrix()
