@@ -3,6 +3,9 @@ import {Canvas} from "react-three-fiber";
 import _ from "lodash";
 import {planetInfo} from "../PlanetData";
 import Sphere from "../Objects/Sphere";
+import {starInfo} from "../StarData";
+import Star from "../Objects/Star";
+import StarArrow from "../Objects/StarArrow";
 
 //todo define what the wrapper will look like in here
 function Toolbar(
@@ -11,6 +14,7 @@ function Toolbar(
         focusDescription
     }
 ) {
+
     return (
         <>
             <div className='toolbar'>
@@ -23,10 +27,21 @@ function Toolbar(
                 <h3>Brightness: {focusDescription.brightness}</h3>
                 <h3>Size: {focusDescription.realSize}</h3>
                 <h3>Color: {focusDescription.realColor}</h3>
+                <div style={{ right: 0, position: "absolute"}}>
+                {
+                    starInfo.map((value, index) => {
+                        return (
+                            value.notable ? <h1>{value.name}</h1>
+                                :
+                                null
+                        )
+                    })
+                }
+                </div>
             </div>
             <div className='miniMap'>
                 <Canvas
-                    camera={{far: 10000, position: [0, 0, 400], fov: 75}}
+                    camera={{far: 10000000, position: [0, 0, 150000], fov: 75}}
                 >
                     <ambientLight/>
                     <pointLight position={[10, 10, 10]}/>
@@ -40,12 +55,31 @@ function Toolbar(
                             />
                         ))
                     }
-                    {/*{*/}
-                    {/*    cameraMoving ?*/}
-                    {/*        null*/}
-                    {/*        :*/}
-                    {/*        <OrbitControls/>*/}
-                    {/*}*/}
+                    {
+                        _.times(starInfo.length, (i) => (
+                            <>
+                                <Star
+                                    color={starInfo[i].color}
+                                    size={starInfo[i].size}
+                                    indexNum={i}
+                                    position={starInfo[i].position}
+                                    velocityDirection={starInfo[i].velocityDirection}
+                                />
+
+                            </>
+                        ))
+                    }
+                    {
+                        _.times(starInfo.length, (i) => (
+                            <>
+                                <StarArrow
+                                    position={starInfo[i].position}
+                                    velocityDirection={starInfo[i].velocityDirection}
+                                />
+
+                            </>
+                        ))
+                    }
                 </Canvas>
             </div>
         </>
