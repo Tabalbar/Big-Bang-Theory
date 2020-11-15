@@ -6,6 +6,7 @@ function ToolbarWrapper(
     {
         handleHomeButton,
         focusDescription,
+        updateStarPosition
     }
 ){
 
@@ -16,6 +17,7 @@ function ToolbarWrapper(
             <Toolbar
                 handleHomeButton={handleHomeButton}
                 focusDescription={focusDescription}
+                updateStarPosition={updateStarPosition}
             />
         </>
     )

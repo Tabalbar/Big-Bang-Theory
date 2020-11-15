@@ -29,7 +29,7 @@ export default function UpdateCameraPosition(camera, newPosition, {setCameraMovi
         camera.position.z -= 1000;
     }
     console.log(Math.round(camera.position.x),Math.round(camera.position.y),Math.round(camera.position.z), newPosition)
-    if(Math.round(camera.position.x) === newPosition.x && Math.round(camera.position.y) === newPosition.y && Math.round(camera.position.z) === (newPosition.z + 100)){
+    if(Math.round(camera.position.x) === newPosition.x && Math.round(camera.position.y) === newPosition.y && Math.round(camera.position.z) === (newPosition.z + 1000000)){
         camera.lookAt(new Vector3(newPosition.x,newPosition.y,newPosition.z));
 
         return true

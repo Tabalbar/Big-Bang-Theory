@@ -24,7 +24,7 @@ function Star(props) {
                 {...props}
                 ref={mesh}
                 scale={props.size}
-                onClick={() => props.updateStarPosition(props.indexNum)}
+                onClick={() => {props.updateStarPosition(props.indexNum); props.setActive(!props.active)}}
                 // onPointerOver={(e) => setHover(true)}
                 // onPointerOut={(e) => setHover(false)}
             >

@@ -6,39 +6,74 @@ import Sphere from "../Objects/Sphere";
 import {starInfo} from "../StarData";
 import Star from "../Objects/Star";
 import StarArrow from "../Objects/StarArrow";
+import {Button, Grid, Message, List, Divider} from "semantic-ui-react";
 
 //todo define what the wrapper will look like in here
 function Toolbar(
     {
         handleHomeButton,
-        focusDescription
+        focusDescription,
+        updateStarPosition
     }
 ) {
 
     return (
         <>
-            <div className='toolbar'>
-                <button onClick={handleHomeButton}>Back to Sun</button>
-                <h1>{focusDescription.name}</h1>
-                <h3>Description: {focusDescription.funFact}</h3>
-                <h3>{focusDescription.notable}</h3>
-                <h3>Position: {focusDescription.realPosition}</h3>
-                <h3>Temperature: {focusDescription.temperature}</h3>
-                <h3>Brightness: {focusDescription.brightness}</h3>
-                <h3>Size: {focusDescription.realSize}</h3>
-                <h3>Color: {focusDescription.realColor}</h3>
-                <div style={{ right: 0, position: "absolute"}}>
-                {
-                    starInfo.map((value, index) => {
-                        return (
-                            value.notable ? <h1>{value.name}</h1>
-                                :
-                                null
-                        )
-                    })
-                }
-                </div>
-            </div>
+            <br/>
+            <Grid centered={true}>
+                <Grid.Row columns={3}>
+                    <Grid.Column>
+                        <Message color='blue'>
+                            <p>
+                                <strong style={{fontSize: 40}}>{focusDescription.name}</strong><br/><br/>
+                                <b>Description:</b> {focusDescription.funFact}<br/>
+                                <b>Position:</b> {focusDescription.realPosition}<br/>
+                                <b>Temperature:</b> {focusDescription.temperature}<br/>
+                                <b>Brightness:</b> {focusDescription.brightness}<br/>
+                                <b>Size:</b> {focusDescription.realSize}<br/>
+                                <b>Color:</b> {focusDescription.realColor}
+                            </p>
+
+                        </Message>
+                    </Grid.Column>
+                    <Grid.Column>
+                        <List divided verticalAlign='middle'>
+                            <List.Item>
+                                <List.Content floated='right'>
+                                    <Button onClick={handleHomeButton}>Go</Button>
+                                </List.Content>
+                                <List.Content>
+                                    Sun
+                                </List.Content>
+                            </List.Item>
+                            {
+                                starInfo.map((value, index) => {
+                                    return (
+
+                                        value.notable ?
+                                            <List.Item>
+                                                <List.Content floated='right'>
+                                                    <Button onClick={()=>updateStarPosition(index)}>Go</Button>
+                                                </List.Content>
+                                                <List.Content>
+                                                {value.name}
+                                                </List.Content>
+                                            </List.Item>
+                                            :
+                                            null
+                                    )
+                                })
+                            }
+                        </List>
+                    </Grid.Column>
+                    <Grid.Column>
+
+                    </Grid.Column>
+                </Grid.Row>
+
+            </Grid>
+
+
             <div className='miniMap'>
                 <Canvas
                     camera={{far: 10000000, position: [0, 0, 150000], fov: 75}}

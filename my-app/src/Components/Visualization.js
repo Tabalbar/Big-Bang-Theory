@@ -9,6 +9,7 @@ import {OrbitControls} from "three/examples/jsm/controls/OrbitControls";
 import CameraControls from "../HelperFunctions/CameraControls";
 import Star from "../Objects/Star";
 import StarArrow from "../Objects/StarArrow";
+import Selected from "../Objects/Selected";
 
 
 function Visualization(
@@ -17,7 +18,10 @@ function Visualization(
 
     const [cameraPosition, setCameraPosition] = useState({x: 0, y: 0, z: 0});
     const [cameraMoving, setCameraMoving] = useState(false);
+    const [active, setActive] = useState(false);
     const [cameraMovingToHome, setCameraMovingToHome] = useState(false);
+    const [selectedPosition ,setSelectedPosition] = useState({x: 0, y: 0, z:0})
+    const [selectedSize, setSelectedSize] = useState({innerRadius: planetInfo[0].size[0]*3, outerRadius: planetInfo[0].size[1]*3, thetaSegments: planetInfo[0].size[2]})
     const [focusDescription, setFocusDescription] = useState({
         name: 'Sun',
         funFact: 'A very small star',
@@ -36,6 +40,19 @@ function Visualization(
             y: 0,
             z: 0
         };
+        const tmpSelectedPosition = {
+            x: planetInfo[0].position[0],
+            y: planetInfo[0].position[1],
+            z: planetInfo[0].position[2]
+        };
+        const tmpSelectedSize = {
+            innerRadius: planetInfo[0].size[0]*3,
+            outerRadius: planetInfo[0].size[1]*3,
+            thetaSegments: planetInfo[0].size[2]
+        };
+
+        setSelectedSize(tmpSelectedSize)
+        setSelectedPosition(tmpSelectedPosition)
         setFocusDescription({
             name: 'Sun',
             funFact: 'A very small star',
@@ -56,7 +73,19 @@ function Visualization(
             y: planetInfo[indexNum].position[1],
             z: planetInfo[indexNum].position[2]
         };
+        const tmpSelectedPosition = {
+            x: planetInfo[indexNum].position[0],
+            y: planetInfo[indexNum].position[1],
+            z: planetInfo[indexNum].position[2]
+        };
+        const tmpSelectedSize = {
+            innerRadius: planetInfo[indexNum].size[0]*3,
+            outerRadius: planetInfo[indexNum].size[1]*3,
+            thetaSegments: planetInfo[indexNum].size[2]
+        };
 
+        setSelectedSize(tmpSelectedSize)
+        setSelectedPosition(tmpSelectedPosition)
         setCameraPosition(tmpCameraPosition);
         setCameraMoving(true)
         setFocusDescription({
@@ -70,15 +99,27 @@ function Visualization(
             realColor: planetInfo[indexNum].realColor
         })
     };
-
+console.log(selectedSize)
     const updateStarPosition = (indexNum) => {
-        console.log(indexNum)
         const tmpCameraPosition = {
             x: starInfo[indexNum].position[0],
             y: starInfo[indexNum].position[1],
             z: starInfo[indexNum].position[2]
         };
+        const tmpSelectedPosition = {
+            x: starInfo[indexNum].position[0],
+            y: starInfo[indexNum].position[1],
+            z: starInfo[indexNum].position[2]
+        };
+        const tmpSelectedSize = {
+            innerRadius: starInfo[indexNum].size[0]*3,
+            outerRadius: starInfo[indexNum].size[1]*3,
+            thetaSegments: starInfo[indexNum].size[2]
+        };
 
+        setSelectedSize(tmpSelectedSize)
+
+        setSelectedPosition(tmpSelectedPosition)
         setCameraPosition(tmpCameraPosition);
         setCameraMoving(true)
         setFocusDescription({
@@ -112,23 +153,33 @@ function Visualization(
                                 cameraPosition={cameraPosition}
                                 cameraMoving={cameraMoving}
                                 setCameraMoving={setCameraMoving}
+                                setActive={setActive}
+                                active={active}
                             />
                         ))
                     },
+
+                    <Selected
+                        position={[selectedPosition.x, selectedPosition.y, selectedPosition.z]}
+                        size={[selectedSize.innerRadius, selectedSize.outerRadius, 10000]}
+                    />
+
                     {
                         _.times(starInfo.length, (i) => (
                             <>
-                            <Star
-                                color={starInfo[i].color}
-                                size={starInfo[i].size}
-                                indexNum={i}
-                                position={starInfo[i].position}
-                                updateStarPosition={updateStarPosition}
-                                cameraPosition={cameraPosition}
-                                cameraMoving={cameraMoving}
-                                setCameraMoving={setCameraMoving}
-                                velocityDirection={starInfo[i].velocityDirection}
-                            />
+                                <Star
+                                    color={starInfo[i].color}
+                                    size={starInfo[i].size}
+                                    indexNum={i}
+                                    position={starInfo[i].position}
+                                    updateStarPosition={updateStarPosition}
+                                    cameraPosition={cameraPosition}
+                                    cameraMoving={cameraMoving}
+                                    setCameraMoving={setCameraMoving}
+                                    velocityDirection={starInfo[i].velocityDirection}
+                                    setActive={setActive}
+                                    active={active}
+                                />
 
                             </>
                         ))
@@ -162,7 +213,7 @@ function Visualization(
                 <ToolbarWrapper
                     handleHomeButton={handleHomeButton}
                     focusDescription={focusDescription}
-
+                    updateStarPosition={updateStarPosition}
                 />
             </div>
         </>

@@ -7,7 +7,7 @@ export const starInfo = [
       color: 'white',
       size: [500, 500, 500],
       position: [20000, 10, 10,],
-      name: 'Star Name (if has one)',
+      name: 'Star Name',
       funFact: 'Insert fun fact about star',
       notable: true,
       realPosition: 'x,y,z',
@@ -16,6 +16,20 @@ export const starInfo = [
       realSize: '1 million miles',
       realColor: 'blue',
       velocityDirection: [5000,0,0]
+  },
+  {
+    color: 'white',
+    size: [500, 500, 500],
+    position: [20000, 4000, 10,],
+    name: 'Star Name2',
+    funFact: 'Insert fun fact about star',
+    notable: true,
+    realPosition: 'x,y,z',
+    temperature: '1 million degrees',
+    brightness: '5 lumens',
+    realSize: '1 million miles',
+    realColor: 'blue',
+    velocityDirection: [20000,40000,0]
   },
 
 ];

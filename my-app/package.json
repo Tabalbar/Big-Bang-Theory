@@ -8,12 +8,14 @@
     "@testing-library/user-event": "^7.1.2",
     "drei": "^1.5.7",
     "loadash": "^1.0.0",
+    "lodash": "latest",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
-    "react-scripts": "3.4.3",
+    "react-scripts": "^3.4.4",
     "react-three-fiber": "^5.0.6",
-    "three": "^0.121.1",
-    "lodash": "latest"
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^2.0.1",
+    "three": "^0.121.1"
   },
   "scripts": {
     "start": "react-scripts start",
