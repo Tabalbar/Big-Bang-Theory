@@ -1,6 +1,6 @@
 
-let star_color = 'white'
-let star_size = [100, 100, 100]
+let def_star_color = 'white'
+let def_star_size = [100, 100, 100]
 
 export const starInfo = [
     {
