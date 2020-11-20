@@ -2,6 +2,11 @@
 let def_star_color = 'white'
 let def_star_size = [100, 100, 100]
 
+const csv=require('csvtojson')
+const converter=csv().fromFile('./xyz_cooridinates.csv').then((json)=>{
+  console.log(json);
+})
+
 export const starInfo = [
     {
       color: 'white',
