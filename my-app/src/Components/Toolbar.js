@@ -13,7 +13,8 @@ function Toolbar(
     {
         handleHomeButton,
         focusDescription,
-        updateStarPosition
+        updateStarPosition,
+        handleToggleLines
     }
 ) {
 
@@ -53,10 +54,10 @@ function Toolbar(
                                         value.notable ?
                                             <List.Item>
                                                 <List.Content floated='right'>
-                                                    <Button onClick={()=>updateStarPosition(index)}>Go</Button>
+                                                    <Button onClick={() => updateStarPosition(index)}>Go</Button>
                                                 </List.Content>
                                                 <List.Content>
-                                                {value.name}
+                                                    {value.name}
                                                 </List.Content>
                                             </List.Item>
                                             :
@@ -67,7 +68,7 @@ function Toolbar(
                         </List>
                     </Grid.Column>
                     <Grid.Column>
-
+                        <Button onClick={handleToggleLines}>Toggle Star Lines</Button>
                     </Grid.Column>
                 </Grid.Row>
 

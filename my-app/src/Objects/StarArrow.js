@@ -13,7 +13,7 @@ function StarArrow(props) {
             // onPointerOver={(e) => setHover(true)}
             // onPointerOut={(e) => setHover(false)}
         >
-            <arrowHelper args={[props.position, props.velocityDirection, 300, '0xff0000']}/>
+            <arrowHelper args={[props.position, props.velocityDirection, 300, '#4287f5']}/>
             <meshStandardMaterial attach='material' color={props.color}/>
         </mesh>
     )

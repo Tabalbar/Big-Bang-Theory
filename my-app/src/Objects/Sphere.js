@@ -31,11 +31,11 @@ function Sphere(props) {
     //     ));
 
     const curve = new THREE.EllipseCurve(
-        0, 0,
-        props.position[0], props.position[1],
+        200, 0,
+        props.position[0], props.position[0],
         0, 0,
         true,
-        50
+        0
     );
 
     const points = curve.getPoints(50);

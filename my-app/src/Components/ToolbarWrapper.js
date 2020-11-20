@@ -6,7 +6,8 @@ function ToolbarWrapper(
     {
         handleHomeButton,
         focusDescription,
-        updateStarPosition
+        updateStarPosition,
+        handleToggleLines
     }
 ){
 
@@ -18,6 +19,7 @@ function ToolbarWrapper(
                 handleHomeButton={handleHomeButton}
                 focusDescription={focusDescription}
                 updateStarPosition={updateStarPosition}
+                handleToggleLines={handleToggleLines}
             />
         </>
     )

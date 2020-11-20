@@ -3,6 +3,7 @@ import * as THREE from "three";
 import {useFrame} from "react-three-fiber";
 import UpdateCameraPosition from "../HelperFunctions/UpdateCameraPosition";
 import StarArrow from "./StarArrow";
+import Pin from "./Pin";
 
 function Star(props) {
     // This reference will give us direct access to the mesh

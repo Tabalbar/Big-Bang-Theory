@@ -10,6 +10,8 @@ import CameraControls from "../HelperFunctions/CameraControls";
 import Star from "../Objects/Star";
 import StarArrow from "../Objects/StarArrow";
 import Selected from "../Objects/Selected";
+import Pin from "../Objects/Pin";
+import * as THREE from "three";
 
 
 function Visualization(
@@ -32,6 +34,7 @@ function Visualization(
         realSize: 'Volume: 10^12 km^3',
         realColor: 'Yellow'
     });
+    const [toggleLines, setToggleLines] = useState(true);
 
 
     const handleHomeButton = () => {
@@ -99,7 +102,6 @@ function Visualization(
             realColor: planetInfo[indexNum].realColor
         })
     };
-console.log(selectedSize)
     const updateStarPosition = (indexNum) => {
         const tmpCameraPosition = {
             x: starInfo[indexNum].position[0],
@@ -133,6 +135,10 @@ console.log(selectedSize)
             realColor: starInfo[indexNum].realColor
         })
     };
+
+    const handleToggleLines = () => {
+        setToggleLines(prevState => !prevState)
+    }
 
     return (
         <>
@@ -196,6 +202,23 @@ console.log(selectedSize)
                         ))
                     }
                     {
+                        toggleLines ?
+                        _.times(starInfo.length, (i)=>(
+                            <>
+                                <Pin
+                                    updateStarPosition={updateStarPosition}
+                                    setActive={setActive}
+                                    active={active}
+                                    indexNum={i}
+                                    position={[(1-.25)*selectedPosition.x+.25*starInfo[i].position[0],(1-.25)*selectedPosition.y+.25*starInfo[i].position[1],(1-.25)*selectedPosition.z+.25*starInfo[i].position[2]]}
+                                    fromPosition={[new THREE.Vector3(starInfo[i].position[0],starInfo[i].position[1],starInfo[i].position[2]),new THREE.Vector3(selectedPosition.x,selectedPosition.y,selectedPosition.z)]}
+                                />
+                            </>
+                        ))
+                            :
+                            null
+                    }
+                    {
                         cameraMoving ?
                             null
                             :
@@ -214,6 +237,7 @@ console.log(selectedSize)
                     handleHomeButton={handleHomeButton}
                     focusDescription={focusDescription}
                     updateStarPosition={updateStarPosition}
+                    handleToggleLines={handleToggleLines}
                 />
             </div>
         </>
