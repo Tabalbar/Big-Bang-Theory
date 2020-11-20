@@ -11,7 +11,7 @@ export const starInfo = [
     {
       color: 'white',
       size: [500, 500, 500],
-      position: [40000, 50000, 10,],
+      position: [40000, 500000, 10,],
       name: 'Star Name',
       funFact: 'Insert fun fact about star',
       notable: true,
@@ -25,7 +25,7 @@ export const starInfo = [
   {
     color: 'white',
     size: [500, 500, 500],
-    position: [20000, -50000, 10,],
+    position: [20000, -500000, 10,],
     name: 'Star Name2',
     funFact: 'Insert fun fact about star',
     notable: true,

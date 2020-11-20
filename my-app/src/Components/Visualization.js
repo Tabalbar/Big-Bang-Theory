@@ -210,7 +210,7 @@ function Visualization(
                                     setActive={setActive}
                                     active={active}
                                     indexNum={i}
-                                    position={[(1-.25)*selectedPosition.x+.25*starInfo[i].position[0],(1-.25)*selectedPosition.y+.25*starInfo[i].position[1],(1-.25)*selectedPosition.z+.25*starInfo[i].position[2]]}
+                                    position={[(1-.1)*selectedPosition.x+.1*starInfo[i].position[0],(1-.1)*selectedPosition.y+.1*starInfo[i].position[1],(1-.1)*selectedPosition.z+.1*starInfo[i].position[2]]}
                                     fromPosition={[new THREE.Vector3(starInfo[i].position[0],starInfo[i].position[1],starInfo[i].position[2]),new THREE.Vector3(selectedPosition.x,selectedPosition.y,selectedPosition.z)]}
                                 />
                             </>
