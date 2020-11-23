@@ -47,24 +47,24 @@ function Toolbar(
                                     Sun
                                 </List.Content>
                             </List.Item>
-                            {
-                                starInfo.map((value, index) => {
-                                    return (
+                            {/*{*/}
+                            {/*    starInfo.map((value, index) => {*/}
+                            {/*        return (*/}
 
-                                        value.notable ?
-                                            <List.Item>
-                                                <List.Content floated='right'>
-                                                    <Button onClick={() => updateStarPosition(index)}>Go</Button>
-                                                </List.Content>
-                                                <List.Content>
-                                                    {value.name}
-                                                </List.Content>
-                                            </List.Item>
-                                            :
-                                            null
-                                    )
-                                })
-                            }
+                            {/*            value.notable ?*/}
+                            {/*                <List.Item>*/}
+                            {/*                    <List.Content floated='right'>*/}
+                            {/*                        <Button onClick={() => updateStarPosition(index)}>Go</Button>*/}
+                            {/*                    </List.Content>*/}
+                            {/*                    <List.Content>*/}
+                            {/*                        {value.name}*/}
+                            {/*                    </List.Content>*/}
+                            {/*                </List.Item>*/}
+                            {/*                :*/}
+                            {/*                null*/}
+                            {/*        )*/}
+                            {/*    })*/}
+                            {/*}*/}
                         </List>
                     </Grid.Column>
                     <Grid.Column>
