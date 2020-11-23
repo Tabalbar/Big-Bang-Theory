@@ -13,7 +13,7 @@ function Pin(props){
             <mesh
                 {...props}
                 ref={mesh}
-                scale={[1000,1000,1000]}
+                scale={[30,30,30]}
                 onClick={() => {props.updateStarPosition(props.indexNum); props.setActive(!props.active)}}
                 // onPointerOver={(e) => setHover(true)}
                 // onPointerOut={(e) => setHover(false)}

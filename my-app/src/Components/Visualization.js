@@ -4,7 +4,7 @@ import _ from "lodash";
 import Sphere from "../Objects/Sphere";
 import ToolbarWrapper from "./ToolbarWrapper";
 import {planetInfo} from '../PlanetData'
-import {starInfo} from '../StarData'
+import starInfo from '../newStarData'
 import {OrbitControls} from "three/examples/jsm/controls/OrbitControls";
 import CameraControls from "../HelperFunctions/CameraControls";
 import Star from "../Objects/Star";
@@ -104,19 +104,19 @@ function Visualization(
     };
     const updateStarPosition = (indexNum) => {
         const tmpCameraPosition = {
-            x: starInfo()[indexNum].position[0],
-            y: starInfo()[indexNum].position[1],
-            z: starInfo()[indexNum].position[2]
+            x: starInfo[indexNum].position[0],
+            y: starInfo[indexNum].position[1],
+            z: starInfo[indexNum].position[2]
         };
         const tmpSelectedPosition = {
-            x: starInfo()[indexNum].position[0],
-            y: starInfo()[indexNum].position[1],
-            z: starInfo()[indexNum].position[2]
+            x: starInfo[indexNum].position[0],
+            y: starInfo[indexNum].position[1],
+            z: starInfo[indexNum].position[2]
         };
         const tmpSelectedSize = {
-            innerRadius: starInfo()[indexNum].size[0]*3,
-            outerRadius: starInfo()[indexNum].size[1]*3,
-            thetaSegments: starInfo()[indexNum].size[2]
+            innerRadius: starInfo[indexNum].size[0]*3,
+            outerRadius: starInfo[indexNum].size[1]*3,
+            thetaSegments: starInfo[indexNum].size[2]
         };
 
         setSelectedSize(tmpSelectedSize)
@@ -125,14 +125,14 @@ function Visualization(
         setCameraPosition(tmpCameraPosition);
         setCameraMoving(true)
         setFocusDescription({
-            name: starInfo()[indexNum].name,
-            funFact: starInfo()[indexNum].funFact,
-            notable: starInfo()[indexNum].notable,
-            realPosition: starInfo()[indexNum].realPosition,
-            temperature: starInfo()[indexNum].temperature,
-            brightness: starInfo()[indexNum].brightness,
-            realSize: starInfo()[indexNum].realSize,
-            realColor: starInfo()[indexNum].realColor
+            name: starInfo[indexNum].name,
+            funFact: starInfo[indexNum].funFact,
+            notable: starInfo[indexNum].notable,
+            realPosition: starInfo[indexNum].realPosition,
+            temperature: starInfo[indexNum].temperature,
+            brightness: starInfo[indexNum].brightness,
+            realSize: starInfo[indexNum].realSize,
+            realColor: starInfo[indexNum].realColor
         })
     };
 
@@ -171,18 +171,18 @@ function Visualization(
                     />
 
                     {
-                        _.times(starInfo().length, (i) => (
+                        _.times(starInfo.length, (i) => (
                             <>
                                 <Star
-                                    color={starInfo()[i].color}
-                                    size={starInfo()[i].size}
+                                    color={starInfo[i].color}
+                                    size={starInfo[i].size}
                                     indexNum={i}
-                                    position={starInfo()[i].position}
+                                    position={starInfo[i].position}
                                     updateStarPosition={updateStarPosition}
                                     cameraPosition={cameraPosition}
                                     cameraMoving={cameraMoving}
                                     setCameraMoving={setCameraMoving}
-                                    velocityDirection={starInfo()[i].velocityDirection}
+                                    velocityDirection={starInfo[i].velocityDirection}
                                     setActive={setActive}
                                     active={active}
                                 />
@@ -191,11 +191,11 @@ function Visualization(
                         ))
                     }
                     {
-                        _.times(starInfo().length, (i) => (
+                        _.times(starInfo.length, (i) => (
                             <>
                                 <StarArrow
-                                    position={starInfo()[i].position}
-                                    velocityDirection={starInfo()[i].velocityDirection}
+                                    position={starInfo[i].position}
+                                    velocityDirection={starInfo[i].velocityDirection}
                                 />
 
                             </>
@@ -203,15 +203,15 @@ function Visualization(
                     }
                     {
                         toggleLines ?
-                        _.times(starInfo().length, (i)=>(
+                        _.times(starInfo.length, (i)=>(
                             <>
                                 <Pin
                                     updateStarPosition={updateStarPosition}
                                     setActive={setActive}
                                     active={active}
                                     indexNum={i}
-                                    position={[(1-.1)*selectedPosition.x+.1*starInfo()[i].position[0],(1-.1)*selectedPosition.y+.1*starInfo()[i].position[1],(1-.1)*selectedPosition.z+.1*starInfo()[i].position[2]]}
-                                    fromPosition={[new THREE.Vector3(starInfo()[i].position[0],starInfo()[i].position[1],starInfo()[i].position[2]),new THREE.Vector3(selectedPosition.x,selectedPosition.y,selectedPosition.z)]}
+                                    position={[(1-.1)*selectedPosition.x+.1*starInfo[i].position[0],(1-.1)*selectedPosition.y+.1*starInfo[i].position[1],(1-.1)*selectedPosition.z+.1*starInfo[i].position[2]]}
+                                    fromPosition={[new THREE.Vector3(starInfo[i].position[0],starInfo[i].position[1],starInfo[i].position[2]),new THREE.Vector3(selectedPosition.x,selectedPosition.y,selectedPosition.z)]}
                                 />
                             </>
                         ))

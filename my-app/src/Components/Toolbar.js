@@ -3,7 +3,7 @@ import {Canvas} from "react-three-fiber";
 import _ from "lodash";
 import {planetInfo} from "../PlanetData";
 import Sphere from "../Objects/Sphere";
-import {starInfo} from "../StarData";
+import starInfo from "../newStarData";
 import Star from "../Objects/Star";
 import StarArrow from "../Objects/StarArrow";
 import {Button, Grid, Message, List, Divider} from "semantic-ui-react";
@@ -37,7 +37,10 @@ function Toolbar(
 
                         </Message>
                     </Grid.Column>
+
                     <Grid.Column>
+                        <div className='starsList'>
+
                         <List divided verticalAlign='middle'>
                             <List.Item>
                                 <List.Content floated='right'>
@@ -47,26 +50,29 @@ function Toolbar(
                                     Sun
                                 </List.Content>
                             </List.Item>
-                            {/*{*/}
-                            {/*    starInfo.map((value, index) => {*/}
-                            {/*        return (*/}
+                            {
+                                starInfo.map((value, index) => {
+                                    return (
 
-                            {/*            value.notable ?*/}
-                            {/*                <List.Item>*/}
-                            {/*                    <List.Content floated='right'>*/}
-                            {/*                        <Button onClick={() => updateStarPosition(index)}>Go</Button>*/}
-                            {/*                    </List.Content>*/}
-                            {/*                    <List.Content>*/}
-                            {/*                        {value.name}*/}
-                            {/*                    </List.Content>*/}
-                            {/*                </List.Item>*/}
-                            {/*                :*/}
-                            {/*                null*/}
-                            {/*        )*/}
-                            {/*    })*/}
-                            {/*}*/}
+                                        value.notable ?
+                                            <List.Item>
+                                                <List.Content floated='right'>
+                                                    <Button onClick={() => updateStarPosition(index)}>Go</Button>
+                                                </List.Content>
+                                                <List.Content>
+                                                    {value.name}
+                                                </List.Content>
+                                            </List.Item>
+                                            :
+                                            null
+                                    )
+                                })
+                            }
                         </List>
+                        </div>
+
                     </Grid.Column>
+
                     <Grid.Column>
                         <Button onClick={handleToggleLines}>Toggle Star Lines</Button>
                     </Grid.Column>
