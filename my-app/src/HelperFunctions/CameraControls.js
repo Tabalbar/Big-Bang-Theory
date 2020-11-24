@@ -24,7 +24,7 @@ console.log(props.cameraPosition)
         }
 
         if(props.cameraMovingToHome){
-            camera.position.set(props.cameraPosition.x,props.cameraPosition.y,props.cameraPosition.z+10)
+            camera.position.set(props.cameraPosition.x,props.cameraPosition.y,props.cameraPosition.z+30)
             props.setCameraMovingToHome(false);
         }
         controls.current.update();
