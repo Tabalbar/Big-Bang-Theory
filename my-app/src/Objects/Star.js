@@ -1,9 +1,5 @@
 import React, {useRef} from "react";
 import * as THREE from "three";
-import {useFrame} from "react-three-fiber";
-import UpdateCameraPosition from "../HelperFunctions/UpdateCameraPosition";
-import StarArrow from "./StarArrow";
-import Pin from "./Pin";
 
 function Star(props) {
     // This reference will give us direct access to the mesh
@@ -35,9 +31,9 @@ function Star(props) {
             <mesh
                 {...props}
                 ref={mesh}
-                scale={[30, 30, 30]}
+                scale={[5, 5, 5]}
             >
-                <arrowHelper args={[new THREE.Vector3(x, y, z), new THREE.Vector3(0, 0, 0), 300, '0xff0000', 50, 50]}/>
+                <arrowHelper args={[new THREE.Vector3(x, y, z), new THREE.Vector3(0, 0, 0), 10, 'red', 1, 1]}/>
                 <meshStandardMaterial attach='material' color={props.color}/>
             </mesh>
             {/*<StarArrow*/}

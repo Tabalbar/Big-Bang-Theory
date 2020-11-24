@@ -54,9 +54,9 @@ function Sphere(props) {
                 <sphereBufferGeometry/>
                 <meshStandardMaterial attach='material' color={props.color}/>
             </mesh>
-            <line ref={mesh} geometry={geometry}>
-                <lineBasicMaterial attach="material" color={'#9c88ff'} linewidth={100}/>
-            </line>
+            {/*<line ref={mesh} geometry={geometry}>*/}
+            {/*    <lineBasicMaterial attach="material" color={'#9c88ff'} linewidth={100}/>*/}
+            {/*</line>*/}
         </>
     )
 }

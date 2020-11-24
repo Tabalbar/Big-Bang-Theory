@@ -67,6 +67,7 @@ function Visualization(
             realColor: 'Yellow'
         });
         setCameraPosition(tmpCameraPosition);
+        setToggleLines(true)
         setCameraMovingToHome(true)
     };
 
@@ -102,6 +103,7 @@ function Visualization(
             realColor: planetInfo[indexNum].realColor
         })
     };
+
     const updateStarPosition = (indexNum) => {
         const tmpCameraPosition = {
             x: starInfo[indexNum].position[0],
@@ -118,12 +120,13 @@ function Visualization(
             outerRadius: starInfo[indexNum].size[1]*3,
             thetaSegments: starInfo[indexNum].size[2]
         };
-
         setSelectedSize(tmpSelectedSize)
 
         setSelectedPosition(tmpSelectedPosition)
         setCameraPosition(tmpCameraPosition);
         setCameraMoving(true)
+        setCameraMovingToHome(true)
+        setToggleLines(false)
         setFocusDescription({
             name: starInfo[indexNum].name,
             funFact: starInfo[indexNum].funFact,
@@ -133,6 +136,7 @@ function Visualization(
             brightness: starInfo[indexNum].brightness,
             realSize: starInfo[indexNum].realSize,
             realColor: starInfo[indexNum].realColor
+
         })
     };
 
@@ -144,17 +148,15 @@ function Visualization(
         <>
             <div className='mainVisualization'>
                 <Canvas
-                    camera={{far: 10000000000, position: [0, 0, 10000], fov: 75}}
+                    camera={{far: 10000000000, position: [0, 0, 10], fov: 75}}
                 >
                     <ambientLight/>
                     <pointLight position={[10, 10, 10]}/>
-                    {
-                        _.times(planetInfo.length, (i) => (
                             <Sphere
-                                color={planetInfo[i].color}
-                                size={planetInfo[i].size}
-                                indexNum={i}
-                                position={planetInfo[i].position}
+                                color={planetInfo[0].color}
+                                size={planetInfo[0].size}
+                                indexNum={0}
+                                position={planetInfo[0].position}
                                 updatePosition={updatePosition}
                                 cameraPosition={cameraPosition}
                                 cameraMoving={cameraMoving}
@@ -162,8 +164,6 @@ function Visualization(
                                 setActive={setActive}
                                 active={active}
                             />
-                        ))
-                    },
 
                     <Selected
                         position={[selectedPosition.x, selectedPosition.y, selectedPosition.z]}
@@ -191,17 +191,6 @@ function Visualization(
                         ))
                     }
                     {
-                        _.times(starInfo.length, (i) => (
-                            <>
-                                <StarArrow
-                                    position={starInfo[i].position}
-                                    velocityDirection={starInfo[i].velocityDirection}
-                                />
-
-                            </>
-                        ))
-                    }
-                    {
                         toggleLines ?
                         _.times(starInfo.length, (i)=>(
                             <>
@@ -210,7 +199,7 @@ function Visualization(
                                     setActive={setActive}
                                     active={active}
                                     indexNum={i}
-                                    position={[(1-.1)*selectedPosition.x+.1*starInfo[i].position[0],(1-.1)*selectedPosition.y+.1*starInfo[i].position[1],(1-.1)*selectedPosition.z+.1*starInfo[i].position[2]]}
+                                    position={[(1-.01)*selectedPosition.x+.01*starInfo[i].position[0],(1-.01)*selectedPosition.y+.01*starInfo[i].position[1],(1-.01)*selectedPosition.z+.01*starInfo[i].position[2]]}
                                     fromPosition={[new THREE.Vector3(starInfo[i].position[0],starInfo[i].position[1],starInfo[i].position[2]),new THREE.Vector3(selectedPosition.x,selectedPosition.y,selectedPosition.z)]}
                                 />
                             </>

@@ -15,19 +15,18 @@ function CSVReader() {
                 color: 'white',
                 position: [parseInt(data.x), parseInt(data.y), parseInt(data.z)],
                 name: 'N/A',
-                size: [10,10,10],
+                size: [1,1,1],
                 notable: true,
                 realPosition: 'x,y,z',
                 temperature: '1 million degrees',
                 brightness: '5 lumens',
                 realSize: '1 million miles',
                 realColor: 'blue',
-                velocityDirection: [5000,0,0]
+                velocityDirection: [getRandomInt(3),getRandomInt(3),getRandomInt(3)]
             })
         })
         const JSONobj =  JSON.stringify(arr);
 
-        console.log(JSONobj)
         fileDownload(JSONobj, 'newStarData.json')
     };
 
@@ -43,6 +42,11 @@ function CSVReader() {
             <button onClick={handleReadCSV}>read csv</button>
         </>
     )
+}
+
+
+function getRandomInt(max){
+    return Math.floor(Math.random() * Math.floor(max));
 }
 
 export default CSVReader

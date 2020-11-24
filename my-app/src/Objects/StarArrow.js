@@ -8,12 +8,12 @@ function StarArrow(props) {
         <mesh
             {...props}
             ref={mesh}
-            scale={[30,30,30]}
+            scale={[1,1,1]}
             // onClick={()=>props.updateStarPosition(props.indexNum)}
             // onPointerOver={(e) => setHover(true)}
             // onPointerOut={(e) => setHover(false)}
         >
-            <arrowHelper args={[props.position, props.velocityDirection, 300, '#4287f5']}/>
+            <arrowHelper args={[props.position, props.velocityDirection, 1, '#4287f5']}/>
             <meshStandardMaterial attach='material' color={props.color}/>
         </mesh>
     )

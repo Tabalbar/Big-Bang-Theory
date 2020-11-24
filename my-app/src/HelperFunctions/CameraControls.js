@@ -14,13 +14,18 @@ const CameraControls = (props) => {
         camera,
         gl: {domElement},
     } = useThree();
-
+console.log(props.cameraPosition)
     // Ref to the controls, so that we can update them on every frame using useFrame
     const controls = useRef();
     useFrame((state) => {
         if(props.cameraMovingToHome){
-            camera.position.set(0,0,10000)
+            camera.position.set(0,0,10)
             props.setCameraMovingToHome(false)
+        }
+
+        if(props.cameraMovingToHome){
+            camera.position.set(props.cameraPosition.x,props.cameraPosition.y,props.cameraPosition.z+10)
+            props.setCameraMovingToHome(false);
         }
         controls.current.update();
         camera.updateProjectionMatrix()

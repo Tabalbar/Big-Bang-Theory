@@ -41,34 +41,34 @@ function Toolbar(
                     <Grid.Column>
                         <div className='starsList'>
 
-                        <List divided verticalAlign='middle'>
-                            <List.Item>
-                                <List.Content floated='right'>
-                                    <Button onClick={handleHomeButton}>Go</Button>
-                                </List.Content>
-                                <List.Content>
-                                    Sun
-                                </List.Content>
-                            </List.Item>
-                            {
-                                starInfo.map((value, index) => {
-                                    return (
+                            <List divided verticalAlign='middle'>
+                                <List.Item>
+                                    <List.Content floated='right'>
+                                        <Button onClick={handleHomeButton}>Go</Button>
+                                    </List.Content>
+                                    <List.Content>
+                                        Sun
+                                    </List.Content>
+                                </List.Item>
+                                {
+                                    starInfo.map((value, index) => {
+                                        return (
 
-                                        value.notable ?
-                                            <List.Item>
-                                                <List.Content floated='right'>
-                                                    <Button onClick={() => updateStarPosition(index)}>Go</Button>
-                                                </List.Content>
-                                                <List.Content>
-                                                    {value.name}
-                                                </List.Content>
-                                            </List.Item>
-                                            :
-                                            null
-                                    )
-                                })
-                            }
-                        </List>
+                                            value.notable ?
+                                                <List.Item>
+                                                    <List.Content floated='right'>
+                                                        <Button onClick={() => updateStarPosition(index)}>Go</Button>
+                                                    </List.Content>
+                                                    <List.Content>
+                                                        {value.name}
+                                                    </List.Content>
+                                                </List.Item>
+                                                :
+                                                null
+                                        )
+                                    })
+                                }
+                            </List>
                         </div>
 
                     </Grid.Column>
@@ -83,20 +83,16 @@ function Toolbar(
 
             <div className='miniMap'>
                 <Canvas
-                    camera={{far: 10000000, position: [0, 0, 150000], fov: 75}}
+                    camera={{far: 10000000, position: [0, 0, 100], fov: 10000}}
                 >
                     <ambientLight/>
                     <pointLight position={[10, 10, 10]}/>
-                    {
-                        _.times(planetInfo.length, (i) => (
-                            <Sphere
-                                color={planetInfo[i].color}
-                                size={planetInfo[i].size}
-                                indexNum={i}
-                                position={planetInfo[i].position}
-                            />
-                        ))
-                    }
+                    <Sphere
+                        color={planetInfo[0].color}
+                        size={planetInfo[0].size}
+                        indexNum={0}
+                        position={planetInfo[0].position}
+                    />
                     {
                         _.times(starInfo.length, (i) => (
                             <>
