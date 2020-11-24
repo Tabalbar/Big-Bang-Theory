@@ -6,7 +6,7 @@ import Sphere from "../Objects/Sphere";
 import starInfo from "../newStarData";
 import Star from "../Objects/Star";
 import StarArrow from "../Objects/StarArrow";
-import {Button, Grid, Message, List, Divider} from "semantic-ui-react";
+import {Button, Grid, Message, List, Header} from "semantic-ui-react";
 
 //todo define what the wrapper will look like in here
 function Toolbar(
@@ -14,13 +14,15 @@ function Toolbar(
         handleHomeButton,
         focusDescription,
         updateStarPosition,
-        handleToggleLines
+        handleToggleLines,
+        cameraPosition
     }
 ) {
 
     return (
         <>
-            <br/>
+            <div style={{marginTop: -20}}/>
+            <Header as='h5'>Camera is looking at position {'<'}{cameraPosition.x}, {cameraPosition.y}, {cameraPosition.z}{'>'}</Header>
             <Grid centered={true}>
                 <Grid.Row columns={3}>
                     <Grid.Column>
@@ -83,13 +85,13 @@ function Toolbar(
 
             <div className='miniMap'>
                 <Canvas
-                    camera={{far: 10000000, position: [0, 0, 100], fov: 10000}}
+                    camera={{far: 10000000, position: [0, 0, 3000], fov: 75}}
                 >
                     <ambientLight/>
                     <pointLight position={[10, 10, 10]}/>
                     <Sphere
                         color={planetInfo[0].color}
-                        size={planetInfo[0].size}
+                        size={[100,100,100]}
                         indexNum={0}
                         position={planetInfo[0].position}
                     />
@@ -98,7 +100,7 @@ function Toolbar(
                             <>
                                 <Star
                                     color={starInfo[i].color}
-                                    size={starInfo[i].size}
+                                    size={[100,100,100]}
                                     indexNum={i}
                                     position={starInfo[i].position}
                                     velocityDirection={starInfo[i].velocityDirection}

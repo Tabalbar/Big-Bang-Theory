@@ -71,38 +71,6 @@ function Visualization(
         setCameraMovingToHome(true)
     };
 
-    const updatePosition = (indexNum) => {
-        const tmpCameraPosition = {
-            x: planetInfo[indexNum].position[0],
-            y: planetInfo[indexNum].position[1],
-            z: planetInfo[indexNum].position[2]
-        };
-        const tmpSelectedPosition = {
-            x: planetInfo[indexNum].position[0],
-            y: planetInfo[indexNum].position[1],
-            z: planetInfo[indexNum].position[2]
-        };
-        const tmpSelectedSize = {
-            innerRadius: planetInfo[indexNum].size[0]*3,
-            outerRadius: planetInfo[indexNum].size[1]*3,
-            thetaSegments: planetInfo[indexNum].size[2]
-        };
-
-        setSelectedSize(tmpSelectedSize)
-        setSelectedPosition(tmpSelectedPosition)
-        setCameraPosition(tmpCameraPosition);
-        setCameraMoving(true)
-        setFocusDescription({
-            name: planetInfo[indexNum].name,
-            funFact: planetInfo[indexNum].funFact,
-            notable: planetInfo[indexNum].notable,
-            realPosition: planetInfo[indexNum].realPosition,
-            temperature: planetInfo[indexNum].temperature,
-            brightness: planetInfo[indexNum].brightness,
-            realSize: planetInfo[indexNum].realSize,
-            realColor: planetInfo[indexNum].realColor
-        })
-    };
 
     const updateStarPosition = (indexNum) => {
         const tmpCameraPosition = {
@@ -157,7 +125,6 @@ function Visualization(
                                 size={planetInfo[0].size}
                                 indexNum={0}
                                 position={planetInfo[0].position}
-                                updatePosition={updatePosition}
                                 cameraPosition={cameraPosition}
                                 cameraMoving={cameraMoving}
                                 setCameraMoving={setCameraMoving}
@@ -227,6 +194,7 @@ function Visualization(
                     focusDescription={focusDescription}
                     updateStarPosition={updateStarPosition}
                     handleToggleLines={handleToggleLines}
+                    cameraPosition={cameraPosition}
                 />
             </div>
         </>

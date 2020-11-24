@@ -7,7 +7,8 @@ function ToolbarWrapper(
         handleHomeButton,
         focusDescription,
         updateStarPosition,
-        handleToggleLines
+        handleToggleLines,
+        cameraPosition
     }
 ){
 
@@ -20,6 +21,7 @@ function ToolbarWrapper(
                 focusDescription={focusDescription}
                 updateStarPosition={updateStarPosition}
                 handleToggleLines={handleToggleLines}
+                cameraPosition={cameraPosition}
             />
         </>
     )
