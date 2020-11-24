@@ -6,7 +6,7 @@ import Sphere from "../Objects/Sphere";
 import starInfo from "../newStarData";
 import Star from "../Objects/Star";
 import StarArrow from "../Objects/StarArrow";
-import {Button, Grid, Message, List, Header} from "semantic-ui-react";
+import {Button, Grid, Message, List, Header, Container} from "semantic-ui-react";
 
 //todo define what the wrapper will look like in here
 function Toolbar(
@@ -21,6 +21,7 @@ function Toolbar(
 
     return (
         <>
+            <Container>
             <div style={{marginTop: -20}}/>
             <Header as='h5'>Camera is looking at position {'<'}{cameraPosition.x}, {cameraPosition.y}, {cameraPosition.z}{'>'}</Header>
             <Grid centered={true}>
@@ -122,6 +123,7 @@ function Toolbar(
                     }
                 </Canvas>
             </div>
+            </Container>
         </>
     )
 }
