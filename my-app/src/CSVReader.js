@@ -12,7 +12,7 @@ function CSVReader() {
         let arr = [];
         await d3.csv(xyzCoordinates,  (data) => {
             console.log(data.parallax);
-            if(parseInt(data.parallax) >= 3
+            if(parseInt(data.parallax) >= 5
             ){
                 arr.push({
                     color: 'white',
