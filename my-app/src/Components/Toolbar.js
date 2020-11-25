@@ -84,13 +84,13 @@ function Toolbar(
 
             <div className= 'legend'>
                 <div className="grid-item">Star Color</div>
-                <div className="grid-item1">Red</div>
-                <div className="grid-item2">Orange</div>
-                <div className="grid-item3">Yellow</div>
-                <div className="grid-item4">Yellow White</div>
-                <div className="grid-item5">White</div>
-                <div className="grid-item6">Blue White</div>
-                <div className="grid-item7">Blue</div>
+                <div className="grid-item-r">Red</div>
+                <div className="grid-item-o">Orange</div>
+                <div className="grid-item-y">Yellow</div>
+                <div className="grid-item-yw">Yellow White</div>
+                <div className="grid-item-w">White</div>
+                <div className="grid-item-bw">Blue White</div>
+                <div className="grid-item-b">Blue</div>
                 <div className="grid-item">Surface Temp</div>
                 <div className="grid-item">less than 3,700 K</div>
                 <div className="grid-item">3,700-5,200 K</div>
