@@ -11,8 +11,8 @@ function CSVReader() {
     const handleReadCSV = async () => {
         let arr = [];
         await d3.csv(xyzCoordinates,  (data) => {
-            console.log(data.parallax);
-            if(parseInt(data.parallax) >= 5
+            // console.log(data.parallax);
+            if(parseInt(data.parallax) >= 10
             ){
                 arr.push({
                     color: 'white',
@@ -27,6 +27,8 @@ function CSVReader() {
                     realColor: 'N/A',
                     velocityDirection: [getRandomInt(3),getRandomInt(3),getRandomInt(3)]
                 })
+            } else {
+                console.log('dont add')
             }
 
         })

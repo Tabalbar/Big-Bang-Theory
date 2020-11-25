@@ -6,8 +6,8 @@ import CSVReader from "./CSVReader";
 function App() {
   return (
     <>
-        <Main/>
-        {/*<CSVReader/>*/}
+        {/*<Main/>*/}
+        <CSVReader/>
     </>
   );
 }
