@@ -1,8 +1,9 @@
 import React, {useState} from 'react'
 import * as d3 from 'd3'
-import xyzCoordinates from './xyz_cooridinates.csv'
+import xyzCoordinates from './big_xyz_cooridinates.csv'
 import fileDownload from "js-file-download";
 import newStarData from './newStarData'
+
 
 function CSVReader() {
 
@@ -10,22 +11,27 @@ function CSVReader() {
     const handleReadCSV = async () => {
         let arr = [];
         await d3.csv(xyzCoordinates,  (data) => {
-            console.log(parseInt(data.x))
-            arr.push({
-                color: 'white',
-                position: [parseInt(data.x), parseInt(data.y), parseInt(data.z)],
-                name: 'N/A',
-                size: [1,1,1],
-                notable: true,
-                realPosition: 'x,y,z',
-                temperature: '1 million degrees',
-                brightness: '5 lumens',
-                realSize: '1 million miles',
-                realColor: 'blue',
-                velocityDirection: [getRandomInt(3),getRandomInt(3),getRandomInt(3)]
-            })
+            console.log(data.parallax);
+            if(parseInt(data.parallax) >= 3
+            ){
+                arr.push({
+                    color: 'white',
+                    position: [parseInt(data.x.split(' ')[0]), parseInt(data.y.split(' ')[0]), parseInt(data.z.split(' ')[0])],
+                    name: data.source_id,
+                    size: [1,1,1],
+                    notable: true,
+                    realPosition: 'Dec: ' + parseInt(data.dec) + ', RA: ' + parseInt(data.ra) + ', Parallax: ' + parseInt(data.parallax),
+                    temperature: data.teff_val,
+                    brightness: 'N/A',
+                    realSize: 'N/A',
+                    realColor: 'N/A',
+                    velocityDirection: [getRandomInt(3),getRandomInt(3),getRandomInt(3)]
+                })
+            }
+
         })
         const JSONobj =  JSON.stringify(arr);
+        console.log(JSONobj)
 
         fileDownload(JSONobj, 'newStarData.json')
     };

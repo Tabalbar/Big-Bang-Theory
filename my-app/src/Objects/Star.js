@@ -20,7 +20,7 @@ function Star(props) {
             <mesh
                 {...props}
                 ref={mesh}
-                scale={props.size}
+                scale={[.1,.1,.1]}
                 onClick={() => {props.updateStarPosition(props.indexNum); props.setActive(!props.active)}}
                 // onPointerOver={(e) => setHover(true)}
                 // onPointerOut={(e) => setHover(false)}
@@ -28,14 +28,14 @@ function Star(props) {
                 <sphereBufferGeometry/>
                 <meshStandardMaterial attach='material' color={props.color}/>
             </mesh>
-            <mesh
-                {...props}
-                ref={mesh}
-                scale={[5, 5, 5]}
-            >
-                <arrowHelper args={[new THREE.Vector3(x, y, z), new THREE.Vector3(0, 0, 0), 10, 'red', 1, 1]}/>
-                <meshStandardMaterial attach='material' color={props.color}/>
-            </mesh>
+            {/*<mesh*/}
+            {/*    {...props}*/}
+            {/*    ref={mesh}*/}
+            {/*    scale={[5, 5, 5]}*/}
+            {/*>*/}
+            {/*    <arrowHelper args={[new THREE.Vector3(x, y, z), new THREE.Vector3(0, 0, 0), 10, 'red', 1, 1]}/>*/}
+            {/*    <meshStandardMaterial attach='material' color={props.color}/>*/}
+            {/*</mesh>*/}
             {/*<StarArrow*/}
             {/*    position={new THREE.Vector3(props.position[0],props.position[1],props.position[2])}*/}
             {/*    velocityDirection={new THREE.Vector3(0,0,0)}*/}
