@@ -116,7 +116,7 @@ function Visualization(
         <>
             <div className='mainVisualization'>
                 <Canvas
-                    camera={{far: 100000, position: [0, 0, 10], fov: 75}}
+                    camera={{far: 10, position: [0, 0, 10], fov: 75}}
                 >
                     <ambientLight/>
                     <pointLight position={[10, 10, 10]}/>
@@ -138,7 +138,7 @@ function Visualization(
                     />
 
                     {
-                        _.times(100, (i) => (
+                        _.times(starInfo.length, (i) => (
                             <>
                                 <Star
                                     color={starInfo[i].color}
