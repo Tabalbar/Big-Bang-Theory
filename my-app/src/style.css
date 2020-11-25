@@ -22,3 +22,12 @@
     overflow: hidden;
     overflow-y: scroll;
 }
+
+.legend {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    width: 50%;
+    height: 8%;
+    background-color: white;
+}

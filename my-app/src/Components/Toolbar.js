@@ -82,6 +82,10 @@ function Toolbar(
 
             </Grid>
 
+            <div className= 'legend'>
+                Legend Here
+            </div>
+
 
             <div className='miniMap'>
                 <Canvas
