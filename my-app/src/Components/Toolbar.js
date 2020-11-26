@@ -31,7 +31,7 @@ function Toolbar(
                                 <strong style={{fontSize: 40}}>{focusDescription.name}</strong><br/><br/>
                                 <b>Description:</b> {focusDescription.funFact}<br/>
                                 <b>Position:</b> {focusDescription.realPosition}<br/>
-                                <b>Temperature:</b> {focusDescription.temperature}<br/>
+                                <b>Temperature:</b> {focusDescription.temperature} K<br/>
                                 <b>Brightness:</b> {focusDescription.brightness}<br/>
                                 <b>Size:</b> {focusDescription.realSize}<br/>
                                 <b>Color:</b> {focusDescription.realColor}

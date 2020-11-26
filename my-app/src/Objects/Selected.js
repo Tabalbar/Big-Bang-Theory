@@ -9,7 +9,7 @@ function Selected(props){
 
     // Rotate mesh every frame, this is outside of React without overhead
     useFrame(() => (
-        mesh.current.rotation.y = mesh.current.rotation.y += .09
+        mesh.current.rotation.y = mesh.current.rotation.y += .2
     ));
 
     return (

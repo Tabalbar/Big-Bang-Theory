@@ -1,5 +1,6 @@
 import React, {useRef} from "react";
 import * as THREE from "three";
+import {ReturnColor} from "../HelperFunctions/ReturnColor";
 
 function Star(props) {
     // This reference will give us direct access to the mesh
@@ -15,6 +16,9 @@ function Star(props) {
     const x = props.velocityDirection[0];
     const y = props.velocityDirection[1];
     const z = props.velocityDirection[2];
+
+
+
     return (
         <>
             <mesh
@@ -25,8 +29,8 @@ function Star(props) {
                 // onPointerOver={(e) => setHover(true)}
                 // onPointerOut={(e) => setHover(false)}
             >
-                <boxBufferGeometry/>
-                <meshStandardMaterial attach='material' color={props.color}/>
+                <sphereBufferGeometry/>
+                <meshStandardMaterial attach='material' color={ReturnColor(props.temperature)}/>
             </mesh>
             <mesh
                 {...props}

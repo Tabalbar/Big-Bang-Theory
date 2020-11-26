@@ -10,15 +10,15 @@ function CSVReader() {
     const handleReadCSV = async () => {
         let arr = [];
         await d3.csv(xyzCoordinates,  (data) => {
-            if(data.parallax >= 10){
+            if(data.parallax >= 20){
                 arr.push({
                     color: 'white',
                     position: [parseInt(data.x), parseInt(data.y), parseInt(data.z)],
-                    name: 'N/A',
-                    size: [1,1,1],
+                    name: data.source_id,
+                    size: [.1,.1,.1],
                     notable: true,
                     realPosition: 'Dec: ' + data.dec + ', Ra: ' + data.ra + ', Parallax: ' + data.parallax,
-                    temperature: '1 million degrees',
+                    temperature: parseInt(data.teff_val),
                     brightness: '5 lumens',
                     realSize: '1 million miles',
                     realColor: 'blue',
