@@ -120,7 +120,7 @@
 export const planetInfo = [
     {
         color: 'yellow',
-        size: [1,1,1],
+        size: [.1,.1,.1],
         position: [0,0,0],
         name: 'Sun',
         funFact: 'A very small star',

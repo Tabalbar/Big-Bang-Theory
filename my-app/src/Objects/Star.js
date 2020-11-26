@@ -25,15 +25,15 @@ function Star(props) {
                 // onPointerOver={(e) => setHover(true)}
                 // onPointerOut={(e) => setHover(false)}
             >
-                <sphereBufferGeometry/>
+                <boxBufferGeometry/>
                 <meshStandardMaterial attach='material' color={props.color}/>
             </mesh>
             <mesh
                 {...props}
                 ref={mesh}
-                scale={[5, 5, 5]}
+                scale={[.1, .1, .1]}
             >
-                <arrowHelper args={[new THREE.Vector3(x, y, z), new THREE.Vector3(0, 0, 0), 10, 'red', 1, 1]}/>
+                <arrowHelper args={[new THREE.Vector3(x, y, z), new THREE.Vector3(0, 0, 0), 10, 'green', 1, 1]}/>
                 <meshStandardMaterial attach='material' color={props.color}/>
             </mesh>
             {/*<StarArrow*/}

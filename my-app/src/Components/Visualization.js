@@ -142,7 +142,7 @@ function Visualization(
                             <>
                                 <Star
                                     color={starInfo[i].color}
-                                    size={starInfo[i].size}
+                                    size={[.1,.1,.1]}
                                     indexNum={i}
                                     position={starInfo[i].position}
                                     updateStarPosition={updateStarPosition}

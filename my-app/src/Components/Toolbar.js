@@ -104,7 +104,7 @@ function Toolbar(
 
             <div className='miniMap'>
                 <Canvas
-                    camera={{far: 10000000, position: [0, 0, 3000], fov: 75}}
+                    camera={{far: 10000000, position: [0, 0, 3000], fov: 75, near: 100}}
                 >
                     <ambientLight/>
                     <pointLight position={[10, 10, 10]}/>
@@ -119,7 +119,7 @@ function Toolbar(
                             <>
                                 <Star
                                     color={starInfo[i].color}
-                                    size={[100,100,100]}
+                                    size={[1,1,1]}
                                     indexNum={i}
                                     position={starInfo[i].position}
                                     velocityDirection={starInfo[i].velocityDirection}
