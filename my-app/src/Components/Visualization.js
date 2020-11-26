@@ -116,7 +116,7 @@ function Visualization(
         <>
             <div className='mainVisualization'>
                 <Canvas
-                    camera={{far: 10000000000, position: [0, 0, 10], fov: 75}}
+                    camera={{far: 10000000000, position: [0, 0, 2], fov: 75}}
                 >
                     <ambientLight/>
                     <pointLight position={[10, 10, 10]}/>
@@ -142,12 +142,13 @@ function Visualization(
                             <>
                                 <Star
                                     color={starInfo[i].color}
-                                    size={starInfo[i].size}
+                                    size={[.1,.1,.1]}
                                     indexNum={i}
                                     position={starInfo[i].position}
                                     updateStarPosition={updateStarPosition}
                                     cameraPosition={cameraPosition}
                                     cameraMoving={cameraMoving}
+                                    temperature={starInfo[i].temperature}
                                     setCameraMoving={setCameraMoving}
                                     velocityDirection={starInfo[i].velocityDirection}
                                     setActive={setActive}
@@ -157,23 +158,23 @@ function Visualization(
                             </>
                         ))
                     }
-                    {
-                        toggleLines ?
-                        _.times(starInfo.length, (i)=>(
-                            <>
-                                <Pin
-                                    updateStarPosition={updateStarPosition}
-                                    setActive={setActive}
-                                    active={active}
-                                    indexNum={i}
-                                    position={[(1-.01)*selectedPosition.x+.01*starInfo[i].position[0],(1-.01)*selectedPosition.y+.01*starInfo[i].position[1],(1-.01)*selectedPosition.z+.01*starInfo[i].position[2]]}
-                                    fromPosition={[new THREE.Vector3(starInfo[i].position[0],starInfo[i].position[1],starInfo[i].position[2]),new THREE.Vector3(selectedPosition.x,selectedPosition.y,selectedPosition.z)]}
-                                />
-                            </>
-                        ))
-                            :
-                            null
-                    }
+                    {/*{*/}
+                    {/*    toggleLines ?*/}
+                    {/*    _.times(starInfo.length, (i)=>(*/}
+                    {/*        <>*/}
+                    {/*            <Pin*/}
+                    {/*                updateStarPosition={updateStarPosition}*/}
+                    {/*                setActive={setActive}*/}
+                    {/*                active={active}*/}
+                    {/*                indexNum={i}*/}
+                    {/*                position={[(1-.01)*selectedPosition.x+.01*starInfo[i].position[0],(1-.01)*selectedPosition.y+.01*starInfo[i].position[1],(1-.01)*selectedPosition.z+.01*starInfo[i].position[2]]}*/}
+                    {/*                fromPosition={[new THREE.Vector3(starInfo[i].position[0],starInfo[i].position[1],starInfo[i].position[2]),new THREE.Vector3(selectedPosition.x,selectedPosition.y,selectedPosition.z)]}*/}
+                    {/*            />*/}
+                    {/*        </>*/}
+                    {/*    ))*/}
+                    {/*        :*/}
+                    {/*        null*/}
+                    {/*}*/}
                     {
                         cameraMoving ?
                             null

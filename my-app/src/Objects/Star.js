@@ -1,5 +1,6 @@
-import React, {useRef} from "react";
+import React, {useRef, useState} from "react";
 import * as THREE from "three";
+import {ReturnColor} from "../HelperFunctions/ReturnColor";
 
 function Star(props) {
     // This reference will give us direct access to the mesh
@@ -12,28 +13,33 @@ function Star(props) {
     // useFrame(() => (
     //     mesh.current.rotation.x = mesh.current.rotation.y += 0.01
     // ))
+
+    const [hover, setHover] = useState(false);
     const x = props.velocityDirection[0];
     const y = props.velocityDirection[1];
     const z = props.velocityDirection[2];
+
+
+
     return (
         <>
             <mesh
                 {...props}
                 ref={mesh}
-                scale={props.size}
+                scale={hover ? [.5,.5,.5]: props.size}
                 onClick={() => {props.updateStarPosition(props.indexNum); props.setActive(!props.active)}}
-                // onPointerOver={(e) => setHover(true)}
-                // onPointerOut={(e) => setHover(false)}
+                onPointerOver={(e) => setHover(true)}
+                onPointerOut={(e) => setHover(false)}
             >
                 <sphereBufferGeometry/>
-                <meshStandardMaterial attach='material' color={props.color}/>
+                <meshStandardMaterial attach='material' color={ReturnColor(props.temperature)}/>
             </mesh>
             <mesh
                 {...props}
                 ref={mesh}
-                scale={[5, 5, 5]}
+                scale={[.1, .1, .1]}
             >
-                <arrowHelper args={[new THREE.Vector3(x, y, z), new THREE.Vector3(0, 0, 0), 10, 'red', 1, 1]}/>
+                <arrowHelper args={[new THREE.Vector3(x, y, z), new THREE.Vector3(0, 0, 0), 10, 'green', 1, 1]}/>
                 <meshStandardMaterial attach='material' color={props.color}/>
             </mesh>
             {/*<StarArrow*/}
