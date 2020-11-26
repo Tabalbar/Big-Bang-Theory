@@ -35,7 +35,7 @@ function Visualization(
         realColor: 'Yellow'
     });
     const [toggleLines, setToggleLines] = useState(true);
-
+    const [parallaxLimit, setParallaxLimit] = useState(20)
 
     const handleHomeButton = () => {
         const tmpCameraPosition = {
@@ -99,6 +99,9 @@ function Visualization(
             name: starInfo[indexNum].name,
             funFact: starInfo[indexNum].funFact,
             notable: starInfo[indexNum].notable,
+            ra: starInfo[indexNum].ra,
+            dec: starInfo[indexNum].dec,
+            distance: starInfo[indexNum].distance,
             realPosition: starInfo[indexNum].realPosition,
             temperature: starInfo[indexNum].temperature,
             brightness: starInfo[indexNum].brightness,
@@ -107,6 +110,10 @@ function Visualization(
 
         })
     };
+
+    const handleSetParallax = (event, {value}) => {
+        setParallaxLimit(value)
+    }
 
     const handleToggleLines = () => {
         setToggleLines(prevState => !prevState)
@@ -140,41 +147,48 @@ function Visualization(
                     {
                         _.times(starInfo.length, (i) => (
                             <>
-                                <Star
-                                    color={starInfo[i].color}
-                                    size={[.1,.1,.1]}
-                                    indexNum={i}
-                                    position={starInfo[i].position}
-                                    updateStarPosition={updateStarPosition}
-                                    cameraPosition={cameraPosition}
-                                    cameraMoving={cameraMoving}
-                                    temperature={starInfo[i].temperature}
-                                    setCameraMoving={setCameraMoving}
-                                    velocityDirection={starInfo[i].velocityDirection}
-                                    setActive={setActive}
-                                    active={active}
-                                />
+
+                                {
+                                    starInfo[i].parallax >= parallaxLimit ?
+                                        <Star
+                                            color={starInfo[i].color}
+                                            size={[.1,.1,.1]}
+                                            indexNum={i}
+                                            position={starInfo[i].position}
+                                            updateStarPosition={updateStarPosition}
+                                            cameraPosition={cameraPosition}
+                                            cameraMoving={cameraMoving}
+                                            temperature={starInfo[i].temperature}
+                                            setCameraMoving={setCameraMoving}
+                                            velocityDirection={starInfo[i].velocityDirection}
+                                            setActive={setActive}
+                                            active={active}
+                                        />
+                                        :
+                                        null
+                                }
+
 
                             </>
                         ))
                     }
-                    {
-                        toggleLines ?
-                        _.times(starInfo.length, (i)=>(
-                            <>
-                                <Pin
-                                    updateStarPosition={updateStarPosition}
-                                    setActive={setActive}
-                                    active={active}
-                                    indexNum={i}
-                                    position={[(1-.01)*selectedPosition.x+.01*starInfo[i].position[0],(1-.01)*selectedPosition.y+.01*starInfo[i].position[1],(1-.01)*selectedPosition.z+.01*starInfo[i].position[2]]}
-                                    fromPosition={[new THREE.Vector3(starInfo[i].position[0],starInfo[i].position[1],starInfo[i].position[2]),new THREE.Vector3(selectedPosition.x,selectedPosition.y,selectedPosition.z)]}
-                                />
-                            </>
-                        ))
-                            :
-                            null
-                    }
+                    {/*{*/}
+                    {/*    toggleLines ?*/}
+                    {/*    _.times(starInfo.length, (i)=>(*/}
+                    {/*        <>*/}
+                    {/*            <Pin*/}
+                    {/*                updateStarPosition={updateStarPosition}*/}
+                    {/*                setActive={setActive}*/}
+                    {/*                active={active}*/}
+                    {/*                indexNum={i}*/}
+                    {/*                position={[(1-.01)*selectedPosition.x+.01*starInfo[i].position[0],(1-.01)*selectedPosition.y+.01*starInfo[i].position[1],(1-.01)*selectedPosition.z+.01*starInfo[i].position[2]]}*/}
+                    {/*                fromPosition={[new THREE.Vector3(starInfo[i].position[0],starInfo[i].position[1],starInfo[i].position[2]),new THREE.Vector3(selectedPosition.x,selectedPosition.y,selectedPosition.z)]}*/}
+                    {/*            />*/}
+                    {/*        </>*/}
+                    {/*    ))*/}
+                    {/*        :*/}
+                    {/*        null*/}
+                    {/*}*/}
                     {
                         cameraMoving ?
                             null
@@ -196,6 +210,8 @@ function Visualization(
                     updateStarPosition={updateStarPosition}
                     handleToggleLines={handleToggleLines}
                     cameraPosition={cameraPosition}
+                    parallaxLimit={parallaxLimit}
+                    handleSetParallax={handleSetParallax}
                 />
             </div>
         </>

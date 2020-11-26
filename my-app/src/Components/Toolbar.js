@@ -6,7 +6,7 @@ import Sphere from "../Objects/Sphere";
 import starInfo from "../newStarData";
 import Star from "../Objects/Star";
 import StarArrow from "../Objects/StarArrow";
-import {Button, Grid, Message, List, Header} from "semantic-ui-react";
+import {Button, Grid, Message, List, Header, Form} from "semantic-ui-react";
 
 //todo define what the wrapper will look like in here
 function Toolbar(
@@ -15,7 +15,9 @@ function Toolbar(
         focusDescription,
         updateStarPosition,
         handleToggleLines,
-        cameraPosition
+        cameraPosition,
+        parallaxLimit,
+        handleSetParallax
     }
 ) {
 
@@ -30,10 +32,9 @@ function Toolbar(
                             <p>
                                 <strong style={{fontSize: 40}}> Gaia Designator: {focusDescription.name}</strong><br/><br/>
                                 <b>Description:</b> {focusDescription.funFact}<br/>
-                                <b>Ra: </b> Deg<br/>
-                                <b>Dec: </b>Deg <br/>
-                                <b>Position:</b> {focusDescription.realPosition}<br/>
-                                <b>Distance: </b> Light years<br/>
+                                <b>Ra: </b>{focusDescription.ra} Deg<br/>
+                                <b>Dec: </b>{focusDescription.dec} Deg <br/>
+                                <b>Distance: </b>{focusDescription.distance} Light years<br/>
                                 <b>Temperature:</b> {focusDescription.temperature} K<br/>
                                 <b>Brightness:</b> {focusDescription.brightness}<br/>
                                 <b>Size:</b> {focusDescription.realSize}<br/>
@@ -80,6 +81,17 @@ function Toolbar(
 
                     <Grid.Column>
                         <Button onClick={handleToggleLines}>Toggle Star Lines</Button>
+                        <Form>
+                            <Form.Input
+                                label={`View of Stars from Origin: ` + parallaxLimit}
+                                min={0}
+                                max={30}
+                                onChange={handleSetParallax}
+                                step={1}
+                                type='range'
+                                value={parallaxLimit}
+                            />
+                        </Form>
                     </Grid.Column>
                 </Grid.Row>
 
@@ -105,46 +117,46 @@ function Toolbar(
             </div>
 
 
-            <div className='miniMap'>
-                <Canvas
-                    camera={{far: 10000000, position: [0, 0, 100], fov: 75}}
-                >
-                    <ambientLight/>
-                    <pointLight position={[10, 10, 10]}/>
-                    <Sphere
-                        color={planetInfo[0].color}
-                        size={[1,1,1]}
-                        indexNum={0}
-                        position={planetInfo[0].position}
-                    />
-                    {
-                        _.times(starInfo.length, (i) => (
-                            <>
-                                <Star
-                                    color={starInfo[i].color}
-                                    size={[1,1,1]}
-                                    indexNum={i}
-                                    position={starInfo[i].position}
-                                    temperature={starInfo[i].temperature}
-                                    velocityDirection={starInfo[i].velocityDirection}
-                                />
+            {/*<div className='miniMap'>*/}
+            {/*    <Canvas*/}
+            {/*        camera={{far: 10000000, position: [0, 0, 100], fov: 75}}*/}
+            {/*    >*/}
+            {/*        <ambientLight/>*/}
+            {/*        <pointLight position={[10, 10, 10]}/>*/}
+            {/*        <Sphere*/}
+            {/*            color={planetInfo[0].color}*/}
+            {/*            size={[1,1,1]}*/}
+            {/*            indexNum={0}*/}
+            {/*            position={planetInfo[0].position}*/}
+            {/*        />*/}
+            {/*        {*/}
+            {/*            _.times(starInfo.length, (i) => (*/}
+            {/*                <>*/}
+            {/*                    <Star*/}
+            {/*                        color={starInfo[i].color}*/}
+            {/*                        size={[1,1,1]}*/}
+            {/*                        indexNum={i}*/}
+            {/*                        position={starInfo[i].position}*/}
+            {/*                        temperature={starInfo[i].temperature}*/}
+            {/*                        velocityDirection={starInfo[i].velocityDirection}*/}
+            {/*                    />*/}
 
-                            </>
-                        ))
-                    }
-                    {
-                        _.times(starInfo.length, (i) => (
-                            <>
-                                <StarArrow
-                                    position={starInfo[i].position}
-                                    velocityDirection={starInfo[i].velocityDirection}
-                                />
+            {/*                </>*/}
+            {/*            ))*/}
+            {/*        }*/}
+            {/*        {*/}
+            {/*            _.times(starInfo.length, (i) => (*/}
+            {/*                <>*/}
+            {/*                    <StarArrow*/}
+            {/*                        position={starInfo[i].position}*/}
+            {/*                        velocityDirection={starInfo[i].velocityDirection}*/}
+            {/*                    />*/}
 
-                            </>
-                        ))
-                    }
-                </Canvas>
-            </div>
+            {/*                </>*/}
+            {/*            ))*/}
+            {/*        }*/}
+            {/*    </Canvas>*/}
+            {/*</div>*/}
         </>
     )
 }

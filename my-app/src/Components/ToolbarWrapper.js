@@ -8,7 +8,9 @@ function ToolbarWrapper(
         focusDescription,
         updateStarPosition,
         handleToggleLines,
-        cameraPosition
+        cameraPosition,
+        handleSetParallax,
+        parallaxLimit
     }
 ){
 
@@ -22,6 +24,8 @@ function ToolbarWrapper(
                 updateStarPosition={updateStarPosition}
                 handleToggleLines={handleToggleLines}
                 cameraPosition={cameraPosition}
+                parallaxLimit={parallaxLimit}
+                handleSetParallax={handleSetParallax}
             />
         </>
     )

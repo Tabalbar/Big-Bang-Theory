@@ -10,24 +10,23 @@ function CSVReader() {
     const handleReadCSV = async () => {
         let arr = [];
         await d3.csv(xyzCoordinates,  (data) => {
-            if(data.parallax >= 20){
                 arr.push({
                     color: 'white',
                     position: [parseInt(data.x), parseInt(data.y), parseInt(data.z)],
-                    name: data.source_id,
+                    name: "Gaia Designator" + data.source_id,
                     size: [.1,.1,.1],
                     notable: true,
                     ra: data.ra,
                     dec: data.dec,
                     distance: 3216.56/(data.parallax),
-                    realPosition: 'Dec: ' + data.dec + ', Ra: ' + data.ra + ', Parallax: ' + data.parallax,
+                    parallax: parseInt(data.parallax),
                     temperature: parseInt(data.teff_val),
                     brightness: '5 lumens',
                     realSize: '1 million miles',
                     realColor: 'blue',
                     velocityDirection: [getRandomInt(3),getRandomInt(3),getRandomInt(3)]
                 })
-            }
+
 
         })
         const JSONobj =  JSON.stringify(arr);
@@ -51,7 +50,14 @@ function CSVReader() {
 
 
 function getRandomInt(max){
-    return Math.floor(Math.random() * Math.floor(max));
+    let ranNum;
+    if(Math.random() > .5){
+         ranNum = -Math.floor(Math.random() * Math.floor(max));
+    } else {
+         ranNum = Math.floor(Math.random() * Math.floor(max));
+
+    }
+    return ranNum
 }
 
 export default CSVReader
