@@ -28,9 +28,12 @@ function Toolbar(
                     <Grid.Column>
                         <Message color='blue'>
                             <p>
-                                <strong style={{fontSize: 40}}>{focusDescription.name}</strong><br/><br/>
+                                <strong style={{fontSize: 40}}> Gaia Designator: {focusDescription.name}</strong><br/><br/>
                                 <b>Description:</b> {focusDescription.funFact}<br/>
+                                <b>Ra: </b> Deg<br/>
+                                <b>Dec: </b>Deg <br/>
                                 <b>Position:</b> {focusDescription.realPosition}<br/>
+                                <b>Distance: </b> Light years<br/>
                                 <b>Temperature:</b> {focusDescription.temperature} K<br/>
                                 <b>Brightness:</b> {focusDescription.brightness}<br/>
                                 <b>Size:</b> {focusDescription.realSize}<br/>
