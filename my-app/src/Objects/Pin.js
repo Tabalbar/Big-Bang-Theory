@@ -10,21 +10,21 @@ function Pin(props){
 
     return(
         <>
-            {/*<mesh*/}
-            {/*    {...props}*/}
-            {/*    ref={mesh}*/}
-            {/*    scale={hover? [1,1,1] : [.1,.1,.1]}*/}
-            {/*    onClick={() => {props.updateStarPosition(props.indexNum); props.setActive(!props.active)}}*/}
-            {/*    onPointerOver={(e) => setHover(true)}*/}
-            {/*    onPointerOut={(e) => setHover(false)}*/}
-            {/*>*/}
-            {/*    <boxBufferGeometry/>*/}
+            <mesh
+                {...props}
+                ref={mesh}
+                scale={hover? [1,1,1] : [.1,.1,.1]}
+                onClick={() => {props.updateStarPosition(props.indexNum); props.setActive(!props.active)}}
+                onPointerOver={(e) => setHover(true)}
+                onPointerOut={(e) => setHover(false)}
+            >
+                <boxBufferGeometry/>
 
-            {/*    <meshStandardMaterial attach='material' color={'blue'}/>*/}
-            {/*</mesh>*/}
-            <line ref={mesh} geometry={lineGeometry}>
-                <lineBasicMaterial attach="material" color={'white'} linewidth={.01} />
-            </line>
+                <meshStandardMaterial attach='material' color={'blue'}/>
+            </mesh>
+            {/*<line ref={mesh} geometry={lineGeometry}>*/}
+            {/*    <lineBasicMaterial attach="material" color={'white'} linewidth={.01} />*/}
+            {/*</line>*/}
 
         </>
     )

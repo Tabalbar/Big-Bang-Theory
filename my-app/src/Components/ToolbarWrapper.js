@@ -10,7 +10,9 @@ function ToolbarWrapper(
         handleToggleLines,
         cameraPosition,
         handleSetParallax,
-        parallaxLimit
+        parallaxLimit,
+        bookmarkList,
+        goToBookmarkedStar
     }
 ){
 
@@ -26,6 +28,8 @@ function ToolbarWrapper(
                 cameraPosition={cameraPosition}
                 parallaxLimit={parallaxLimit}
                 handleSetParallax={handleSetParallax}
+                bookmarkList={bookmarkList}
+                goToBookmarkedStar={goToBookmarkedStar}
             />
         </>
     )

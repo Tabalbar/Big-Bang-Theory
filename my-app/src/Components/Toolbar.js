@@ -6,7 +6,7 @@ import Sphere from "../Objects/Sphere";
 import starInfo from "../newStarData";
 import Star from "../Objects/Star";
 import StarArrow from "../Objects/StarArrow";
-import {Button, Grid, Message, List, Header, Form} from "semantic-ui-react";
+import {Button, Grid, Container, List, Header, Form} from "semantic-ui-react";
 
 //todo define what the wrapper will look like in here
 function Toolbar(
@@ -17,87 +17,129 @@ function Toolbar(
         handleToggleLines,
         cameraPosition,
         parallaxLimit,
-        handleSetParallax
+        handleSetParallax,
+        bookmarkList,
+        goToBookmarkedStar
     }
 ) {
 
     return (
         <>
-            <div style={{marginTop: -20}}/>
-            <Header as='h5'>Camera is looking at position {'<'}{cameraPosition.x}, {cameraPosition.y}, {cameraPosition.z}{'>'}</Header>
-            <Grid centered={true}>
-                <Grid.Row columns={3}>
-                    <Grid.Column>
-                        <Message color='blue'>
-                            <p>
-                                <strong style={{fontSize: 40}}> Gaia Designator: {focusDescription.name}</strong><br/><br/>
-                                <b>Description:</b> {focusDescription.funFact}<br/>
-                                <b>Ra: </b>{focusDescription.ra} Deg<br/>
-                                <b>Dec: </b>{focusDescription.dec} Deg <br/>
-                                <b>Distance: </b>{focusDescription.distance} Light years<br/>
-                                <b>Temperature:</b> {focusDescription.temperature} K<br/>
-                                <b>Brightness:</b> {focusDescription.brightness}<br/>
-                                <b>Size:</b> {focusDescription.realSize}<br/>
-                                <b>Color:</b> {focusDescription.realColor}
-                            </p>
+            {/*<Grid centered={true}>*/}
+            {/*    <Grid.Row columns={3}>*/}
+            {/*        <Grid.Column>*/}
+            {/*            <Message color='blue'>*/}
+            {/*                <p>*/}
+            {/*                    <strong style={{fontSize: 40}}>{focusDescription.name}</strong><br/><br/>*/}
+            {/*                    <b>Description:</b> {focusDescription.funFact}<br/>*/}
+            {/*                    <b>Ra: </b>{focusDescription.ra} Deg<br/>*/}
+            {/*                    <b>Dec: </b>{focusDescription.dec} Deg <br/>*/}
+            {/*                    <b>Distance: </b>{focusDescription.distance} Light years<br/>*/}
+            {/*                    <b>Temperature:</b> {focusDescription.temperature} K<br/>*/}
+            {/*                    <b>Brightness:</b> {focusDescription.brightness}<br/>*/}
+            {/*                    <b>Size:</b> {focusDescription.realSize}<br/>*/}
+            {/*                    <b>Color:</b> {focusDescription.realColor}*/}
+            {/*                </p>*/}
 
-                        </Message>
-                    </Grid.Column>
+            {/*            </Message>*/}
+            {/*        </Grid.Column>*/}
 
-                    <Grid.Column>
-                        <div className='starsList'>
+            {/*        <Grid.Column>*/}
+            {/*            <div className='starsList'>*/}
 
-                            <List divided verticalAlign='middle'>
+            {/*<List divided verticalAlign='middle'>*/}
+            {/*    <List.Item>*/}
+            {/*        <List.Content floated='right'>*/}
+            {/*            <Button onClick={handleHomeButton}>Go</Button>*/}
+            {/*        </List.Content>*/}
+            {/*        <List.Content>*/}
+            {/*            Sun*/}
+            {/*        </List.Content>*/}
+            {/*    </List.Item>*/}
+            {/*    {*/}
+            {/*        starInfo.map((value, index) => {*/}
+            {/*            return (*/}
+
+            {/*                value.notable ?*/}
+            {/*                    value.parallax >= parallaxLimit ?*/}
+            {/*                        <List.Item>*/}
+            {/*                            <List.Content floated='right'>*/}
+            {/*                                <Button*/}
+            {/*                                    onClick={() => updateStarPosition(index)}>Go</Button>*/}
+            {/*                            </List.Content>*/}
+            {/*                            <List.Content>*/}
+            {/*                                {value.name}*/}
+            {/*                            </List.Content>*/}
+            {/*                        </List.Item>*/}
+            {/*                        :*/}
+            {/*                        null*/}
+            {/*                    :*/}
+            {/*                    null*/}
+            {/*            )*/}
+            {/*        })*/}
+            {/*    }*/}
+            {/*</List>*/}
+            {/*            </div>*/}
+
+            {/*        </Grid.Column>*/}
+
+            {/*        <Grid.Column>*/}
+            {/*            <Button onClick={handleToggleLines}>Toggle Star Lines</Button>*/}
+            <div className='toolBar'>
+                <Container>
+                    <Grid>
+                        <Grid.Row columns={3}>
+                                <Button color='yellow' style={{color: 'black'}} onClick={handleHomeButton}>Back to Sun</Button>
+                            <Grid.Column>
+                                <Header inverted as='h5' textAlign='center'>Camera is looking at
+                                    position {'<'}{cameraPosition.x}, {cameraPosition.y}, {cameraPosition.z}{'>'}</Header>
+                            </Grid.Column>
+                            <Grid.Column>
+                                <Form inverted>
+                                    <Form.Input
+                                        label={`View of Stars from Origin: Parallax = ` + parallaxLimit}
+                                        min={0}
+                                        max={30}
+                                        onChange={handleSetParallax}
+                                        step={1}
+                                        type='range'
+                                        value={parallaxLimit}
+                                    />
+                                </Form>
+                            </Grid.Column>
+
+
+                        </Grid.Row>
+                    </Grid>
+                </Container>
+            </div>
+            {/*        </Grid.Column>*/}
+            {/*    </Grid.Row>*/}
+
+            {/*</Grid>*/}
+            <div className='bookmarkList'>
+                <Header inverted as='h1'>
+                    Bookmarked Stars:
+                </Header>
+                <List divided verticalAlign='middle'>
+                    {
+                        bookmarkList.map((value, index) => {
+                            return (
                                 <List.Item>
                                     <List.Content floated='right'>
-                                        <Button onClick={handleHomeButton}>Go</Button>
+                                        <Button
+                                            onClick={() => goToBookmarkedStar(index)}>Go</Button>
                                     </List.Content>
                                     <List.Content>
-                                        Sun
+                                        {value.name}
                                     </List.Content>
                                 </List.Item>
-                                {
-                                    starInfo.map((value, index) => {
-                                        return (
 
-                                            value.notable ?
-                                                <List.Item>
-                                                    <List.Content floated='right'>
-                                                        <Button onClick={() => updateStarPosition(index)}>Go</Button>
-                                                    </List.Content>
-                                                    <List.Content>
-                                                        {value.name}
-                                                    </List.Content>
-                                                </List.Item>
-                                                :
-                                                null
-                                        )
-                                    })
-                                }
-                            </List>
-                        </div>
-
-                    </Grid.Column>
-
-                    <Grid.Column>
-                        <Button onClick={handleToggleLines}>Toggle Star Lines</Button>
-                        <Form>
-                            <Form.Input
-                                label={`View of Stars from Origin: ` + parallaxLimit}
-                                min={0}
-                                max={30}
-                                onChange={handleSetParallax}
-                                step={1}
-                                type='range'
-                                value={parallaxLimit}
-                            />
-                        </Form>
-                    </Grid.Column>
-                </Grid.Row>
-
-            </Grid>
-
-            <div className= 'legend'>
+                            )
+                        })
+                    }
+                </List></div>
+            <div className='legend'>
                 <div className="grid-item">Star Color</div>
                 <div className="grid-item-r">Red</div>
                 <div className="grid-item-o">Orange</div>

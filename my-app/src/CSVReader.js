@@ -13,7 +13,7 @@ function CSVReader() {
                 arr.push({
                     color: 'white',
                     position: [parseInt(data.x), parseInt(data.y), parseInt(data.z)],
-                    name: "Gaia Designator" + data.source_id,
+                    name: "Gaia Designator: " + data.source_id,
                     size: [.1,.1,.1],
                     notable: true,
                     ra: data.ra,

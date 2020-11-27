@@ -2,9 +2,7 @@ import React, {useRef, useState} from 'react'
 import {Canvas, useFrame, useThree} from 'react-three-fiber'
 import UpdateCameraPosition from "../HelperFunctions/UpdateCameraPosition";
 import * as THREE from 'three'
-import {Line} from "drei";
-import Selected from "./Selected";
-import {planetInfo} from "../PlanetData";
+import {Html} from "drei";
 
 function Sphere(props) {
     // This reference will give us direct access to the mesh
@@ -13,6 +11,7 @@ function Sphere(props) {
     // Set up state for the hovered and active state
     // const [hovered, setHover] = useState(false);
     const camera = new THREE.PerspectiveCamera()
+    const [hover, setHover] = useState(false);
     useFrame(({clock, camera}) => {
         if (props.cameraMoving) {
             let tmpCameraMoving = UpdateCameraPosition(camera, props.cameraPosition, props.setCameraMoving)
@@ -48,10 +47,32 @@ function Sphere(props) {
                 ref={mesh}
                 scale={props.size}
                 onClick={() => {props.updatePosition(props.indexNum); props.setActive(!props.active)}}
-                // onPointerOver={(e) => setHover(true)}
-                // onPointerOut={(e) => setHover(false)}
+                onPointerOver={(e) => setHover(true)}
+                onPointerOut={(e) => setHover(false)}
             >
                 <sphereBufferGeometry/>
+                {
+                    hover ?
+                        <Html scaleFactor={3}>
+                            <div className='focusedDescription'>
+                                <p>
+                                    <strong style={{fontSize: 40}}>{props.focusDescription.name}</strong><br/><br/>
+                                    <b>Description:</b> {props.focusDescription.funFact}<br/>
+                                    <b>Ra: </b>{props.focusDescription.ra} Deg<br/>
+                                    <b>Dec: </b>{props.focusDescription.dec} Deg <br/>
+                                    <b>Distance: </b>{props.focusDescription.distance} Light years<br/>
+                                    <b>Temperature:</b> {props.focusDescription.temperature} K<br/>
+                                    <b>Brightness:</b> {props.focusDescription.brightness}<br/>
+                                    <b>Size:</b> {props.focusDescription.realSize}<br/>
+                                    <b>Color:</b> {props.focusDescription.realColor}
+                                </p>
+                            </div>
+
+
+                        </Html>
+                        :
+                        null
+                }
                 <meshStandardMaterial attach='material' color={props.color}/>
             </mesh>
             {/*<line ref={mesh} geometry={geometry}>*/}

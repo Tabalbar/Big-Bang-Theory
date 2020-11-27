@@ -5,6 +5,7 @@ import Sphere from "../Objects/Sphere";
 import ToolbarWrapper from "./ToolbarWrapper";
 import {planetInfo} from '../PlanetData'
 import starInfo from '../newStarData'
+import {Stats} from "drei";
 import {OrbitControls} from "three/examples/jsm/controls/OrbitControls";
 import CameraControls from "../HelperFunctions/CameraControls";
 import Star from "../Objects/Star";
@@ -35,7 +36,8 @@ function Visualization(
         realColor: 'Yellow'
     });
     const [toggleLines, setToggleLines] = useState(true);
-    const [parallaxLimit, setParallaxLimit] = useState(20)
+    const [parallaxLimit, setParallaxLimit] = useState(20);
+    const [bookmarkList, setBookmarkList] = useState([]);
 
     const handleHomeButton = () => {
         const tmpCameraPosition = {
@@ -70,7 +72,6 @@ function Visualization(
         setToggleLines(true)
         setCameraMovingToHome(true)
     };
-
 
     const updateStarPosition = (indexNum) => {
         const tmpCameraPosition = {
@@ -111,19 +112,62 @@ function Visualization(
         })
     };
 
+    const goToBookmarkedStar = (indexNum) => {
+        const tmpCameraPosition = {
+            x: bookmarkList[indexNum].position[0],
+            y: bookmarkList[indexNum].position[1],
+            z: bookmarkList[indexNum].position[2]
+        };
+        const tmpSelectedPosition = {
+            x: bookmarkList[indexNum].position[0],
+            y: bookmarkList[indexNum].position[1],
+            z: bookmarkList[indexNum].position[2]
+        };
+        const tmpSelectedSize = {
+            innerRadius: bookmarkList[indexNum].size[0]*3,
+            outerRadius: bookmarkList[indexNum].size[1]*3,
+            thetaSegments: bookmarkList[indexNum].size[2]
+        };
+        setSelectedSize(tmpSelectedSize)
+
+        setSelectedPosition(tmpSelectedPosition)
+        setCameraPosition(tmpCameraPosition);
+        setCameraMoving(true)
+        setCameraMovingToHome(true)
+        setToggleLines(false)
+        setFocusDescription({
+            name: bookmarkList[indexNum].name,
+            funFact: bookmarkList[indexNum].funFact,
+            notable: bookmarkList[indexNum].notable,
+            ra: bookmarkList[indexNum].ra,
+            dec: bookmarkList[indexNum].dec,
+            distance: bookmarkList[indexNum].distance,
+            realPosition: bookmarkList[indexNum].realPosition,
+            temperature: bookmarkList[indexNum].temperature,
+            brightness: bookmarkList[indexNum].brightness,
+            realSize: bookmarkList[indexNum].realSize,
+            realColor: bookmarkList[indexNum].realColor
+
+        })
+    };
+
     const handleSetParallax = (event, {value}) => {
         setParallaxLimit(value)
-    }
+    };
 
     const handleToggleLines = () => {
         setToggleLines(prevState => !prevState)
-    }
+    };
+
+    const handleBookmark = (indexNum) => {
+        setBookmarkList(prevState => [...prevState, starInfo[indexNum]])
+    };
 
     return (
         <>
             <div className='mainVisualization'>
                 <Canvas
-                    camera={{far: 10000000000, position: [0, 0, 2], fov: 50}}
+                    camera={{far: 10000000000, position: [0, 0, 7], fov: 50}}
                 >
                     <ambientLight/>
                     <pointLight position={[10, 10, 10]}/>
@@ -137,6 +181,8 @@ function Visualization(
                                 setCameraMoving={setCameraMoving}
                                 setActive={setActive}
                                 active={active}
+                                starInfo={starInfo}
+                                focusDescription={focusDescription}
                             />
 
                     <Selected
@@ -162,7 +208,10 @@ function Visualization(
                                             setCameraMoving={setCameraMoving}
                                             velocityDirection={starInfo[i].velocityDirection}
                                             setActive={setActive}
+                                            starInfo={starInfo[i]}
                                             active={active}
+                                            focusDescription={focusDescription}
+                                            handleBookmark={handleBookmark}
                                         />
                                         :
                                         null
@@ -201,8 +250,9 @@ function Visualization(
                                 setCameraMovingToHome={setCameraMovingToHome}
                             />
                     }
-
-
+                    <Stats
+                        className='stats'
+                    />
                 </Canvas>
                 <ToolbarWrapper
                     handleHomeButton={handleHomeButton}
@@ -212,6 +262,8 @@ function Visualization(
                     cameraPosition={cameraPosition}
                     parallaxLimit={parallaxLimit}
                     handleSetParallax={handleSetParallax}
+                    bookmarkList={bookmarkList}
+                    goToBookmarkedStar={goToBookmarkedStar}
                 />
             </div>
         </>
