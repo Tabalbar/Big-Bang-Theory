@@ -111,7 +111,7 @@
 }
 
 .focusedDescription {
-    transform: translate3d(25%, -50%, 0);
+    transform: translate3d(25%, -60%, 0);
     text-align: left;
     background: #986967;
     color: black;

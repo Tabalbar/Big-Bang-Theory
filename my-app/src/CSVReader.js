@@ -4,32 +4,50 @@ import xyzCoordinates from './xyz_pos_vel.csv'
 import fileDownload from "js-file-download";
 import newStarData from './newStarData'
 
+
 function CSVReader() {
 
     // const [csvFile, setCsvFile] = useState(null);
     const handleReadCSV = async () => {
         let arr = [];
-        await d3.csv(xyzCoordinates,  (data) => {
-                arr.push({
-                    color: 'white',
-                    position: [parseInt(data.x), parseInt(data.y), parseInt(data.z)],
-                    name: "Gaia Designator: " + data.source_id,
-                    size: [.1,.1,.1],
-                    notable: false,
-                    ra: data.ra,
-                    dec: data.dec,
-                    distance: 3216.56/(data.parallax),
-                    parallax: parseInt(data.parallax),
-                    temperature: parseInt(data.teff_val),
-                    realColor: ReturnColorName(parseInt(data.teff_val)),
-                    velocityDirection: [parseInt(data.x_vel),parseInt(data.y_vel), parseInt(data.z_vel)],
-                    vel_is_valid: data.vel_is_valid
-                })
+        await d3.csv(xyzCoordinates, (data) => {
 
+            arr.push({
+                color: 'white',
+                position: [parseInt(data.x), parseInt(data.y), parseInt(data.z)],
+                name: "Gaia Designator: " + data.source_id,
+                size: [.1, .1, .1],
+                notable: false,
+                ra: data.ra,
+                dec: data.dec,
+                distance: 3216.56 / (data.parallax),
+                parallax: parseInt(data.parallax),
+                temperature: parseInt(data.teff_val),
+                realColor: ReturnColorName(parseInt(data.teff_val)),
+                velocityDirection: [parseInt(data.x_vel), parseInt(data.y_vel), parseInt(data.z_vel)],
+                vel_is_valid: data.vel_is_valid,
+                velMag: Math.sqrt(Math.pow(parseInt(data.x) - parseInt(data.x_vel), 2) + Math.pow(parseInt(data.y) - parseInt(data.y_vel), 2) + Math.pow(parseInt(data.z) - parseInt(data.z_vel), 2)),
+            })
 
+        });
+        let max = 0;
+        let min = arr[0].velMag;
+        for (let i = 0; i < arr.length; i++) {
+
+            if (arr[i].velMag > max) {
+                max = arr[i].velMag
+            }
+
+            if (arr[i].velMag < min) {
+                min = arr[i].velMag
+            }
+        }
+        arr.forEach((element) => {
+            element.normalizedVelMag = Normalize(element.velMag, min, max)
         })
-        const JSONobj =  JSON.stringify(arr);
-        console.log(JSONobj)
+        // console.log(max, min)
+        const JSONobj = JSON.stringify(arr);
+        // console.log(JSONobj)
         fileDownload(JSONobj, 'newStarData.json')
     };
 
@@ -74,15 +92,22 @@ function ReturnColorName(temperature) {
     }
 }
 
-function getRandomInt(max){
+function getRandomInt(max) {
     let ranNum;
-    if(Math.random() > .5){
-         ranNum = -Math.floor(Math.random() * Math.floor(max));
+    if (Math.random() > .5) {
+        ranNum = -Math.floor(Math.random() * Math.floor(max));
     } else {
-         ranNum = Math.floor(Math.random() * Math.floor(max));
+        ranNum = Math.floor(Math.random() * Math.floor(max));
 
     }
     return ranNum
+}
+
+/**
+ * @return {number}
+ */
+function Normalize(velMag, min, max) {
+    return ((velMag - min) / (max - min))
 }
 
 export default CSVReader

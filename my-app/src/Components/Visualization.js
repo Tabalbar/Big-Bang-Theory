@@ -68,6 +68,7 @@ function Visualization(
             ra: planetInfo[0].ra,
             dec: planetInfo[0].dec,
             distance: planetInfo[0].distance,
+            vel_is_valid: false,
             realColor: 'Yellow'
         });
         setCameraPosition(tmpCameraPosition);
@@ -109,7 +110,9 @@ function Visualization(
             temperature: starInfo[indexNum].temperature,
             brightness: starInfo[indexNum].brightness,
             realSize: starInfo[indexNum].realSize,
-            realColor: starInfo[indexNum].realColor
+            realColor: starInfo[indexNum].realColor,
+            vel_is_valid: starInfo[indexNum].vel_is_valid === "True" ? true : false,
+            velMag: starInfo[indexNum].velMag
 
         })
     };
@@ -148,7 +151,9 @@ function Visualization(
             temperature: bookmarkList[indexNum].temperature,
             brightness: bookmarkList[indexNum].brightness,
             realSize: bookmarkList[indexNum].realSize,
-            realColor: bookmarkList[indexNum].realColor
+            realColor: bookmarkList[indexNum].realColor,
+            vel_is_valid: bookmarkList[indexNum].vel_is_valid === "True" ? true : false,
+            velMag: bookmarkList[indexNum].velMag
 
         })
     };
@@ -215,6 +220,7 @@ function Visualization(
                                             setCameraMoving={setCameraMoving}
                                             velocityDirection={starInfo[i].velocityDirection}
                                             vel_is_valid={starInfo[i].vel_is_valid}
+                                            velMag={starInfo[i].velMag}
                                             setActive={setActive}
                                             starInfo={starInfo[i]}
                                             active={active}
