@@ -19,10 +19,12 @@ function Star(props) {
 
     const [hover, setHover] = useState(false);
     const [isSelected, setIsSelected] = useState(false);
+    const [cameraFocused, setCameraFocused] = useState(false);
     const x = props.velocityDirection[0];
     const y = props.velocityDirection[1];
     const z = props.velocityDirection[2];
 
+    console.log(props.vel_is_valid)
 
     return (
         <>
@@ -32,7 +34,8 @@ function Star(props) {
                 scale={hover ? [.3, .3, .3] : props.size}
                 onClick={() => {
                     props.updateStarPosition(props.indexNum);
-                    props.setActive(!props.active)
+                    props.setActive(!props.active);
+                    setCameraFocused(true)
                 }}
                 onPointerOver={(e) => setHover(true)}
                 onPointerOut={(e) => setHover(false)}
@@ -47,32 +50,32 @@ function Star(props) {
                                     <b>Description:</b> {props.focusDescription.funFact}<br/>
                                     <b>Ra: </b>{props.focusDescription.ra} Deg<br/>
                                     <b>Dec: </b>{props.focusDescription.dec} Deg <br/>
-                                    <b>Distance: </b>{props.focusDescription.distance} Light years<br/>
+                                    <b>Distance: </b>{props.focusDescription.distance} Light year(s)<br/>
                                     <b>Temperature:</b> {props.focusDescription.temperature} K<br/>
-                                    <b>Brightness:</b> {props.focusDescription.brightness}<br/>
-                                    <b>Size:</b> {props.focusDescription.realSize}<br/>
                                     <b>Color:</b> {props.focusDescription.realColor}
                                 </p>
                             </div>
-
-                            <div className='starDescription'>
-                                <p>
-                                    <strong style={{fontSize: 40}}>{props.starInfo.name}</strong><br/><br/>
-                                    <b>Description:</b> {props.starInfo.funFact}<br/>
-                                    <b>Ra: </b>{props.starInfo.ra} Deg<br/>
-                                    <b>Dec: </b>{props.starInfo.dec} Deg <br/>
-                                    <b>Distance: </b>{props.starInfo.distance} Light years<br/>
-                                    <b>Temperature:</b> {props.starInfo.temperature} K<br/>
-                                    <b>Brightness:</b> {props.starInfo.brightness}<br/>
-                                    <b>Size:</b> {props.starInfo.realSize}<br/>
-                                    <b>Color:</b> {props.starInfo.realColor}
-                                </p>
-                            </div>
+                            {
+                                cameraFocused ?
+                                    null
+                                    :
+                                    <div className='starDescription'>
+                                        <p>
+                                            <strong style={{fontSize: 40}}>{props.starInfo.name}</strong><br/><br/>
+                                            <b>Description:</b> {props.starInfo.funFact}<br/>
+                                            <b>Ra: </b>{props.starInfo.ra} Deg<br/>
+                                            <b>Dec: </b>{props.starInfo.dec} Deg <br/>
+                                            <b>Distance: </b>{props.starInfo.distance} Light year(s)<br/>
+                                            <b>Temperature:</b> {props.starInfo.temperature} K<br/>
+                                            <b>Color:</b> {props.starInfo.realColor}
+                                        </p>
+                                    </div>
+                            }
 
 
                         </Html>
                         :
-                        null
+                       null
                 }
                 <Html scaleFactor={2}>
                     <div>
@@ -93,14 +96,21 @@ function Star(props) {
 
                 <meshStandardMaterial attach='material' color={ReturnColor(props.temperature)}/>
             </mesh>
-            <mesh
-                {...props}
-                ref={mesh}
-                scale={[.1, .1, .1]}
-            >
-                <arrowHelper args={[new THREE.Vector3(x, y, z), new THREE.Vector3(0, 0, 0), 10, 'green', 1, 1]}/>
-                <meshStandardMaterial attach='material' color={props.color}/>
-            </mesh>
+            {
+                props.vel_is_valid === "True" ?
+                    <mesh
+                        {...props}
+                        ref={mesh}
+                        scale={[.1, .1, .1]}
+                    >
+                        <arrowHelper
+                            args={[new THREE.Vector3(x, y, z), new THREE.Vector3(0, 0, 0), 10, 'green', 1, 1]}/>
+                        <meshStandardMaterial attach='material' color={props.color}/>
+                    </mesh>
+                    :
+                    null
+            }
+
             {/*<StarArrow*/}
             {/*    position={new THREE.Vector3(props.position[0],props.position[1],props.position[2])}*/}
             {/*    velocityDirection={new THREE.Vector3(0,0,0)}*/}

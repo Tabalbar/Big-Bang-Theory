@@ -30,13 +30,14 @@ function Visualization(
         funFact: 'A very small star',
         notable: true,
         realPosition: 'X =-9.256536737968663 E+05, Y = 9.520686612116818 E+05, Z = 1.366316508862237 E+04',
-        temperature: '5772 K',
-        brightness: 'N/A',
-        realSize: 'Volume: 10^12 km^3',
+        temperature: '5772',
+        ra: planetInfo[0].ra,
+        dec: planetInfo[0].dec,
+        distance: planetInfo[0].distance,
         realColor: 'Yellow'
     });
     const [toggleLines, setToggleLines] = useState(true);
-    const [parallaxLimit, setParallaxLimit] = useState(20);
+    const [parallaxLimit, setParallaxLimit] = useState(25);
     const [bookmarkList, setBookmarkList] = useState([]);
 
     const handleHomeButton = () => {
@@ -63,9 +64,10 @@ function Visualization(
             funFact: 'A very small star',
             notable: true,
             realPosition: 'X =-9.256536737968663 E+05, Y = 9.520686612116818 E+05, Z = 1.366316508862237 E+04',
-            temperature: '5772 K',
-            brightness: 'N/A',
-            realSize: 'Volume: 10^12 km^3',
+            temperature: '5772',
+            ra: planetInfo[0].ra,
+            dec: planetInfo[0].dec,
+            distance: planetInfo[0].distance,
             realColor: 'Yellow'
         });
         setCameraPosition(tmpCameraPosition);
@@ -174,6 +176,7 @@ function Visualization(
                             <Sphere
                                 color={planetInfo[0].color}
                                 size={planetInfo[0].size}
+                                name={planetInfo[0].name}
                                 indexNum={0}
                                 position={planetInfo[0].position}
                                 cameraPosition={cameraPosition}
@@ -181,6 +184,10 @@ function Visualization(
                                 setCameraMoving={setCameraMoving}
                                 setActive={setActive}
                                 active={active}
+                                ra={planetInfo[0].ra}
+                                dec={planetInfo[0].dec}
+                                temperature={planetInfo[0].temperature}
+                                distance={planetInfo[0].distance}
                                 starInfo={starInfo}
                                 focusDescription={focusDescription}
                             />
@@ -207,6 +214,7 @@ function Visualization(
                                             temperature={starInfo[i].temperature}
                                             setCameraMoving={setCameraMoving}
                                             velocityDirection={starInfo[i].velocityDirection}
+                                            vel_is_valid={starInfo[i].vel_is_valid}
                                             setActive={setActive}
                                             starInfo={starInfo[i]}
                                             active={active}

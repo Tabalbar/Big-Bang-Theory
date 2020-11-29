@@ -12,6 +12,7 @@ function Sphere(props) {
     // const [hovered, setHover] = useState(false);
     const camera = new THREE.PerspectiveCamera()
     const [hover, setHover] = useState(false);
+    const [cameraFocused, setCameraFocused] = useState(false);
     useFrame(({clock, camera}) => {
         if (props.cameraMoving) {
             let tmpCameraMoving = UpdateCameraPosition(camera, props.cameraPosition, props.setCameraMoving)
@@ -46,7 +47,11 @@ function Sphere(props) {
                 {...props}
                 ref={mesh}
                 scale={props.size}
-                onClick={() => {props.updatePosition(props.indexNum); props.setActive(!props.active)}}
+                onClick={() => {
+                    props.updatePosition(props.indexNum);
+                    props.setActive(!props.active);
+                    setCameraFocused(true);
+                }}
                 onPointerOver={(e) => setHover(true)}
                 onPointerOut={(e) => setHover(false)}
             >
@@ -57,18 +62,28 @@ function Sphere(props) {
                             <div className='focusedDescription'>
                                 <p>
                                     <strong style={{fontSize: 40}}>{props.focusDescription.name}</strong><br/><br/>
-                                    <b>Description:</b> {props.focusDescription.funFact}<br/>
                                     <b>Ra: </b>{props.focusDescription.ra} Deg<br/>
                                     <b>Dec: </b>{props.focusDescription.dec} Deg <br/>
-                                    <b>Distance: </b>{props.focusDescription.distance} Light years<br/>
+                                    <b>Distance: </b>{props.focusDescription.distance} Light year(s)<br/>
                                     <b>Temperature:</b> {props.focusDescription.temperature} K<br/>
-                                    <b>Brightness:</b> {props.focusDescription.brightness}<br/>
-                                    <b>Size:</b> {props.focusDescription.realSize}<br/>
                                     <b>Color:</b> {props.focusDescription.realColor}
                                 </p>
                             </div>
-
-
+                            {
+                                cameraFocused ?
+                                    <div className='starDescription'>
+                                        <p>
+                                            <strong style={{fontSize: 40}}>{props.name}</strong><br/><br/>
+                                            <b>Ra: </b>{props.ra} Deg<br/>
+                                            <b>Dec: </b>{props.dec} Deg <br/>
+                                            <b>Distance: </b>{props.distance} Light year(s)<br/>
+                                            <b>Temperature:</b> {props.temperature} K<br/>
+                                            <b>Color:</b> {props.realColor}
+                                        </p>
+                                    </div>
+                                    :
+                                    null
+                            }
                         </Html>
                         :
                         null

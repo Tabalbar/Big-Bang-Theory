@@ -123,12 +123,13 @@ export const planetInfo = [
         size: [0.1,0.1,0.1],
         position: [0,0,0],
         name: 'Sun',
+        ra: 271,
+        dec: 30,
+        distance: 1,
         funFact: 'A very small star',
         notable: true,
         realPosition: 'X =-9.256536737968663 E+05, Y = 9.520686612116818 E+05, Z = 1.366316508862237 E+04',
-        temperature: '5772 K',
-        brightness: 'N/A',
-        realSize: 'Volume: 10^12 km^3',
+        temperature: '5772',
         realColor: 'Yellow'
     },
     // {
