@@ -40,7 +40,9 @@ function Sphere(props) {
 
     const points = curve.getPoints(50);
     const geometry = new THREE.BufferGeometry().setFromPoints(points);
-
+    const x = props.velocityDirection[0];
+    const y = props.velocityDirection[1];
+    const z = props.velocityDirection[2];
     return (
         <>
             <mesh
@@ -66,7 +68,8 @@ function Sphere(props) {
                                     <b>Dec: </b>{props.focusDescription.dec} Deg <br/>
                                     <b>Distance: </b>{props.focusDescription.distance} Light year(s)<br/>
                                     <b>Temperature:</b> {props.focusDescription.temperature} K<br/>
-                                    <b>Color:</b> {props.focusDescription.realColor}
+                                    <b>Color:</b> {props.focusDescription.realColor}<br/>
+                                    <b>velMag:</b> {props.velMag}
                                 </p>
                             </div>
                             {
@@ -78,7 +81,8 @@ function Sphere(props) {
                                             <b>Dec: </b>{props.dec} Deg <br/>
                                             <b>Distance: </b>{props.distance} Light year(s)<br/>
                                             <b>Temperature:</b> {props.temperature} K<br/>
-                                            <b>Color:</b> {props.realColor}
+                                            <b>Color:</b> {props.realColor}<br/>
+                                            <b>velMag:</b> {props.velMag}
                                         </p>
                                     </div>
                                     :
@@ -89,6 +93,15 @@ function Sphere(props) {
                         null
                 }
                 <meshStandardMaterial attach='material' color={props.color}/>
+            </mesh>
+            <mesh
+                {...props}
+                ref={mesh}
+                scale={[.1, .1, .1]}
+            >
+                <arrowHelper
+                    args={[new THREE.Vector3(x, y, z), new THREE.Vector3(0, 0, 0), (.03*50), 'green', 1, 1]}/>
+                <meshStandardMaterial attach='material' color={'green'}/>
             </mesh>
             {/*<line ref={mesh} geometry={geometry}>*/}
             {/*    <lineBasicMaterial attach="material" color={'#9c88ff'} linewidth={100}/>*/}

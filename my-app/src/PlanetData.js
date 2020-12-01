@@ -130,7 +130,9 @@ export const planetInfo = [
         notable: true,
         realPosition: 'X =-9.256536737968663 E+05, Y = 9.520686612116818 E+05, Z = 1.366316508862237 E+04',
         temperature: '5772',
-        realColor: 'Yellow'
+        realColor: 'Yellow',
+        velocityDirection: [10,230, 5],
+        velMag: 230.271
     },
     // {
     //     color: 'grey',

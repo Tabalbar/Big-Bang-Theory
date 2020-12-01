@@ -24,7 +24,6 @@ function Star(props) {
     const y = props.velocityDirection[1];
     const z = props.velocityDirection[2];
 
-    console.log(props.vel_is_valid)
 
     return (
         <>

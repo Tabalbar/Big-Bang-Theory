@@ -34,6 +34,9 @@ function Visualization(
         ra: planetInfo[0].ra,
         dec: planetInfo[0].dec,
         distance: planetInfo[0].distance,
+        velocityDirection: [10,230, 5],
+        vel_is_valid: "True",
+        velMag: 230.271,
         realColor: 'Yellow'
     });
     const [toggleLines, setToggleLines] = useState(true);
@@ -68,7 +71,9 @@ function Visualization(
             ra: planetInfo[0].ra,
             dec: planetInfo[0].dec,
             distance: planetInfo[0].distance,
-            vel_is_valid: false,
+            velocityDirection: [10,230, 5],
+            velMag: 230.271,
+            vel_is_valid: "True",
             realColor: 'Yellow'
         });
         setCameraPosition(tmpCameraPosition);
@@ -191,6 +196,8 @@ function Visualization(
                                 active={active}
                                 ra={planetInfo[0].ra}
                                 dec={planetInfo[0].dec}
+                                velocityDirection={planetInfo[0].velocityDirection}
+                                velMag={planetInfo[0].velMag}
                                 temperature={planetInfo[0].temperature}
                                 distance={planetInfo[0].distance}
                                 starInfo={starInfo}
