@@ -5,7 +5,7 @@ import Sphere from "../Objects/Sphere";
 import ToolbarWrapper from "./ToolbarWrapper";
 import {planetInfo} from '../PlanetData'
 import starInfo from '../newStarData'
-import {Stats} from "drei";
+import {Stats, Stars} from "drei";
 import {OrbitControls} from "three/examples/jsm/controls/OrbitControls";
 import CameraControls from "../HelperFunctions/CameraControls";
 import Star from "../Objects/Star";
@@ -208,7 +208,14 @@ function Visualization(
                         position={[selectedPosition.x, selectedPosition.y, selectedPosition.z]}
                         size={[selectedSize.innerRadius, selectedSize.outerRadius, 10000]}
                     />
-
+                    <Stars
+                        radius={100} // Radius of the inner sphere (default=100)
+                        depth={50} // Depth of area where stars should fit (default=50)
+                        count={5000} // Amount of stars (default=5000)
+                        factor={4} // Size factor (default=4)
+                        saturation={0} // Saturation 0-1 (default=0)
+                        fade // Faded dots (default=false)
+                    />
                     {
                         _.times(starInfo.length, (i) => (
                             <>

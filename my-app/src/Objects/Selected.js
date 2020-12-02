@@ -1,4 +1,4 @@
-import React, {useRef} from "react";
+import React, {useRef, useEffect, useState} from "react";
 import * as THREE from "three";
 import {useFrame} from "react-three-fiber";
 import {Tube} from "drei";
@@ -22,6 +22,8 @@ function Selected(props){
                 // onPointerOver={(e) => setHover(true)}
                 // onPointerOut={(e) => setHover(false)}
             >
+
+
                 <ringBufferGeometry/>
                 <meshStandardMaterial attach='material' color='#986967'/>
             </mesh>
