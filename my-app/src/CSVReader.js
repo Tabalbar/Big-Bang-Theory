@@ -11,37 +11,38 @@ function CSVReader() {
     const handleReadCSV = async () => {
         let arr = [];
         await d3.csv(xyzCoordinates, (data) => {
-
             arr.push({
                 color: 'white',
                 position: [parseInt(data.x), parseInt(data.y), parseInt(data.z)],
                 name: "Gaia Designator: " + data.source_id,
                 size: [.1, .1, .1],
                 notable: false,
-                ra: data.ra,
-                dec: data.dec,
+                ra: Math.round(data.ra*100)/100,
+                dec: Math.round(data.dec*100)/100,
                 distance: 3216.56 / (data.parallax),
                 parallax: parseInt(data.parallax),
                 temperature: parseInt(data.teff_val),
                 realColor: ReturnColorName(parseInt(data.teff_val)),
                 velocityDirection: [parseInt(data.x_vel), parseInt(data.y_vel), parseInt(data.z_vel)],
                 vel_is_valid: data.vel_is_valid,
-                velMag: Math.sqrt(Math.pow(parseInt(data.x) - parseInt(data.x_vel), 2) + Math.pow(parseInt(data.y) - parseInt(data.y_vel), 2) + Math.pow(parseInt(data.z) - parseInt(data.z_vel), 2)),
+                velMag: Math.round(Math.sqrt(Math.pow(parseInt(data.x) - parseInt(data.x_vel), 2) + Math.pow(parseInt(data.y) - parseInt(data.y_vel), 2) + Math.pow(parseInt(data.z) - parseInt(data.z_vel), 2)*100/100)),
             })
 
         });
-        let max = 0;
+        let max = 1000;
         let min = arr[0].velMag;
         for (let i = 0; i < arr.length; i++) {
-
-            if (arr[i].velMag > max) {
-                max = arr[i].velMag
-            }
+            // if (arr[i].velMag > max) {
+            //     console.log(arr[i].velMag);
+            //
+            //     max = arr[i].velMag
+            // }
 
             if (arr[i].velMag < min) {
                 min = arr[i].velMag
             }
         }
+
         arr.forEach((element) => {
             element.normalizedVelMag = Normalize(element.velMag, min, max)
         })
@@ -107,7 +108,14 @@ function getRandomInt(max) {
  * @return {number}
  */
 function Normalize(velMag, min, max) {
-    return ((velMag - min) / (max - min))
+    let num = ((velMag - min) / (max - min));
+    if(num > 1)
+    {
+        num = 1
+
+    }
+
+    return num;
 }
 
 export default CSVReader

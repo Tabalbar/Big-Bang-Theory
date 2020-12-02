@@ -116,7 +116,7 @@ function Visualization(
             brightness: starInfo[indexNum].brightness,
             realSize: starInfo[indexNum].realSize,
             realColor: starInfo[indexNum].realColor,
-            vel_is_valid: starInfo[indexNum].vel_is_valid === "True" ? true : false,
+            vel_is_valid: starInfo[indexNum].vel_is_valid,
             velMag: starInfo[indexNum].velMag
 
         })
