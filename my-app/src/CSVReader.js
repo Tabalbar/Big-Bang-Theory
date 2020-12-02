@@ -19,7 +19,7 @@ function CSVReader() {
                 notable: false,
                 ra: Math.round(data.ra*100)/100,
                 dec: Math.round(data.dec*100)/100,
-                distance: 3216.56 / (data.parallax),
+                distance: Math.round(3216.56 / (data.parallax)*100)/100,
                 parallax: parseInt(data.parallax),
                 temperature: parseInt(data.teff_val),
                 realColor: ReturnColorName(parseInt(data.teff_val)),
@@ -42,6 +42,7 @@ function CSVReader() {
                 min = arr[i].velMag
             }
         }
+        console.log(Normalize(230,min,max))
 
         arr.forEach((element) => {
             element.normalizedVelMag = Normalize(element.velMag, min, max)

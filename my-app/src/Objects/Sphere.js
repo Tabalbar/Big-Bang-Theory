@@ -100,7 +100,7 @@ function Sphere(props) {
                 scale={[.1, .1, .1]}
             >
                 <arrowHelper
-                    args={[new THREE.Vector3(x, y, z), new THREE.Vector3(0, 0, 0), (.03*50), 'green', 1, 1]}/>
+                    args={[new THREE.Vector3(x, y, z), new THREE.Vector3(0, 0, 0), (0.22845691382765532*10), 'green', 1, 1]}/>
                 <meshStandardMaterial attach='material' color={'green'}/>
             </mesh>
             {/*<line ref={mesh} geometry={geometry}>*/}

@@ -119,7 +119,7 @@ function Star(props) {
                         scale={[.1, .1, .1]}
                     >
                         <arrowHelper
-                            args={[new THREE.Vector3(x, y, z), new THREE.Vector3(0, 0, 0), (props.starInfo.normalizedVelMag*50), 'green', 1, 1]}/>
+                            args={[new THREE.Vector3(x, y, z), new THREE.Vector3(0, 0, 0), (props.starInfo.normalizedVelMag*10), 'green', 1, 1]}/>
                         <meshStandardMaterial attach='material' color={props.color}/>
                     </mesh>
                     :
