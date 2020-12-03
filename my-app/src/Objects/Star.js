@@ -54,7 +54,7 @@ function Star(props) {
                                     {
                                         props.focusDescription.vel_is_valid === 'True' ?
                                             <>
-                                                <b>Velocity Magnitude: </b>{props.focusDescription.velMag}<br/>
+                                                <b>Velocity Magnitude: </b>{props.focusDescription.velMag} Km/s<br/>
                                             </>
                                             :
                                             null
@@ -77,7 +77,7 @@ function Star(props) {
                                             {
                                                 props.starInfo.vel_is_valid === 'True' ?
                                                     <>
-                                                        <b>Velocity Magnitude: </b>{props.starInfo.velMag}<br/>
+                                                        <b>Velocity Magnitude: </b>{props.starInfo.velMag} Km/s<br/>
                                                     </>
                                                     :
                                                     null

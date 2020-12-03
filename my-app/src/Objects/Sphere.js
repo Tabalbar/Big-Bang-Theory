@@ -69,7 +69,7 @@ function Sphere(props) {
                                     <b>Distance: </b>{props.focusDescription.distance} Light year(s)<br/>
                                     <b>Temperature:</b> {props.focusDescription.temperature} K<br/>
                                     <b>Color:</b> {props.focusDescription.realColor}<br/>
-                                    <b>velMag:</b> {props.velMag}
+                                    <b>Velocity Magnitude:</b> {props.velMag} Km/s <br/>
                                 </p>
                             </div>
                             {
@@ -82,7 +82,7 @@ function Sphere(props) {
                                             <b>Distance: </b>{props.distance} Light year(s)<br/>
                                             <b>Temperature:</b> {props.temperature} K<br/>
                                             <b>Color:</b> {props.realColor}<br/>
-                                            <b>velMag:</b> {props.velMag}
+                                            <b>Velocity Magnitude:</b> {props.velMag} Km/s <br/>
                                         </p>
                                     </div>
                                     :
