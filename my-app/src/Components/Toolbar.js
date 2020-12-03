@@ -16,10 +16,10 @@ function Toolbar(
         updateStarPosition,
         handleToggleLines,
         cameraPosition,
-        parallaxLimit,
-        handleSetParallax,
+        parallaxValue,
         bookmarkList,
-        goToBookmarkedStar
+        goToBookmarkedStar,
+        handleQuery
     }
 ) {
 
@@ -88,27 +88,19 @@ function Toolbar(
             <div className='toolBar'>
                 <Container>
                     <Grid>
-                        <Grid.Row columns={3}>
+                        <Grid.Row columns={4}>
                                 <Button color='yellow' style={{color: 'black'}} onClick={handleHomeButton}>Back to Sun</Button>
                             <Grid.Column>
                                 <Header inverted as='h5' textAlign='center'>Camera is looking at
                                     position {'<'}{cameraPosition.x}, {cameraPosition.y}, {cameraPosition.z}{'>'}</Header>
                             </Grid.Column>
                             <Grid.Column>
-                                <Form inverted>
+                                <Form inverted onSubmit={handleQuery}>
                                     <Form.Input
-                                        label={`View of Stars from Origin: Parallax = ` + parallaxLimit}
-                                        min={0}
-                                        max={30}
-                                        onChange={handleSetParallax}
-                                        step={1}
-                                        type='range'
-                                        value={parallaxLimit}
+                                        label={`View of Stars from Origin: Parallax = ` + parallaxValue}
                                     />
                                 </Form>
                             </Grid.Column>
-
-
                         </Grid.Row>
                     </Grid>
                 </Container>

@@ -23,8 +23,12 @@ function Visualization(
     const [cameraMoving, setCameraMoving] = useState(false);
     const [active, setActive] = useState(false);
     const [cameraMovingToHome, setCameraMovingToHome] = useState(false);
-    const [selectedPosition ,setSelectedPosition] = useState({x: 0, y: 0, z:0})
-    const [selectedSize, setSelectedSize] = useState({innerRadius: planetInfo[0].size[0]*3, outerRadius: planetInfo[0].size[1]*3, thetaSegments: planetInfo[0].size[2]})
+    const [selectedPosition, setSelectedPosition] = useState({x: 0, y: 0, z: 0})
+    const [selectedSize, setSelectedSize] = useState({
+        innerRadius: planetInfo[0].size[0] * 3,
+        outerRadius: planetInfo[0].size[1] * 3,
+        thetaSegments: planetInfo[0].size[2]
+    })
     const [focusDescription, setFocusDescription] = useState({
         name: 'Sun',
         funFact: 'A very small star',
@@ -34,14 +38,15 @@ function Visualization(
         ra: planetInfo[0].ra,
         dec: planetInfo[0].dec,
         distance: planetInfo[0].distance,
-        velocityDirection: [10,230, 5],
+        velocityDirection: [10, 230, 5],
         vel_is_valid: "True",
         velMag: 230.271,
         realColor: 'Yellow'
     });
     const [toggleLines, setToggleLines] = useState(true);
-    const [parallaxLimit, setParallaxLimit] = useState(25);
+    const [parallaxValue, setParallaxValue] = useState(25);
     const [bookmarkList, setBookmarkList] = useState([]);
+    const [starList, setStarList] = useState([])
 
     const handleHomeButton = () => {
         const tmpCameraPosition = {
@@ -55,8 +60,8 @@ function Visualization(
             z: planetInfo[0].position[2]
         };
         const tmpSelectedSize = {
-            innerRadius: planetInfo[0].size[0]*3,
-            outerRadius: planetInfo[0].size[1]*3,
+            innerRadius: planetInfo[0].size[0] * 3,
+            outerRadius: planetInfo[0].size[1] * 3,
             thetaSegments: planetInfo[0].size[2]
         };
 
@@ -71,7 +76,7 @@ function Visualization(
             ra: planetInfo[0].ra,
             dec: planetInfo[0].dec,
             distance: planetInfo[0].distance,
-            velocityDirection: [10,230, 5],
+            velocityDirection: [10, 230, 5],
             velMag: 230.271,
             vel_is_valid: "True",
             realColor: 'Yellow'
@@ -93,8 +98,8 @@ function Visualization(
             z: starInfo[indexNum].position[2]
         };
         const tmpSelectedSize = {
-            innerRadius: starInfo[indexNum].size[0]*3,
-            outerRadius: starInfo[indexNum].size[1]*3,
+            innerRadius: starInfo[indexNum].size[0] * 3,
+            outerRadius: starInfo[indexNum].size[1] * 3,
             thetaSegments: starInfo[indexNum].size[2]
         };
         setSelectedSize(tmpSelectedSize)
@@ -134,8 +139,8 @@ function Visualization(
             z: bookmarkList[indexNum].position[2]
         };
         const tmpSelectedSize = {
-            innerRadius: bookmarkList[indexNum].size[0]*3,
-            outerRadius: bookmarkList[indexNum].size[1]*3,
+            innerRadius: bookmarkList[indexNum].size[0] * 3,
+            outerRadius: bookmarkList[indexNum].size[1] * 3,
             thetaSegments: bookmarkList[indexNum].size[2]
         };
         setSelectedSize(tmpSelectedSize)
@@ -163,10 +168,20 @@ function Visualization(
         })
     };
 
-    const handleSetParallax = (event, {value}) => {
-        setParallaxLimit(value)
-    };
 
+    const handleQuery = (e) => {
+        for(let i = 0; i < starInfo.length; i ++)
+        {
+            if(starInfo[i].parallax > 5 && starInfo[i].parallax < 10)
+            {
+                console.log('here')
+                setStarList(prevState => [...prevState, starInfo[i]])
+
+            }
+        }
+        console.log('done')
+    };
+console.log(starList)
     const handleToggleLines = () => {
         setToggleLines(prevState => !prevState)
     };
@@ -179,71 +194,66 @@ function Visualization(
         <>
             <div className='mainVisualization'>
                 <Canvas
-                    camera={{far: 10000000000, position: [0, 0, 7], fov: 50}}
+                    camera={{far: 100, position: [0, 0, 7], fov: 50}}
                 >
                     <ambientLight/>
                     <pointLight position={[10, 10, 10]}/>
-                            <Sphere
-                                color={planetInfo[0].color}
-                                size={planetInfo[0].size}
-                                name={planetInfo[0].name}
-                                indexNum={0}
-                                position={planetInfo[0].position}
-                                cameraPosition={cameraPosition}
-                                cameraMoving={cameraMoving}
-                                setCameraMoving={setCameraMoving}
-                                setActive={setActive}
-                                active={active}
-                                ra={planetInfo[0].ra}
-                                dec={planetInfo[0].dec}
-                                velocityDirection={planetInfo[0].velocityDirection}
-                                velMag={planetInfo[0].velMag}
-                                temperature={planetInfo[0].temperature}
-                                distance={planetInfo[0].distance}
-                                starInfo={starInfo}
-                                focusDescription={focusDescription}
-                            />
+                    <Sphere
+                        color={planetInfo[0].color}
+                        size={planetInfo[0].size}
+                        name={planetInfo[0].name}
+                        indexNum={0}
+                        position={planetInfo[0].position}
+                        cameraPosition={cameraPosition}
+                        cameraMoving={cameraMoving}
+                        setCameraMoving={setCameraMoving}
+                        setActive={setActive}
+                        active={active}
+                        ra={planetInfo[0].ra}
+                        dec={planetInfo[0].dec}
+                        velocityDirection={planetInfo[0].velocityDirection}
+                        velMag={planetInfo[0].velMag}
+                        temperature={planetInfo[0].temperature}
+                        distance={planetInfo[0].distance}
+                        starInfo={starInfo}
+                        focusDescription={focusDescription}
+                    />
 
                     <Selected
                         position={[selectedPosition.x, selectedPosition.y, selectedPosition.z]}
                         size={[selectedSize.innerRadius, selectedSize.outerRadius, 10000]}
                     />
-                    <Stars
-                        radius={100} // Radius of the inner sphere (default=100)
-                        depth={50} // Depth of area where stars should fit (default=50)
-                        count={5000} // Amount of stars (default=5000)
-                        factor={4} // Size factor (default=4)
-                        saturation={0} // Saturation 0-1 (default=0)
-                        fade // Faded dots (default=false)
-                    />
+                    {/*<Stars*/}
+                    {/*    radius={100} // Radius of the inner sphere (default=100)*/}
+                    {/*    depth={50} // Depth of area where stars should fit (default=50)*/}
+                    {/*    count={5000} // Amount of stars (default=5000)*/}
+                    {/*    factor={4} // Size factor (default=4)*/}
+                    {/*    saturation={0} // Saturation 0-1 (default=0)*/}
+                    {/*    fade // Faded dots (default=false)*/}
+                    {/*/>*/}
                     {
-                        _.times(starInfo.length, (i) => (
+                        _.times(starList.length, (i) => (
                             <>
 
-                                {
-                                    starInfo[i].parallax >= parallaxLimit ?
-                                        <Star
-                                            color={starInfo[i].color}
-                                            size={[.1,.1,.1]}
-                                            indexNum={i}
-                                            position={starInfo[i].position}
-                                            updateStarPosition={updateStarPosition}
-                                            cameraPosition={cameraPosition}
-                                            cameraMoving={cameraMoving}
-                                            temperature={starInfo[i].temperature}
-                                            setCameraMoving={setCameraMoving}
-                                            velocityDirection={starInfo[i].velocityDirection}
-                                            vel_is_valid={starInfo[i].vel_is_valid}
-                                            velMag={starInfo[i].velMag}
-                                            setActive={setActive}
-                                            starInfo={starInfo[i]}
-                                            active={active}
-                                            focusDescription={focusDescription}
-                                            handleBookmark={handleBookmark}
-                                        />
-                                        :
-                                        null
-                                }
+                                    <Star
+                                        color={starList[i].color}
+                                        size={[.1, .1, .1]}
+                                        indexNum={i}
+                                        position={starList[i].position}
+                                        updateStarPosition={updateStarPosition}
+                                        cameraPosition={cameraPosition}
+                                        cameraMoving={cameraMoving}
+                                        temperature={starList[i].temperature}
+                                        setCameraMoving={setCameraMoving}
+                                        velocityDirection={starList[i].velocityDirection}
+                                        vel_is_valid={starList[i].vel_is_valid}
+                                        velMag={starList[i].velMag}
+                                        setActive={setActive}
+                                        starInfo={starList[i]}
+                                        active={active}
+                                        focusDescription={focusDescription}
+                                        handleBookmark={handleBookmark}
+                                    />
 
 
                             </>
@@ -288,10 +298,10 @@ function Visualization(
                     updateStarPosition={updateStarPosition}
                     handleToggleLines={handleToggleLines}
                     cameraPosition={cameraPosition}
-                    parallaxLimit={parallaxLimit}
-                    handleSetParallax={handleSetParallax}
+                    parallaxValue={parallaxValue}
                     bookmarkList={bookmarkList}
                     goToBookmarkedStar={goToBookmarkedStar}
+                    handleQuery={handleQuery}
                 />
             </div>
         </>
