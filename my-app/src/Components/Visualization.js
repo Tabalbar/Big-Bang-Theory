@@ -44,7 +44,7 @@ function Visualization(
     const [distanceValues, setDistanceValues] = useState([0,3216]);
     const [velMagValues, setVelMagValues] = useState([0,9821]);
     const [filterValues, setFilterValues] = useState({
-        distance: [0,3216],
+        distance: [0,100],
         velMag: [0,9821],
         velArrows: true
     })
