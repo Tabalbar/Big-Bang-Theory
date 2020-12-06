@@ -5,14 +5,15 @@ import Sphere from "../Objects/Sphere";
 import ToolbarWrapper from "./ToolbarWrapper";
 import {planetInfo} from '../PlanetData'
 import starInfo from '../newStarData'
-import {Stats, Stars} from "drei";
+import {Stats} from "drei";
 import {OrbitControls} from "three/examples/jsm/controls/OrbitControls";
 import CameraControls from "../HelperFunctions/CameraControls";
-import Star from "../Objects/Star";
+import Stars from "../Objects/Star";
 import StarArrow from "../Objects/StarArrow";
 import Selected from "../Objects/Selected";
 import Pin from "../Objects/Pin";
 import * as THREE from "three";
+
 
 
 function Visualization(
@@ -208,47 +209,40 @@ function Visualization(
                         position={[selectedPosition.x, selectedPosition.y, selectedPosition.z]}
                         size={[selectedSize.innerRadius, selectedSize.outerRadius, 10000]}
                     />
-                    <Stars
-                        radius={100} // Radius of the inner sphere (default=100)
-                        depth={50} // Depth of area where stars should fit (default=50)
-                        count={5000} // Amount of stars (default=5000)
-                        factor={4} // Size factor (default=4)
-                        saturation={0} // Saturation 0-1 (default=0)
-                        fade // Faded dots (default=false)
-                    />
-                    {
-                        _.times(starInfo.length, (i) => (
-                            <>
+                    <Stars/>
+                    {/*{*/}
+                    {/*    _.times(starInfo.length, (i) => (*/}
+                    {/*        <>*/}
 
-                                {
-                                    starInfo[i].parallax >= parallaxLimit ?
-                                        <Star
-                                            color={starInfo[i].color}
-                                            size={[.1,.1,.1]}
-                                            indexNum={i}
-                                            position={starInfo[i].position}
-                                            updateStarPosition={updateStarPosition}
-                                            cameraPosition={cameraPosition}
-                                            cameraMoving={cameraMoving}
-                                            temperature={starInfo[i].temperature}
-                                            setCameraMoving={setCameraMoving}
-                                            velocityDirection={starInfo[i].velocityDirection}
-                                            vel_is_valid={starInfo[i].vel_is_valid}
-                                            velMag={starInfo[i].velMag}
-                                            setActive={setActive}
-                                            starInfo={starInfo[i]}
-                                            active={active}
-                                            focusDescription={focusDescription}
-                                            handleBookmark={handleBookmark}
-                                        />
-                                        :
-                                        null
-                                }
+                    {/*            {*/}
+                    {/*                starInfo[i].parallax >= parallaxLimit ?*/}
+                    {/*                    <Star*/}
+                    {/*                        color={starInfo[i].color}*/}
+                    {/*                        size={[.1,.1,.1]}*/}
+                    {/*                        indexNum={i}*/}
+                    {/*                        position={starInfo[i].position}*/}
+                    {/*                        updateStarPosition={updateStarPosition}*/}
+                    {/*                        cameraPosition={cameraPosition}*/}
+                    {/*                        cameraMoving={cameraMoving}*/}
+                    {/*                        temperature={starInfo[i].temperature}*/}
+                    {/*                        setCameraMoving={setCameraMoving}*/}
+                    {/*                        velocityDirection={starInfo[i].velocityDirection}*/}
+                    {/*                        vel_is_valid={starInfo[i].vel_is_valid}*/}
+                    {/*                        velMag={starInfo[i].velMag}*/}
+                    {/*                        setActive={setActive}*/}
+                    {/*                        starInfo={starInfo[i]}*/}
+                    {/*                        active={active}*/}
+                    {/*                        focusDescription={focusDescription}*/}
+                    {/*                        handleBookmark={handleBookmark}*/}
+                    {/*                    />*/}
+                    {/*                    :*/}
+                    {/*                    null*/}
+                    {/*            }*/}
 
 
-                            </>
-                        ))
-                    }
+                    {/*        </>*/}
+                    {/*    ))*/}
+                    {/*}*/}
                     {/*{*/}
                     {/*    toggleLines ?*/}
                     {/*    _.times(starInfo.length, (i)=>(*/}
