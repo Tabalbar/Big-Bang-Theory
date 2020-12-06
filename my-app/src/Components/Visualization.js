@@ -89,7 +89,7 @@ function Visualization(
         setToggleLines(true)
         setCameraMovingToHome(true)
     };
-
+console.log(velMagValues)
     const updateStarPosition = (indexNum) => {
         const tmpCameraPosition = {
             x: starInfo[indexNum].position[0],
@@ -241,7 +241,7 @@ function Visualization(
                             <>
 
                                 {
-                                    starInfo[i].distance >= filterValues.distance[0] && starInfo[i].distance <= filterValues.distance[1] ?
+                                    starInfo[i].distance >= filterValues.distance[0] && starInfo[i].distance <= filterValues.distance[1] && starInfo[i].velMag >= filterValues.velMag[0] && starInfo[i].velMag <= filterValues.velMag[1] ?
                                         <Star
                                             color={starInfo[i].color}
                                             size={[.1,.1,.1]}
