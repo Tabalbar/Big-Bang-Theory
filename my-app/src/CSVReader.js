@@ -29,6 +29,7 @@ function CSVReader() {
             })
 
         });
+        let mParallax = 0;
         let max = 1000;
         let min = arr[0].velMag;
         for (let i = 0; i < arr.length; i++) {
@@ -37,12 +38,16 @@ function CSVReader() {
             //
             //     max = arr[i].velMag
             // }
-
+            if(arr[i].parallax > mParallax)
+            {
+                mParallax = arr[i].parallax
+            }
             if (arr[i].velMag < min) {
                 min = arr[i].velMag
             }
         }
-        console.log(Normalize(230,min,max))
+        console.log(mParallax);
+
 
         arr.forEach((element) => {
             element.normalizedVelMag = Normalize(element.velMag, min, max)
@@ -50,7 +55,7 @@ function CSVReader() {
         // console.log(max, min)
         const JSONobj = JSON.stringify(arr);
         // console.log(JSONobj)
-        fileDownload(JSONobj, 'newStarData.json')
+        // fileDownload(JSONobj, 'newStarData.json')
     };
 
     // const handleChange = (event)=>{

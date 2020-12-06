@@ -172,7 +172,7 @@ function Visualization(
     const handleQuery = (e) => {
         for(let i = 0; i < starInfo.length; i ++)
         {
-            if(starInfo[i].parallax > 5 && starInfo[i].parallax < 10)
+            if(starInfo[i].parallax >5 && starInfo[i].parallax < 30)
             {
                 console.log('here')
                 setStarList(prevState => [...prevState, starInfo[i]])
@@ -194,7 +194,7 @@ console.log(starList)
         <>
             <div className='mainVisualization'>
                 <Canvas
-                    camera={{far: 100, position: [0, 0, 7], fov: 50}}
+                    camera={{far: 1000000000, position: [0, 0, 7], fov: 50}}
                 >
                     <ambientLight/>
                     <pointLight position={[10, 10, 10]}/>
@@ -232,24 +232,24 @@ console.log(starList)
                     {/*    fade // Faded dots (default=false)*/}
                     {/*/>*/}
                     {
-                        _.times(starList.length, (i) => (
+                        _.times(starInfo.length, (i) => (
                             <>
 
                                     <Star
-                                        color={starList[i].color}
+                                        color={starInfo[i].color}
                                         size={[.1, .1, .1]}
                                         indexNum={i}
-                                        position={starList[i].position}
+                                        position={starInfo[i].position}
                                         updateStarPosition={updateStarPosition}
                                         cameraPosition={cameraPosition}
                                         cameraMoving={cameraMoving}
-                                        temperature={starList[i].temperature}
+                                        temperature={starInfo[i].temperature}
                                         setCameraMoving={setCameraMoving}
-                                        velocityDirection={starList[i].velocityDirection}
-                                        vel_is_valid={starList[i].vel_is_valid}
-                                        velMag={starList[i].velMag}
+                                        velocityDirection={starInfo[i].velocityDirection}
+                                        vel_is_valid={starInfo[i].vel_is_valid}
+                                        velMag={starInfo[i].velMag}
                                         setActive={setActive}
-                                        starInfo={starList[i]}
+                                        starInfo={starInfo[i]}
                                         active={active}
                                         focusDescription={focusDescription}
                                         handleBookmark={handleBookmark}

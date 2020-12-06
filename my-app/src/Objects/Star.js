@@ -1,9 +1,12 @@
-import React, {useRef, useState} from "react";
+import React, {useRef, useState, useMemo} from "react";
 import * as THREE from "three";
 import {ReturnColor} from "../HelperFunctions/ReturnColor";
 import {Html} from "drei";
 import {Button, Icon} from "semantic-ui-react";
 import starInfo from "../newStarData";
+import {useLoader} from "react-three-fiber";
+import url from '../Images/star.png'
+import {useThree} from "react-three-fiber";
 
 function Star(props) {
     // This reference will give us direct access to the mesh
@@ -23,14 +26,16 @@ function Star(props) {
     const x = props.velocityDirection[0];
     const y = props.velocityDirection[1];
     const z = props.velocityDirection[2];
+    const { invalidate } = useThree()
 
+    const texture = useMemo(() => new THREE.TextureLoader().load(url, invalidate), [url])
 
     return (
         <>
             <mesh
                 {...props}
                 ref={mesh}
-                scale={hover ? [.3, .3, .3] : props.size}
+                scale={[.1,.1,.1]}
                 onClick={() => {
                     props.updateStarPosition(props.indexNum);
                     props.setActive(!props.active);
@@ -40,9 +45,30 @@ function Star(props) {
                 onPointerOut={(e) => setHover(false)}
             >
                 <sphereBufferGeometry/>
+                <meshStandardMaterial attach='material' color={ReturnColor(props.temperature)}/>
+
+                {/*<planeBufferGeometry attach="geometry" args={[1, 1]} />*/}
+                {/*<meshLambertMaterial attach="material" transparent>*/}
+                {/*    <primitive attach="map" object={texture} />*/}
+                {/*</meshLambertMaterial>*/}
+            </mesh>
+            {/*<mesh*/}
+            {/*    {...props}*/}
+            {/*    ref={mesh}*/}
+            {/*    scale={[1,1,1]}*/}
+            {/*    onClick={() => {*/}
+            {/*        props.updateStarPosition(props.indexNum);*/}
+            {/*        props.setActive(!props.active);*/}
+            {/*        setCameraFocused(true)*/}
+            {/*    }}*/}
+            {/*    onPointerOver={(e) => setHover(true)}*/}
+            {/*    onPointerOut={(e) => setHover(false)}*/}
+            {/*>*/}
+
+                {/*<sphereBufferGeometry/>*/}
                 {
                     hover ?
-                        <Html scaleFactor={3}>
+                        <Html scaleFactor={10}>
                             <div className='focusedDescription'>
                                 <p>
                                     <strong style={{fontSize: 40}}>{props.focusDescription.name}</strong><br/><br/>
@@ -92,7 +118,7 @@ function Star(props) {
                         :
                         null
                 }
-                <Html scaleFactor={2}>
+                <Html scaleFactor={10}>
                     <div>
                         <Button color='blue' onClick={() => {
                             props.handleBookmark(props.indexNum);
@@ -109,17 +135,17 @@ function Star(props) {
                 </Html>
 
 
-                <meshStandardMaterial attach='material' color={ReturnColor(props.temperature)}/>
-            </mesh>
+                {/*<meshStandardMaterial attach='material' color={ReturnColor(props.temperature)}/>*/}
+            {/*</mesh>*/}
             {
                 props.vel_is_valid === "True" ?
                     <mesh
                         {...props}
                         ref={mesh}
-                        scale={[.1, .1, .1]}
+                        scale={[.5, .5, .5]}
                     >
                         <arrowHelper
-                            args={[new THREE.Vector3(x, y, z), new THREE.Vector3(0, 0, 0), (props.starInfo.normalizedVelMag*10), 'green', 1, 1]}/>
+                            args={[new THREE.Vector3(x, y, z), new THREE.Vector3(0, 0, 0), (props.starInfo.normalizedVelMag*5), 'green', .5, .5]}/>
                         <meshStandardMaterial attach='material' color={props.color}/>
                     </mesh>
                     :
