@@ -28,7 +28,8 @@ function Toolbar(
         distanceValues,
         handleSetDistanceValues,
         bookmarkList,
-        goToBookmarkedStar,
+        // goToBookmarkedStar,
+        removeStarFromList,
         handleSetFilterValues,
         filterValues,
         handleSetVelMagValues,
@@ -182,11 +183,14 @@ function Toolbar(
                                 <List.Item>
                                     <List.Content floated='right'>
                                         <Button
-                                            onClick={() => goToBookmarkedStar(index)}>Go</Button>
+                                            // onClick={() => goToBookmarkedStar(index)}>Go
+                                            onClick={() => removeStarFromList(index)}>Remove
+                                        </Button>
                                     </List.Content>
-                                    <List.Content>
-                                        {value.name}
-                                    </List.Content>
+                                    <List.Content>{value.name}</List.Content>
+                                    <List.Content>{value.distance}</List.Content>
+                                    <List.Content>{value.temperature}</List.Content>
+                                    <List.Content>{value.velMag}</List.Content>
                                 </List.Item>
 
                             )
