@@ -6,9 +6,11 @@ import Sphere from "../Objects/Sphere";
 import starInfo from "../newStarData";
 import Star from "../Objects/Star";
 import StarArrow from "../Objects/StarArrow";
-import {Button, Grid, Container, List, Header, Form} from "semantic-ui-react";
+import {Button, Grid, Container, List, Header, Label} from "semantic-ui-react";
 import InputRange from "react-input-range";
 import Slider from "@material-ui/core/Slider";
+import {Radio} from "framework7-react";
+import {Checkbox} from "@material-ui/core";
 
 
 //todo define what the wrapper will look like in here
@@ -26,7 +28,9 @@ function Toolbar(
         handleSetFilterValues,
         filterValues,
         handleSetVelMagValues,
-        velMagValues
+        velMagValues,
+        toggleVel,
+        handleToggleVel
     }
 ) {
 
@@ -92,42 +96,41 @@ function Toolbar(
 
             {/*        <Grid.Column>*/}
             {/*            <Button onClick={handleToggleLines}>Toggle Star Lines</Button>*/}
+
+
             <div className='toolBar'>
                 <Container>
                     <Grid>
-                        <Grid.Row columns={5}>
+                        .
+                        <Grid.Row columns={6}>
                             <Grid.Column>
-                            <Button color='yellow' style={{color: 'black'}} onClick={handleHomeButton}>Back to
-                                Sun</Button>
+                                <Button color='yellow' style={{color: 'black'}} onClick={handleHomeButton}>Back to
+                                    Sun</Button>
                             </Grid.Column>
                             <Grid.Column>
                                 <Header as='h5' textAlign='center'>Camera is looking at
-                                    position {'<'}{cameraPosition.x}, {cameraPosition.y}, {cameraPosition.z}{'>'}</Header>
+                                    position<br/> {'<'}{cameraPosition.x}, {cameraPosition.y}, {cameraPosition.z}{'>'}
+                                </Header>
                             </Grid.Column>
                             <Grid.Column>
-                                <Form>
-                                    <Header as='h5'>Filter</Header>
-                                   Distance {filterValues.distance[0]} to {filterValues.distance[1]}
-                                    <Slider
-                                        value={distanceValues}
-                                        onChange={handleSetDistanceValues}
-                                        valueLabelDisplay="auto"
-                                        aria-labelledby="range-slider"
-                                        max={3216}
-                                    />
-                                    {/*<Form.Input*/}
-                                    {/*    label={`View of Stars from Origin: Parallax = ` + parallaxLimit}*/}
-                                    {/*    min={0}*/}
-                                    {/*    max={30}*/}
-                                    {/*    onChange={handleSetParallax}*/}
-                                    {/*    step={1}*/}
-                                    {/*    type='range'*/}
-                                    {/*    value={parallaxLimit}*/}
-                                    {/*/>*/}
-                                </Form>
+
+                                <p style={{textAlign: 'center'}}>
+                                    Distance<br/> {filterValues.distance[0]} to {filterValues.distance[1]}
+                                </p>
+                                <Slider
+                                    value={distanceValues}
+                                    onChange={handleSetDistanceValues}
+                                    valueLabelDisplay="auto"
+                                    aria-labelledby="range-slider"
+                                    max={3216}
+                                />
+                                {/*/>*/}
                             </Grid.Column>
                             <Grid.Column>
-                                Velocity Magnitude {filterValues.velMag[0]} to {filterValues.velMag[1]}
+                                <p style={{textAlign: 'center'}}>
+                                    Velocity
+                                    Magnitude<br/> {filterValues.velMag[0]} to {filterValues.velMag[1]}
+                                </p>
                                 <Slider
                                     value={velMagValues}
                                     onChange={handleSetVelMagValues}
@@ -137,11 +140,23 @@ function Toolbar(
                                 />
                             </Grid.Column>
                             <Grid.Column>
+                                <Checkbox
+                                    checked={toggleVel}
+                                    label="Primary"
+                                    onChange={handleToggleVel}
+                                    color='primary'
+                                    labelPlacement="start"
+                                />
+                                Velocity Arrows
+                            </Grid.Column>
+
+                            <Grid.Column>
                                 <Button onClick={handleSetFilterValues}>Filter</Button>
                             </Grid.Column>
 
-
                         </Grid.Row>
+
+
                     </Grid>
                 </Container>
             </div>

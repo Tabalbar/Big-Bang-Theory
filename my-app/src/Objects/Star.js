@@ -114,7 +114,7 @@ function Star(props) {
                 <meshStandardMaterial attach='material' color={ReturnColor(props.temperature)}/>
             </mesh>
             {
-                props.vel_is_valid === "True" ?
+                props.vel_is_valid === "True" && props.filterValues.velArrows ?
                     <mesh
                         {...props}
                         ref={mesh}

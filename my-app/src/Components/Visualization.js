@@ -44,9 +44,11 @@ function Visualization(
     const [velMagValues, setVelMagValues] = useState([0,9821]);
     const [filterValues, setFilterValues] = useState({
         distance: [0,3216],
-        velMag: [0,9821]
+        velMag: [0,9821],
+        velArrows: true
     })
     const [bookmarkList, setBookmarkList] = useState([]);
+    const [toggleVel, setToggleVel] = useState(true);
 
     const handleHomeButton = () => {
         const tmpCameraPosition = {
@@ -171,7 +173,8 @@ function Visualization(
     const handleSetFilterValues = (event) => {
         let tmp = {
             distance: [distanceValues[0], distanceValues[1]],
-            velMag: [velMagValues[0],velMagValues[1]]
+            velMag: [velMagValues[0],velMagValues[1]],
+            velArrows: toggleVel
         }
         setFilterValues(tmp)
     };
@@ -186,8 +189,12 @@ function Visualization(
     };
 
     const handleToggleLines = () => {
-        setToggleLines(prevState => !prevState)
+        setToggleLines(prevState => !prevState);
     };
+
+    const handleToggleVel = () => {
+        setToggleVel(prevState => !prevState);
+    }
 
     const handleBookmark = (indexNum) => {
         setBookmarkList(prevState => [...prevState, starInfo[indexNum]])
@@ -250,6 +257,7 @@ function Visualization(
                                             starInfo={starInfo[i]}
                                             active={active}
                                             focusDescription={focusDescription}
+                                            filterValues={filterValues}
                                             handleBookmark={handleBookmark}
                                         />
                                         :
@@ -307,6 +315,8 @@ function Visualization(
                     filterValues={filterValues}
                     handleSetVelMagValues={handleSetVelMagValues}
                     velMagValues={velMagValues}
+                    toggleVel={toggleVel}
+                    handleToggleVel={handleToggleVel}
                 />
             </div>
         </>

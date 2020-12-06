@@ -16,7 +16,9 @@ function ToolbarWrapper(
         handleSetFilterValues,
         filterValues,
         handleSetVelMagValues,
-        velMagValues
+        velMagValues,
+        toggleVel,
+        handleToggleVel
     }
 ){
 
@@ -38,6 +40,8 @@ function ToolbarWrapper(
                 filterValues={filterValues}
                 handleSetVelMagValues={handleSetVelMagValues}
                 velMagValues={velMagValues}
+                toggleVel={toggleVel}
+                handleToggleVel={handleToggleVel}
             />
         </>
     )
