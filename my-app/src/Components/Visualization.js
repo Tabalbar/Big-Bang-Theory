@@ -13,6 +13,7 @@ import StarArrow from "../Objects/StarArrow";
 import Selected from "../Objects/Selected";
 import Pin from "../Objects/Pin";
 import * as THREE from "three";
+import Toolbar from "./Toolbar";
 
 
 function Visualization(
@@ -49,6 +50,7 @@ function Visualization(
     })
     const [bookmarkList, setBookmarkList] = useState([]);
     const [toggleVel, setToggleVel] = useState(true);
+    const [cameraAxisView, setCameraAxisView] = useState()
 
     const handleHomeButton = () => {
         const tmpCameraPosition = {
@@ -317,6 +319,10 @@ function Visualization(
                     velMagValues={velMagValues}
                     toggleVel={toggleVel}
                     handleToggleVel={handleToggleVel}
+                    cameraMoving={cameraMoving}
+                    setCameraMoving={setCameraMoving}
+                    cameraMovingToHome={cameraMovingToHome}
+                    setCameraMovingToHome={setCameraMovingToHome}
                 />
             </div>
         </>

@@ -127,6 +127,11 @@
     border: solid #D94D26;
 }
 
-.stats {
-
+.miniMap {
+    position: absolute;
+    top: 90%;
+    right: 0;
+    width: 10%;
+    height: 10%;
+    background-color: black;
 }

@@ -18,7 +18,11 @@ function ToolbarWrapper(
         handleSetVelMagValues,
         velMagValues,
         toggleVel,
-        handleToggleVel
+        handleToggleVel,
+        cameraMoving,
+        setCameraMoving,
+        cameraMovingToHome,
+        setCameraMovingToHome,
     }
 ){
 
@@ -42,6 +46,10 @@ function ToolbarWrapper(
                 velMagValues={velMagValues}
                 toggleVel={toggleVel}
                 handleToggleVel={handleToggleVel}
+                cameraMoving={cameraMoving}
+            setCameraMoving={setCameraMoving}
+            cameraMovingToHome={cameraMovingToHome}
+            setCameraMovingToHome={setCameraMovingToHome}
             />
         </>
     )

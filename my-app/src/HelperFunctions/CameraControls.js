@@ -14,7 +14,8 @@ const CameraControls = (props) => {
         camera,
         gl: {domElement},
     } = useThree();
-console.log(props.cameraPosition)
+
+    const mesh=useRef()
     // Ref to the controls, so that we can update them on every frame using useFrame
     const controls = useRef();
     useFrame((state) => {
@@ -22,7 +23,6 @@ console.log(props.cameraPosition)
             camera.position.set(0,0,2)
             props.setCameraMovingToHome(false)
         }
-
         if(props.cameraMovingToHome){
             camera.position.set(props.cameraPosition.x,props.cameraPosition.y,props.cameraPosition.z+2)
             props.setCameraMovingToHome(false);

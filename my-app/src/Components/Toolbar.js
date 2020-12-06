@@ -1,5 +1,5 @@
-import React from "react";
-import {Canvas} from "react-three-fiber";
+import React, {useRef} from "react";
+import {Canvas, useFrame, useThree} from "react-three-fiber";
 import _ from "lodash";
 import {planetInfo} from "../PlanetData";
 import Sphere from "../Objects/Sphere";
@@ -11,15 +11,19 @@ import InputRange from "react-input-range";
 import Slider from "@material-ui/core/Slider";
 import {Radio} from "framework7-react";
 import {Checkbox} from "@material-ui/core";
+import CompassObject from "../Objects/CompassObject";
+import CameraControls from "../HelperFunctions/CameraControls";
+import Visualization from "./Visualization";
 
 
 //todo define what the wrapper will look like in here
 function Toolbar(
     {
         handleHomeButton,
-        focusDescription,
-        updateStarPosition,
-        handleToggleLines,
+        cameraMoving,
+        setCameraMoving,
+        cameraMovingToHome,
+        setCameraMovingToHome,
         cameraPosition,
         distanceValues,
         handleSetDistanceValues,
@@ -33,6 +37,9 @@ function Toolbar(
         handleToggleVel
     }
 ) {
+
+
+    // Ref to the controls, so that we can update them on every frame using useFrame
 
     return (
         <>
@@ -208,42 +215,21 @@ function Toolbar(
 
             {/*<div className='miniMap'>*/}
             {/*    <Canvas*/}
-            {/*        camera={{far: 10000000, position: [0, 0, 100], fov: 75}}*/}
+            {/*        camera={{far: 10000000, position: [0, 0, 3], fov: 75}}*/}
             {/*    >*/}
             {/*        <ambientLight/>*/}
             {/*        <pointLight position={[10, 10, 10]}/>*/}
-            {/*        <Sphere*/}
-            {/*            color={planetInfo[0].color}*/}
-            {/*            size={[1,1,1]}*/}
-            {/*            indexNum={0}*/}
-            {/*            position={planetInfo[0].position}*/}
+            {/*        <CompassObject*/}
+            {/*        cameraPosition={cameraPosition}*/}
             {/*        />*/}
-            {/*        {*/}
-            {/*            _.times(starInfo.length, (i) => (*/}
-            {/*                <>*/}
-            {/*                    <Star*/}
-            {/*                        color={starInfo[i].color}*/}
-            {/*                        size={[1,1,1]}*/}
-            {/*                        indexNum={i}*/}
-            {/*                        position={starInfo[i].position}*/}
-            {/*                        temperature={starInfo[i].temperature}*/}
-            {/*                        velocityDirection={starInfo[i].velocityDirection}*/}
-            {/*                    />*/}
+            {/*        <CameraControls*/}
+            {/*            cameraPosition={cameraPosition}*/}
+            {/*            cameraMoving={cameraMoving}*/}
+            {/*            setCameraMoving={setCameraMoving}*/}
+            {/*            cameraMovingToHome={cameraMovingToHome}*/}
+            {/*            setCameraMovingToHome={setCameraMovingToHome}*/}
+            {/*        />*/}
 
-            {/*                </>*/}
-            {/*            ))*/}
-            {/*        }*/}
-            {/*        {*/}
-            {/*            _.times(starInfo.length, (i) => (*/}
-            {/*                <>*/}
-            {/*                    <StarArrow*/}
-            {/*                        position={starInfo[i].position}*/}
-            {/*                        velocityDirection={starInfo[i].velocityDirection}*/}
-            {/*                    />*/}
-
-            {/*                </>*/}
-            {/*            ))*/}
-            {/*        }*/}
             {/*    </Canvas>*/}
             {/*</div>*/}
         </>
