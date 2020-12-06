@@ -23,14 +23,17 @@ function Star(props) {
     const x = props.velocityDirection[0];
     const y = props.velocityDirection[1];
     const z = props.velocityDirection[2];
+    const geo = new THREE.SphereBufferGeometry(1, 5, 5);
+    const arrow = new THREE.ArrowHelper(0,0,0,0 );
 
 
     return (
         <>
+            <group ref={mesh}>
             <mesh
                 {...props}
-                ref={mesh}
                 scale={hover ? [.3, .3, .3] : props.size}
+                geometry={geo}
                 onClick={() => {
                     props.updateStarPosition(props.indexNum);
                     props.setActive(!props.active);
@@ -39,33 +42,32 @@ function Star(props) {
                 onPointerOver={(e) => setHover(true)}
                 onPointerOut={(e) => setHover(false)}
             >
-                <sphereBufferGeometry/>
                 {
                     hover ?
                         <Html scaleFactor={3}>
-                            <div className='focusedDescription'>
-                                <p>
-                                    <strong style={{fontSize: 40}}>{props.focusDescription.name}</strong><br/><br/>
-                                    <b>Description:</b> {props.focusDescription.funFact}<br/>
-                                    <b>Ra: </b>{props.focusDescription.ra} Deg<br/>
-                                    <b>Dec: </b>{props.focusDescription.dec} Deg <br/>
-                                    <b>Distance: </b>{props.focusDescription.distance} Light year(s)<br/>
-                                    <b>Temperature:</b> {props.focusDescription.temperature} K<br/>
-                                    {
-                                        props.focusDescription.vel_is_valid === 'True' ?
-                                            <>
-                                                <b>Velocity Magnitude: </b>{props.focusDescription.velMag} Km/s<br/>
-                                            </>
-                                            :
-                                            null
-                                    }
-                                    <b>Color:</b> {props.focusDescription.realColor}
-                                </p>
-                            </div>
-                            {
-                                cameraFocused ?
-                                    null
-                                    :
+                            {/*<div className='focusedDescription'>*/}
+                            {/*    <p>*/}
+                            {/*        <strong style={{fontSize: 40}}>{props.focusDescription.name}</strong><br/><br/>*/}
+                            {/*        <b>Description:</b> {props.focusDescription.funFact}<br/>*/}
+                            {/*        <b>Ra: </b>{props.focusDescription.ra} Deg<br/>*/}
+                            {/*        <b>Dec: </b>{props.focusDescription.dec} Deg <br/>*/}
+                            {/*        <b>Distance: </b>{props.focusDescription.distance} Light year(s)<br/>*/}
+                            {/*        <b>Temperature:</b> {props.focusDescription.temperature} K<br/>*/}
+                            {/*        {*/}
+                            {/*            props.focusDescription.vel_is_valid === 'True' ?*/}
+                            {/*                <>*/}
+                            {/*                    <b>Velocity Magnitude: </b>{props.focusDescription.velMag} Km/s<br/>*/}
+                            {/*                </>*/}
+                            {/*                :*/}
+                            {/*                null*/}
+                            {/*        }*/}
+                            {/*        <b>Color:</b> {props.focusDescription.realColor}*/}
+                            {/*    </p>*/}
+                            {/*</div>*/}
+                            {/*{*/}
+                            {/*    cameraFocused ?*/}
+                            {/*        null*/}
+                            {/*        :*/}
                                     <div className='starDescription'>
                                         <p>
                                             <strong style={{fontSize: 40}}>{props.starInfo.name}</strong><br/><br/>
@@ -85,28 +87,28 @@ function Star(props) {
                                             <b>Color:</b> {props.starInfo.realColor}
                                         </p>
                                     </div>
-                            }
+                            {/*// }*/}
 
 
                         </Html>
                         :
                         null
                 }
-                <Html scaleFactor={2}>
-                    <div>
-                        <Button color='blue' onClick={() => {
-                            props.handleBookmark(props.indexNum);
-                            setIsSelected(true)
-                        }} icon>
-                            {
-                                isSelected ?
-                                    <Icon color='yellow' name='star'/>
-                                    :
-                                    <Icon color='yellow' name='star outline'/>
-                            }
-                        </Button>
-                    </div>
-                </Html>
+                {/*<Html scaleFactor={2}>*/}
+                {/*    <div>*/}
+                {/*        <Button color='blue' onClick={() => {*/}
+                {/*            props.handleBookmark(props.indexNum);*/}
+                {/*            setIsSelected(true)*/}
+                {/*        }} icon>*/}
+                {/*            {*/}
+                {/*                isSelected ?*/}
+                {/*                    <Icon color='yellow' name='star'/>*/}
+                {/*                    :*/}
+                {/*                    <Icon color='yellow' name='star outline'/>*/}
+                {/*            }*/}
+                {/*        </Button>*/}
+                {/*    </div>*/}
+                {/*</Html>*/}
 
 
                 <meshStandardMaterial attach='material' color={ReturnColor(props.temperature)}/>
@@ -130,6 +132,7 @@ function Star(props) {
             {/*    position={new THREE.Vector3(props.position[0],props.position[1],props.position[2])}*/}
             {/*    velocityDirection={new THREE.Vector3(0,0,0)}*/}
             {/*/>*/}
+            </group>
         </>
     )
 }

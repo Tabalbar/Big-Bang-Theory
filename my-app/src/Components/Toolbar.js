@@ -7,6 +7,9 @@ import starInfo from "../newStarData";
 import Star from "../Objects/Star";
 import StarArrow from "../Objects/StarArrow";
 import {Button, Grid, Container, List, Header, Form} from "semantic-ui-react";
+import InputRange from "react-input-range";
+import Slider from "@material-ui/core/Slider";
+
 
 //todo define what the wrapper will look like in here
 function Toolbar(
@@ -16,10 +19,14 @@ function Toolbar(
         updateStarPosition,
         handleToggleLines,
         cameraPosition,
-        parallaxLimit,
-        handleSetParallax,
+        distanceValues,
+        handleSetDistanceValues,
         bookmarkList,
-        goToBookmarkedStar
+        goToBookmarkedStar,
+        handleSetFilterValues,
+        filterValues,
+        handleSetVelMagValues,
+        velMagValues
     }
 ) {
 
@@ -88,24 +95,49 @@ function Toolbar(
             <div className='toolBar'>
                 <Container>
                     <Grid>
-                        <Grid.Row columns={3}>
-                                <Button color='yellow' style={{color: 'black'}} onClick={handleHomeButton}>Back to Sun</Button>
+                        <Grid.Row columns={5}>
                             <Grid.Column>
-                                <Header inverted as='h5' textAlign='center'>Camera is looking at
+                            <Button color='yellow' style={{color: 'black'}} onClick={handleHomeButton}>Back to
+                                Sun</Button>
+                            </Grid.Column>
+                            <Grid.Column>
+                                <Header as='h5' textAlign='center'>Camera is looking at
                                     position {'<'}{cameraPosition.x}, {cameraPosition.y}, {cameraPosition.z}{'>'}</Header>
                             </Grid.Column>
                             <Grid.Column>
-                                <Form inverted>
-                                    <Form.Input
-                                        label={`View of Stars from Origin: Parallax = ` + parallaxLimit}
-                                        min={0}
-                                        max={30}
-                                        onChange={handleSetParallax}
-                                        step={1}
-                                        type='range'
-                                        value={parallaxLimit}
+                                <Form>
+                                    <Header as='h5'>Filter</Header>
+                                   Distance {filterValues.distance[0]} to {filterValues.distance[1]}
+                                    <Slider
+                                        value={distanceValues}
+                                        onChange={handleSetDistanceValues}
+                                        valueLabelDisplay="auto"
+                                        aria-labelledby="range-slider"
+                                        max={3216}
                                     />
+                                    {/*<Form.Input*/}
+                                    {/*    label={`View of Stars from Origin: Parallax = ` + parallaxLimit}*/}
+                                    {/*    min={0}*/}
+                                    {/*    max={30}*/}
+                                    {/*    onChange={handleSetParallax}*/}
+                                    {/*    step={1}*/}
+                                    {/*    type='range'*/}
+                                    {/*    value={parallaxLimit}*/}
+                                    {/*/>*/}
                                 </Form>
+                            </Grid.Column>
+                            <Grid.Column>
+                                Velocity Magnitude {filterValues.velMag[0]} to {filterValues.velMag[1]}
+                                <Slider
+                                    value={velMagValues}
+                                    onChange={handleSetVelMagValues}
+                                    valueLabelDisplay="auto"
+                                    aria-labelledby="range-slider"
+                                    max={9821}
+                                />
+                            </Grid.Column>
+                            <Grid.Column>
+                                <Button onClick={handleSetFilterValues}>Filter</Button>
                             </Grid.Column>
 
 

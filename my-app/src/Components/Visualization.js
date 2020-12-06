@@ -40,7 +40,12 @@ function Visualization(
         realColor: 'Yellow'
     });
     const [toggleLines, setToggleLines] = useState(true);
-    const [parallaxLimit, setParallaxLimit] = useState(25);
+    const [distanceValues, setDistanceValues] = useState([0,3216]);
+    const [velMagValues, setVelMagValues] = useState([0,9821]);
+    const [filterValues, setFilterValues] = useState({
+        distance: [0,3216],
+        velMag: [0,9821]
+    })
     const [bookmarkList, setBookmarkList] = useState([]);
 
     const handleHomeButton = () => {
@@ -163,8 +168,21 @@ function Visualization(
         })
     };
 
-    const handleSetParallax = (event, {value}) => {
-        setParallaxLimit(value)
+    const handleSetFilterValues = (event) => {
+        let tmp = {
+            distance: [distanceValues[0], distanceValues[1]],
+            velMag: [velMagValues[0],velMagValues[1]]
+        }
+        setFilterValues(tmp)
+    };
+
+    const handleSetVelMagValues = (event, value) => {
+        setVelMagValues(value)
+
+    }
+
+    const handleSetDistanceValues = (event, value) => {
+        setDistanceValues(value)
     };
 
     const handleToggleLines = () => {
@@ -208,20 +226,13 @@ function Visualization(
                         position={[selectedPosition.x, selectedPosition.y, selectedPosition.z]}
                         size={[selectedSize.innerRadius, selectedSize.outerRadius, 10000]}
                     />
-                    <Stars
-                        radius={100} // Radius of the inner sphere (default=100)
-                        depth={50} // Depth of area where stars should fit (default=50)
-                        count={5000} // Amount of stars (default=5000)
-                        factor={4} // Size factor (default=4)
-                        saturation={0} // Saturation 0-1 (default=0)
-                        fade // Faded dots (default=false)
-                    />
+
                     {
                         _.times(starInfo.length, (i) => (
                             <>
 
                                 {
-                                    starInfo[i].parallax >= parallaxLimit ?
+                                    starInfo[i].distance >= filterValues.distance[0] && starInfo[i].distance <= filterValues.distance[1] ?
                                         <Star
                                             color={starInfo[i].color}
                                             size={[.1,.1,.1]}
@@ -288,10 +299,14 @@ function Visualization(
                     updateStarPosition={updateStarPosition}
                     handleToggleLines={handleToggleLines}
                     cameraPosition={cameraPosition}
-                    parallaxLimit={parallaxLimit}
-                    handleSetParallax={handleSetParallax}
+                    distanceValues={distanceValues}
+                    handleSetDistanceValues={handleSetDistanceValues}
                     bookmarkList={bookmarkList}
                     goToBookmarkedStar={goToBookmarkedStar}
+                    handleSetFilterValues={handleSetFilterValues}
+                    filterValues={filterValues}
+                    handleSetVelMagValues={handleSetVelMagValues}
+                    velMagValues={velMagValues}
                 />
             </div>
         </>

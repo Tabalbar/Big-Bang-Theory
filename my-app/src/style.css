@@ -13,10 +13,10 @@
     grid-template-columns: auto auto auto auto auto auto auto auto;
     position: fixed;
     top: 92%;
-    left: 30%;
-    width: 50%;
+    /*left: 30%;*/
+    width: 100%;
     height: 8%;
-    background-color: transparent;
+    background-color: grey;
 }
 
 .starsList {
@@ -102,13 +102,17 @@
 .starDescription {
     transform: translate3d(25%, -40%, 0);
     text-align: left;
-    background: #679698;
+    /*background: #679698;*/
+    background: #986967;
+    position: fixed;
     color: black;
     width: 60vh;
     font-size: 30px;
     padding: 10px 15px;
     border-radius: 30px;
-    border: solid #26B2D9;
+    /*border: solid #26B2D9;*/
+    border: solid #D94D26;
+
 }
 
 .focusedDescription {

@@ -9,10 +9,14 @@ function ToolbarWrapper(
         updateStarPosition,
         handleToggleLines,
         cameraPosition,
-        handleSetParallax,
-        parallaxLimit,
+        handleSetDistanceValues,
+        distanceValues,
         bookmarkList,
-        goToBookmarkedStar
+        goToBookmarkedStar,
+        handleSetFilterValues,
+        filterValues,
+        handleSetVelMagValues,
+        velMagValues
     }
 ){
 
@@ -26,10 +30,14 @@ function ToolbarWrapper(
                 updateStarPosition={updateStarPosition}
                 handleToggleLines={handleToggleLines}
                 cameraPosition={cameraPosition}
-                parallaxLimit={parallaxLimit}
-                handleSetParallax={handleSetParallax}
+                distanceValues={distanceValues}
+                handleSetDistanceValues={handleSetDistanceValues}
                 bookmarkList={bookmarkList}
                 goToBookmarkedStar={goToBookmarkedStar}
+                handleSetFilterValues={handleSetFilterValues}
+                filterValues={filterValues}
+                handleSetVelMagValues={handleSetVelMagValues}
+                velMagValues={velMagValues}
             />
         </>
     )
