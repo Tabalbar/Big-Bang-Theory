@@ -101,7 +101,7 @@ function Sphere(props) {
                 scale={[.1, .1, .1]}
             >
                 {
-                    _.times((2), i => (
+                    _.times((3), i => (
                         <arrowHelper
                             args={[new THREE.Vector3(props.velocityDirection[0],props.velocityDirection[1],props.velocityDirection[2]), new THREE.Vector3(0, Math.sign(props.velocityDirection[1])*2, 0), (.45*i*2), "green", 1, 1]}/>
                     ))

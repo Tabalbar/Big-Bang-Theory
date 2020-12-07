@@ -22,7 +22,7 @@ function StarArrow(props) {
     const points = [(1 - .9999) * props.velocityDirection[0] + .9999 * props.position[0], (1 - .9999) * props.velocityDirection[1] + .9999 * props.position[1], (1 - .9999) * props.velocityDirection[2] + .9999 * props.position[2]];
 
     // console.log(Math.round(props.normalizedVelMag*5))
-    const numOfArrows = Math.round(props.normalizedVelMag*5)
+    const numOfArrows = Math.ceil(props.normalizedVelMag*5)
 
     return (
         <>
