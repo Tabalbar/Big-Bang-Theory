@@ -40,7 +40,7 @@ function StarArrow(props) {
                 {
                     _.times((numOfArrows), i => (
                         <arrowHelper
-                            args={[new THREE.Vector3(props.velocityDirection[0],props.velocityDirection[1],props.velocityDirection[2]), new THREE.Vector3(0, Math.sign(props.velocityDirection[1])*2, 0), (props.normalizedVelMag*i*2), GetColor(Math.sign(props.velocityDirection[1])), 1, 1]}/>
+                            args={[new THREE.Vector3(props.velocityDirection[0],props.velocityDirection[1],props.velocityDirection[2]), new THREE.Vector3(0, Math.sign(props.velocityDirection[1])*2, 0), (props.normalizedVelMag*i*FixSpacing(numOfArrows)), GetColor(Math.sign(props.velocityDirection[1])), 1, 1]}/>
                     ))
                 }
 
@@ -75,6 +75,14 @@ function GetColor(bool){
     {
         return"purple"
     }
+}
+
+function FixSpacing(numArrows)
+{
+    if(numArrows >= 4)
+    {return 1}
+    else
+    { return 2}
 }
 
 export default StarArrow
