@@ -1,4 +1,4 @@
-import React, {useRef, useState} from "react";
+import React, {useMemo, useRef, useState} from "react";
 import * as THREE from "three";
 import {ReturnColor} from "../HelperFunctions/ReturnColor";
 import {Html} from "drei";
@@ -25,7 +25,10 @@ function Star(props) {
     const x = props.velocityDirection[0];
     const y = props.velocityDirection[1];
     const z = props.velocityDirection[2];
-    const geo = new THREE.SphereBufferGeometry(1, 5, 5);
+    const geo = useMemo(()=>{
+        return new THREE.SphereBufferGeometry(1, 5, 5);
+    },[])
+    // const geo = new THREE.SphereBufferGeometry(1, 5, 5);
     const arrow = new THREE.ArrowHelper(0,0,0,0 );
 
 
