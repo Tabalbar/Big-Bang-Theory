@@ -1,4 +1,5 @@
-import React, {useRef} from "react";
+import React, {useRef, useState} from "react";
+import Modal from 'react-modal';
 import {Canvas, useFrame, useThree} from "react-three-fiber";
 import _ from "lodash";
 import {planetInfo} from "../PlanetData";
@@ -40,7 +41,7 @@ function Toolbar(
 
 
     // Ref to the controls, so that we can update them on every frame using useFrame
-
+    const[modalIsOpen, setModalIsOpen] = useState(true)
     return (
         <>
             {/*<Grid centered={true}>*/}
@@ -209,6 +210,20 @@ function Toolbar(
                 <div className="grid-item">7,500-10,000K</div>
                 <div className="grid-item">10,000-30,000K</div>
                 <div className="grid-item">greater than 33,000K</div>
+            </div>
+
+            <div>
+                <Modal isOpen={modalIsOpen} portalClassName="modal">
+                    <button className="mini basic red circular ui icon button" onClick={() => setModalIsOpen(false)}>
+                        <i className="x icon"></i>
+                    </button>
+                    <h1 className="modalHeader">
+                        About
+                    </h1>
+                    <p className="modalText">
+                        Text
+                    </p>
+                </Modal>
             </div>
 
 
