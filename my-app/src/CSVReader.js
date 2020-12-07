@@ -41,12 +41,12 @@ function CSVReader() {
                 min = arr[i].velMag
             }
         }
-        console.log(max)
+        // console.log(max)
         // console.log(Normalize(230,min,max))
 
         arr.forEach((element) => {
             element.normalizedVelMag = Normalize(element.velMag, min, max)
-            if(element.normalizedVelMag === 1)
+            if(element.normalizedVelMag <= .5)
             {
                 console.log('yes')
             }
