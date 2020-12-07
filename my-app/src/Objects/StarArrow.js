@@ -21,7 +21,7 @@ function StarArrow(props) {
     // const lineGeometry = new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(props.velocityDirection[0]/80,props.velocityDirection[1]/80,props.velocityDirection[2]/80),new THREE.Vector3(0,0,0)]);
     const points = [(1 - .9999) * props.velocityDirection[0] + .9999 * props.position[0], (1 - .9999) * props.velocityDirection[1] + .9999 * props.position[1], (1 - .9999) * props.velocityDirection[2] + .9999 * props.position[2]];
 
-    console.log(Math.round(props.normalizedVelMag*10))
+    // console.log(Math.round(props.normalizedVelMag*10))
     const numOfArrows = Math.round(props.normalizedVelMag*5)
 
     return (
