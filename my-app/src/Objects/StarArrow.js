@@ -44,7 +44,7 @@ function StarArrow(props) {
                     ))
                 }
 
-            <meshStandardMaterial attach='material' color={props.color}/>
+            {/*<meshStandardMaterial attach='material' color={props.color}/>*/}
             </mesh>
 
             {/*// /!*<mesh*!/*/}

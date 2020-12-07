@@ -41,10 +41,10 @@ function Visualization(
         realColor: 'Yellow'
     });
     const [toggleLines, setToggleLines] = useState(true);
-    const [distanceValues, setDistanceValues] = useState([0,3216]);
+    const [distanceValues, setDistanceValues] = useState([0,500]);
     const [velMagValues, setVelMagValues] = useState([0,9821]);
     const [filterValues, setFilterValues] = useState({
-        distance: [0,100],
+        distance: [0,500],
         velMag: [0,9821],
         velArrows: true
     })

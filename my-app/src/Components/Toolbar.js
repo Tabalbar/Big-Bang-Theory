@@ -131,7 +131,6 @@ function Toolbar(
                                     aria-labelledby="range-slider"
                                     max={3216}
                                 />
-                                {/*/>*/}
                             </Grid.Column>
                             <Grid.Column>
                                 <p style={{textAlign: 'center'}}>
