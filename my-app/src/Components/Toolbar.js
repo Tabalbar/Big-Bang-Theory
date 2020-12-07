@@ -1,4 +1,5 @@
-import React from "react";
+import React, {useState} from "react";
+import Modal from 'react-modal';
 import {Canvas} from "react-three-fiber";
 import _ from "lodash";
 import {planetInfo} from "../PlanetData";
@@ -22,7 +23,7 @@ function Toolbar(
         goToBookmarkedStar
     }
 ) {
-
+    const[modalIsOpen, setModalIsOpen] = useState(true)
     return (
         <>
             {/*<Grid centered={true}>*/}
@@ -157,6 +158,22 @@ function Toolbar(
                 <div className="grid-item">10,000-30,000K</div>
                 <div className="grid-item">greater than 33,000K</div>
             </div>
+
+            <div>
+                <Modal isOpen={modalIsOpen} portalClassName="modal">
+                    <button class="mini basic red circular ui icon button" onClick={() => setModalIsOpen(false)}>
+                       <i class="x icon"></i>
+                    </button>
+                    <h1 className="modalHeader">
+                        About
+                    </h1>
+                    <p className="modalText">
+                        Text
+                    </p>
+                </Modal>
+            </div>
+
+
 
 
             {/*<div className='miniMap'>*/}
