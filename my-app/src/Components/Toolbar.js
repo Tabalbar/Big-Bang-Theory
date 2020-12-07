@@ -110,7 +110,7 @@ function Toolbar(
                 <Container>
                     <Grid>
                         .
-                        <Grid.Row columns={6}>
+                        <Grid.Row columns={7}>
                             <Grid.Column>
                                 <Button color='yellow' style={{color: 'black'}} onClick={handleHomeButton}>Back to
                                     Sun</Button>
@@ -159,6 +159,10 @@ function Toolbar(
 
                             <Grid.Column>
                                 <Button onClick={handleSetFilterValues}>Filter</Button>
+                            </Grid.Column>
+
+                            <Grid.Column>
+                                <Button onClick={() => setModalIsOpen(true)}>About</Button>
                             </Grid.Column>
 
                         </Grid.Row>
