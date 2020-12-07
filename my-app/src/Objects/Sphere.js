@@ -3,6 +3,7 @@ import {Canvas, useFrame, useThree} from 'react-three-fiber'
 import UpdateCameraPosition from "../HelperFunctions/UpdateCameraPosition";
 import * as THREE from 'three'
 import {Html} from "drei";
+import _ from "lodash";
 
 function Sphere(props) {
     // This reference will give us direct access to the mesh
@@ -99,8 +100,14 @@ function Sphere(props) {
                 ref={mesh}
                 scale={[.1, .1, .1]}
             >
-                <arrowHelper
-                    args={[new THREE.Vector3(x, y, z), new THREE.Vector3(0, 0, 0), (0.22845691382765532*10), 'green', 1, 1]}/>
+                {
+                    _.times((2), i => (
+                        <arrowHelper
+                            args={[new THREE.Vector3(props.velocityDirection[0],props.velocityDirection[1],props.velocityDirection[2]), new THREE.Vector3(0, Math.sign(props.velocityDirection[1])*2, 0), (.45*i*2), "green", 1, 1]}/>
+                    ))
+                }
+                {/*<arrowHelper*/}
+                {/*    args={[new THREE.Vector3(x, y, z), new THREE.Vector3(0, 0, 0), (0.45*10), 'green', 1, 1]}/>*/}
                 <meshStandardMaterial attach='material' color={'green'}/>
             </mesh>
             {/*<line ref={mesh} geometry={geometry}>*/}

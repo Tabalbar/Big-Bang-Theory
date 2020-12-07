@@ -41,20 +41,20 @@ function CSVReader() {
                 min = arr[i].velMag
             }
         }
-        // console.log(max)
+        console.log(min)
         // console.log(Normalize(230,min,max))
 
         arr.forEach((element) => {
             element.normalizedVelMag = Normalize(element.velMag, min, max)
             if(element.normalizedVelMag <= .5)
             {
-                console.log('yes')
+                // console.log('yes')
             }
         })
         // console.log(max, min)
         const JSONobj = JSON.stringify(arr);
         // console.log(JSONobj)
-        fileDownload(JSONobj, 'newStarData.json')
+        // fileDownload(JSONobj, 'newStarData.json')
     };
 
     // const handleChange = (event)=>{
