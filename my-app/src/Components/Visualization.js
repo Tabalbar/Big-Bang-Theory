@@ -44,7 +44,7 @@ function Visualization(
     const [distanceValues, setDistanceValues] = useState([0,3216]);
     const [velMagValues, setVelMagValues] = useState([0,9821]);
     const [filterValues, setFilterValues] = useState({
-        distance: [0,1000],
+        distance: [0,100],
         velMag: [0,9821],
         velArrows: true
     })
@@ -53,8 +53,11 @@ function Visualization(
     const [cameraAxisView, setCameraAxisView] = useState()
 
     const removeStarFromList = (index) => {
-      let temp = bookmarkList.splice(index, 1)
-      setBookmarkList(temp)
+        console.log(index)
+      let temp = bookmarkList;
+        temp.splice(index, 1);
+        console.log(temp)
+      setBookmarkList([...temp])
     }
 
     const handleHomeButton = () => {
@@ -328,6 +331,7 @@ function Visualization(
                     setCameraMoving={setCameraMoving}
                     cameraMovingToHome={cameraMovingToHome}
                     setCameraMovingToHome={setCameraMovingToHome}
+                    removeStarFromList={removeStarFromList}
                 />
             </div>
         </>
