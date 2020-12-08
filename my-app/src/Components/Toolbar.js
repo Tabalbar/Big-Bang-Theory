@@ -207,13 +207,13 @@ function Toolbar(
                 <div className="grid-item-bw">Blue White</div>
                 <div className="grid-item-b">Blue</div>
                 <div className="grid-item">Surface Temp</div>
-                <div className="grid-item">less than 3,700 K</div>
+                <div className="grid-item"> &lt; 3,700 K</div>
                 <div className="grid-item">3,700-5,200 K</div>
                 <div className="grid-item">5,200-6,000 K</div>
                 <div className="grid-item">6,000-7,500 K</div>
                 <div className="grid-item">7,500-10,000K</div>
                 <div className="grid-item">10,000-30,000K</div>
-                <div className="grid-item">greater than 33,000K</div>
+                <div className="grid-item">&gt; 33,000K</div>
             </div>
 
             <div>
