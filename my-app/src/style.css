@@ -99,6 +99,34 @@
     text-align: center;
 }
 
+.modal {
+    position: fixed;
+    text-align: right;
+    left: 0px;
+    top: 0px;
+    z-index: 999;
+}
+
+.modalHeader {
+    text-align: center;
+
+}
+
+.modalText {
+    text-align: left;
+    font-size: 20px;
+}
+
+.modalCredit {
+    text-align: Center;
+    font-size: 20px;
+    padding-top: 0%;
+}
+
+.about {
+    left: 65%;
+}
+
 .starDescription {
     transform: translate3d(25%, -40%, 0);
     text-align: left;

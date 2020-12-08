@@ -1,4 +1,5 @@
-import React, {useRef} from "react";
+import React, {useRef, useState} from "react";
+import Modal from 'react-modal';
 import {Canvas, useFrame, useThree} from "react-three-fiber";
 import _ from "lodash";
 import {planetInfo} from "../PlanetData";
@@ -40,7 +41,7 @@ function Toolbar(
 
 
     // Ref to the controls, so that we can update them on every frame using useFrame
-
+    const[modalIsOpen, setModalIsOpen] = useState(true)
     return (
         <>
             {/*<Grid centered={true}>*/}
@@ -109,7 +110,7 @@ function Toolbar(
                 <Container>
                     <Grid>
                         .
-                        <Grid.Row columns={6}>
+                        <Grid.Row columns={7}>
                             <Grid.Column>
                                 <Button color='yellow' style={{color: 'black'}} onClick={handleHomeButton}>Back to
                                     Sun</Button>
@@ -158,6 +159,10 @@ function Toolbar(
 
                             <Grid.Column>
                                 <Button onClick={handleSetFilterValues}>Filter</Button>
+                            </Grid.Column>
+
+                            <Grid.Column className='about'>
+                                <Button onClick={() => setModalIsOpen(true)}>About</Button>
                             </Grid.Column>
 
                         </Grid.Row>
@@ -209,6 +214,62 @@ function Toolbar(
                 <div className="grid-item">7,500-10,000K</div>
                 <div className="grid-item">10,000-30,000K</div>
                 <div className="grid-item">greater than 33,000K</div>
+            </div>
+
+            <div>
+                <Modal isOpen={modalIsOpen} portalClassName="modal">
+                    <button className="mini basic red circular ui icon button" onClick={() => setModalIsOpen(false)}>
+                        <i className="x icon"></i>
+                    </button>
+                    <h1 className="modalHeader">
+                        A 3D-Visualization of Stellar Bodies in the Milky Way
+                    </h1>
+                    <p className="modalText">
+                        This visualization is an interactive 3-dimensional application to
+                        view and understand the relative positions and motions of stars within our local vicinity of the Milky Way galaxy.
+                        Data provided by The Global Astrometric Interferometer for Astrophysics, GAIA: a European space mission providing
+                        astrometry, photometry, and spectroscopy of more than 1000 million stars in the Milky Way (1% of total stars in galaxy).
+                        Raw data pulled from the second GAIA data release (2018)
+                        Transformed into cartesian galactocentric values using Astro.py python packages
+                    </p>
+                    <h3 className="modalHeader">
+                        How to use the visualization
+                    </h3>
+                    <p className="modalText">
+                        Focus: Left click on a star to move the camera's position to that star.
+                        The camera will now be focused the star's position. (The default focused star is the Earth’s sun).
+                    </p>
+                    <p className="modalText">
+                        Pan: Click and hold the right mouse button to pan the camera through space.
+                    </p>
+                    <p className="modalText">
+                        Rotation: Click and hold the left mouse button to change the camera's position around the focused star.
+                    </p>
+                    <p className="modalText">
+                        Zoom: Scrolling the mouse wheel towards you will zoom the camera out and scrolling the mouse wheel forward will zoom the camera in.
+                    </p>
+                    <p className="modalText">
+                        Filter: Use the options labeled “Distance” and “Velocity Magnitude” to filter the stars based on a min and max value.
+                        Use the “”Velocity Arrow” checkbox to turn the star vectors on/off. When you are ready to filter the stars, click on the button labeled “Filter”.
+                    </p>
+                    <p className="modalText">
+                        Bookmark: Click on the star you want to bookmark. Once the camera is focused on the star, use the blue star button in the toolbar to bookmark it.
+                        The star’s description will appear on the left of the window.
+                        You may use this table to compare star data and using the button labeled “Go” will move the camera to the bookmarked star’s position.
+                        Using the Red X button will remove the star from the bookmarked list.
+
+                    </p>
+                    <p className="modalText">
+                        You may return to the default view of the Earth's sun by clicking on the button labeled "Back to sun" and reopen this window by clicking
+                        the button labeled "About."
+                    </p>
+                    <h3 className="modalHeader">
+                        Credit
+                    </h3>
+                    <h3 className="modalCredit">
+                        Created by: Roderick Tabalba, Jeff Kleyner, Kameron Wong, Christopher Nishimura
+                    </h3>
+                </Modal>
             </div>
 
 
