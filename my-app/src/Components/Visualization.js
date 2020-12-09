@@ -57,10 +57,8 @@ function Visualization(
     const [miniMapCameraPosition, setMiniMapCameraPosition] = useState(null);
 
     const removeStarFromList = (index) => {
-        console.log(index)
       let temp = bookmarkList;
         temp.splice(index, 1);
-        console.log(temp)
       setBookmarkList([...temp])
     }
 

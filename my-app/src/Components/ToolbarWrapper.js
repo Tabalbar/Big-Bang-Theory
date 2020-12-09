@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import Toolbar from "./Toolbar";
 
 //todo This will hold all the functionality of the toolbar, see example below
@@ -24,12 +24,18 @@ function ToolbarWrapper(
         setCameraMoving,
         cameraMovingToHome,
         setCameraMovingToHome,
-    handleBookmark
+        handleBookmark
     }
-) {
+)
+{
 
+        const [openBookmark, setOpenBookmark] = useState(false);
 
-    return (
+        const handleOpenBookmark = () => {
+                setOpenBookmark(prevState => !prevState)
+        }
+
+        return (
         <>
             <Toolbar
                 handleHomeButton={handleHomeButton}
@@ -53,6 +59,8 @@ function ToolbarWrapper(
                 setCameraMovingToHome={setCameraMovingToHome}
                 handleBookmark={handleBookmark}
                 removeStarFromList={removeStarFromList}
+                openBookmark={openBookmark}
+                handleOpenBookmark={handleOpenBookmark}
             />
         </>
     )

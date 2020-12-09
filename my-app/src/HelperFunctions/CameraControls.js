@@ -20,11 +20,11 @@ const CameraControls = (props) => {
     const controls = useRef();
     useFrame((state) => {
         if(props.cameraMovingToHome){
-            camera.position.set(0,0,2)
+            camera.position.set(0,0,7)
             props.setCameraMovingToHome(false)
         }
         if(props.cameraMovingToHome){
-            camera.position.set(props.cameraPosition.x,props.cameraPosition.y,props.cameraPosition.z+2)
+            camera.position.set(props.cameraPosition.x,props.cameraPosition.y,props.cameraPosition.z+7)
             props.setCameraMovingToHome(false);
         }
         controls.current.update();
