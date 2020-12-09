@@ -225,15 +225,15 @@ function Toolbar(
                 <div className="grid-item"># of Arrows</div>
                 <div className="grid-item">Velocity</div>
                 <div className="grid-item">&gt;</div>
-                <div className="grid-item">0-100km/h</div>
+                <div className="grid-item">0-100km/s</div>
                 <div className="grid-item">&gt;&gt;</div>
-                <div className="grid-item">100-200km/h</div>
+                <div className="grid-item">100-200km/s</div>
                 <div className="grid-item">&gt;&gt;&gt;</div>
-                <div className="grid-item">200-300km/h</div>
+                <div className="grid-item">200-300km/s</div>
                 <div className="grid-item">&gt;&gt;&gt;&gt;</div>
-                <div className="grid-item">300-400km/h</div>
+                <div className="grid-item">300-400km/s</div>
                 <div className="grid-item">&gt;&gt;&gt;&gt;&gt;</div>
-                <div className="grid-item">&gt;400km/h</div>
+                <div className="grid-item">&gt;400km/s</div>
             </div>
 
             <div>
