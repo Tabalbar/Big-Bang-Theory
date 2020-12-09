@@ -51,6 +51,18 @@
     background-color: black;
 }
 
+.legend-2 {
+    display: grid;
+    grid-gap: 0px 0px;
+    grid-template-columns: auto auto;
+    position: fixed;
+    top: 9%;
+    left: 92%;
+    width: 8%;
+    height: 8%;
+    background-color: black;
+}
+
 .grid-item-r {
     background-color: #F12F26;
     padding: 10px;
@@ -96,7 +108,7 @@
 .grid-item {
     background-color: rgba(255, 255, 255, 0.8);
     padding: 9px;
-    font-size: 15px;
+    font-size: 14.5px;
     text-align: center;
 }
 

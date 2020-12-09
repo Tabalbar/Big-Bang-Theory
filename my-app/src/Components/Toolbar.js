@@ -290,6 +290,21 @@ function Toolbar(
             </div>
 
 
+            <div className='legend-2'>
+                <div className="grid-item"># of Arrows</div>
+                <div className="grid-item">Velocity</div>
+                <div className="grid-item">&gt;</div>
+                <div className="grid-item">0-100km/s</div>
+                <div className="grid-item">&gt;&gt;</div>
+                <div className="grid-item">100-200km/s</div>
+                <div className="grid-item">&gt;&gt;&gt;</div>
+                <div className="grid-item">200-300km/s</div>
+                <div className="grid-item">&gt;&gt;&gt;&gt;</div>
+                <div className="grid-item">300-400km/s</div>
+                <div className="grid-item">&gt;&gt;&gt;&gt;&gt;</div>
+                <div className="grid-item">&gt;400km/s</div>
+            </div>
+
             <div>
                 <Modal isOpen={modalIsOpen} portalClassName="modal">
                     <button className="mini basic red circular ui icon button" onClick={() => setModalIsOpen(false)}>
@@ -335,7 +350,7 @@ function Toolbar(
                     </p>
                     <p className="modalText">
                         You may return to the default view of the Earth's sun by clicking on the button labeled "Back to sun" and reopen this window by clicking
-                        the button labeled "About."
+                        the button labeled "?."
                     </p>
                     <h3 className="modalHeader">
                         Credit
