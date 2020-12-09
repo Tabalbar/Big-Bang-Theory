@@ -281,7 +281,7 @@ function Toolbar(
                     </p>
                     <p className="modalText">
                         You may return to the default view of the Earth's sun by clicking on the button labeled "Back to sun" and reopen this window by clicking
-                        the button labeled "About."
+                        the button labeled "?."
                     </p>
                     <h3 className="modalHeader">
                         Credit
