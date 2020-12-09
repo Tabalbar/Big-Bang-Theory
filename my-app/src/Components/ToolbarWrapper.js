@@ -23,9 +23,9 @@ function ToolbarWrapper(
         setCameraMoving,
         cameraMovingToHome,
         setCameraMovingToHome,
+    handleBookmark
     }
-){
-
+) {
 
 
     return (
@@ -47,9 +47,10 @@ function ToolbarWrapper(
                 toggleVel={toggleVel}
                 handleToggleVel={handleToggleVel}
                 cameraMoving={cameraMoving}
-            setCameraMoving={setCameraMoving}
-            cameraMovingToHome={cameraMovingToHome}
-            setCameraMovingToHome={setCameraMovingToHome}
+                setCameraMoving={setCameraMoving}
+                cameraMovingToHome={cameraMovingToHome}
+                setCameraMovingToHome={setCameraMovingToHome}
+                handleBookmark={handleBookmark}
             />
         </>
     )

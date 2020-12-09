@@ -50,11 +50,11 @@ function Sphere(props) {
                 {...props}
                 ref={mesh}
                 scale={props.size}
-                onClick={() => {
-                    props.updatePosition(props.indexNum);
-                    props.setActive(!props.active);
-                    setCameraFocused(true);
-                }}
+                // onClick={() => {
+                //     props.updatePosition(props.indexNum);
+                //     props.setActive(!props.active);
+                //     setCameraFocused(true);
+                // }}
                 onPointerOver={(e) => setHover(true)}
                 onPointerOut={(e) => setHover(false)}
             >

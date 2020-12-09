@@ -23,7 +23,7 @@ function StarArrow(props) {
 
     // console.log(Math.round(props.normalizedVelMag*5))
     const numOfArrows = Math.ceil(props.normalizedVelMag*5)
-
+console.log(props.velocityDirection[0] * props.normalizedVelMag)
     return (
         <>
             <mesh
