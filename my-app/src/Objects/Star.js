@@ -95,19 +95,19 @@ function Star(props) {
                         null
                 }
                 <Html scaleFactor={2}>
-                    <div>
-                        <Button color='blue' onClick={() => {
-                            props.handleBookmark(props.indexNum);
-                            setIsSelected(true)
-                        }} icon>
-                            {
-                                isSelected ?
-                                    <Icon color='yellow' name='star'/>
-                                    :
-                                    <Icon color='yellow' name='star outline'/>
-                            }
-                        </Button>
-                    </div>
+                    {/*<div>*/}
+                    {/*    <Button color='blue' onClick={() => {*/}
+                    {/*        props.handleBookmark(props.indexNum);*/}
+                    {/*        setIsSelected(true)*/}
+                    {/*    }} icon>*/}
+                    {/*        {*/}
+                    {/*            isSelected ?*/}
+                    {/*                <Icon color='yellow' name='star'/>*/}
+                    {/*                :*/}
+                    {/*                <Icon color='yellow' name='star outline'/>*/}
+                    {/*        }*/}
+                    {/*    </Button>*/}
+                    {/*</div>*/}
                 </Html>
 
 
