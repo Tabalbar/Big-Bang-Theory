@@ -235,7 +235,7 @@ function Toolbar(
                     <Grid.Column>Star Name</Grid.Column>
                     <Grid.Column>Distance (ly)</Grid.Column>
                     <Grid.Column>Temperature (K)</Grid.Column>
-                    <Grid.Column>Velocity Magnitude (Km/h)</Grid.Column>
+                    <Grid.Column>Velocity Magnitude (Km/s)</Grid.Column>
                     <Grid.Column>Remove Star</Grid.Column>
                 </Grid.Row>
                   {
