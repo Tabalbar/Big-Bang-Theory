@@ -223,16 +223,16 @@ function Toolbar(
 
             <div className='legend-2'>
                 <div className="grid-item"># of Arrows</div>
-                <div className="grid-item">1</div>
-                <div className="grid-item">2</div>
-                <div className="grid-item">3</div>
-                <div className="grid-item">4</div>
-                <div className="grid-item">5</div>
                 <div className="grid-item">Velocity</div>
+                <div className="grid-item">&gt;</div>
                 <div className="grid-item">0-100km/h</div>
+                <div className="grid-item">&gt;&gt;</div>
                 <div className="grid-item">100-200km/h</div>
+                <div className="grid-item">&gt;&gt;&gt;</div>
                 <div className="grid-item">200-300km/h</div>
+                <div className="grid-item">&gt;&gt;&gt;&gt;</div>
                 <div className="grid-item">300-400km/h</div>
+                <div className="grid-item">&gt;&gt;&gt;&gt;&gt;</div>
                 <div className="grid-item">&gt;400km/h</div>
             </div>
 
