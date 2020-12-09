@@ -50,7 +50,7 @@ function Toolbar(
 
 
     // Ref to the controls, so that we can update them on every frame using useFrame
-    const [modalIsOpen, setModalIsOpen] = useState(false)
+    const [modalIsOpen, setModalIsOpen] = useState(true)
     return (
         <>
             {/*<Grid centered={true}>*/}
@@ -244,7 +244,7 @@ function Toolbar(
 
                 {/*</Table>*/}
                 <Grid verticalAlign='middle'>
-                    <Grid.Row inverted as='h5' columns={1}>
+                    <Grid.Row inverted as='h3' columns={1}>
                         <Grid.Column>
                             Bookmark List:
                         </Grid.Column>
@@ -265,7 +265,7 @@ function Toolbar(
                         openBookmark ?
                             <>
                                 <Grid.Row columns={10}>
-                                    <Grid.Column>Star Name</Grid.Column>
+                                    <Grid.Column>Star Name (Hover)</Grid.Column>
                                     <Grid.Column>Distance (ly)</Grid.Column>
                                     <Grid.Column>Temperature (K)</Grid.Column>
                                     <Grid.Column>Velocity Magnitude (Km/s)</Grid.Column>
@@ -275,7 +275,7 @@ function Toolbar(
                                     bookmarkList.map((value, index) => {
                                         return (
                                             <Grid.Row columns={10}>
-                                                <Grid.Column><Popup content={value.name} trigger={<h5>Star Name</h5>} /></Grid.Column>
+                                                <Grid.Column><Popup content={value.name} trigger={<h5>Star</h5>} /></Grid.Column>
                                                 <Grid.Column>{value.distance}</Grid.Column>
                                                 <Grid.Column>{value.temperature}</Grid.Column>
                                                 <Grid.Column>{value.vel_is_valid === "True" ? value.velMag : "None"}</Grid.Column>
