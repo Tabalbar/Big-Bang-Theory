@@ -230,12 +230,12 @@ function Toolbar(
 
               {/*</Table>*/}
               <Grid verticalAlign='middle'>
-                <Grid.Row inverted as='h1'>Bookmarked Stars:</Grid.Row>
+                <Grid.Row inverted as='h1' >Bookmarked Stars:</Grid.Row>
                 <Grid.Row columns={5}>
                     <Grid.Column>Star Name</Grid.Column>
-                    <Grid.Column>Distance</Grid.Column>
-                    <Grid.Column>Temperature</Grid.Column>
-                    <Grid.Column>Velocity Magnitude</Grid.Column>
+                    <Grid.Column>Distance (ly)</Grid.Column>
+                    <Grid.Column>Temperature (K)</Grid.Column>
+                    <Grid.Column>Velocity Magnitude (Km/h)</Grid.Column>
                     <Grid.Column>Remove Star</Grid.Column>
                 </Grid.Row>
                   {
