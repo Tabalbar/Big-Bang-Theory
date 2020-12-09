@@ -113,11 +113,11 @@ function Star(props) {
                     {/*        </Button>*/}
                     {/*    </div>*/}
                     {/*</Html>*/}
-                        </Html>
-                        :
-                        null
+                    {/*    </Html>*/}
+                    {/*    :*/}
+                    {/*    null*/}
                 }
-                <Html scaleFactor={2}>
+                {/*<Html scaleFactor={2}>*/}
                     {/*<div>*/}
                     {/*    <Button color='blue' onClick={() => {*/}
                     {/*        props.handleBookmark(props.indexNum);*/}
@@ -131,7 +131,7 @@ function Star(props) {
                     {/*        }*/}
                     {/*    </Button>*/}
                     {/*</div>*/}
-                </Html>
+                {/*</Html>*/}
 
                     <meshStandardMaterial attach='material' color={ReturnColor(props.temperature)}/>
                 </mesh>
