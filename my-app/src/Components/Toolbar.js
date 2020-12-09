@@ -6,7 +6,7 @@ import Sphere from "../Objects/Sphere";
 import starInfo from "../newStarData";
 import Star from "../Objects/Star";
 import StarArrow from "../Objects/StarArrow";
-import {Button, Grid, Container, List, Header, Label} from "semantic-ui-react";
+import {Button, Grid, Container, List, Header, Icon, Label} from "semantic-ui-react";
 import InputRange from "react-input-range";
 import Slider from "@material-ui/core/Slider";
 import {Radio} from "framework7-react";
@@ -14,6 +14,7 @@ import {Checkbox} from "@material-ui/core";
 import CompassObject from "../Objects/CompassObject";
 import CameraControls from "../HelperFunctions/CameraControls";
 import Visualization from "./Visualization";
+import Table from '@material-ui/core/Table';
 
 
 //todo define what the wrapper will look like in here
@@ -173,30 +174,90 @@ function Toolbar(
 
             {/*</Grid>*/}
             <div className='bookmarkList'>
-                <Header inverted as='h1'>
-                    Bookmarked Stars:
-                </Header>
-                <List divided verticalAlign='middle'>
-                    {
-                        bookmarkList.map((value, index) => {
-                            return (
-                                <List.Item>
-                                    <List.Content floated='right'>
-                                        <Button
-                                            // onClick={() => goToBookmarkedStar(index)}>Go
-                                            onClick={() => removeStarFromList(index)}>Remove
-                                        </Button>
-                                    </List.Content>
-                                    <List.Content>{value.name}</List.Content>
-                                    <List.Content>{value.distance}</List.Content>
-                                    <List.Content>{value.temperature}</List.Content>
-                                    <List.Content>{value.velMag}</List.Content>
-                                </List.Item>
+                {/*<Header inverted as='h1'>*/}
+                {/*    Bookmarked Stars:*/}
+                {/*</Header>*/}
+                {/*<List divided verticalAlign='middle'>*/}
+                {/*    {*/}
+                {/*        bookmarkList.map((value, index) => {*/}
+                {/*            return (*/}
+                {/*                <List.Item>*/}
+                {/*                    <List.Content floated='right'>*/}
+                {/*                        <Button*/}
+                {/*                            // onClick={() => goToBookmarkedStar(index)}>Go*/}
+                {/*                            onClick={() => removeStarFromList(index)}>Remove*/}
+                {/*                        </Button>*/}
+                {/*                    </List.Content>*/}
+                {/*                    <List.Content>{value.name}</List.Content>*/}
+                {/*                    <List.Content>{value.distance}</List.Content>*/}
+                {/*                    <List.Content>{value.temperature}</List.Content>*/}
+                {/*                    <List.Content>{value.velMag}</List.Content>*/}
+                {/*                </List.Item>*/}
 
-                            )
-                        })
-                    }
-                </List></div>
+                {/*            )*/}
+                {/*        })*/}
+                {/*    }*/}
+                {/*</List>*/}
+              {/*<Table celled verticalAlign='middle'>*/}
+              {/*  <Table.Header>*/}
+              {/*    <Table.Row>*/}
+              {/*      <Table.HeaderCell>Star Name</Table.HeaderCell>*/}
+              {/*      <Table.HeaderCell>Distance</Table.HeaderCell>*/}
+              {/*      <Table.HeaderCell>Temperature</Table.HeaderCell>*/}
+              {/*      <Table.HeaderCell>Velocity Magnitude</Table.HeaderCell>*/}
+              {/*      <Table.HeaderCell>Remove Star</Table.HeaderCell>*/}
+              {/*    </Table.Row>*/}
+              {/*  </Table.Header>*/}
+
+              {/*  <Table.Body>*/}
+              {/*    {*/}
+              {/*      bookmarkList.map((value, index) => {*/}
+              {/*        return (*/}
+              {/*            <Table.Row>*/}
+              {/*              <Table.Cell>{value.name}</Table.Cell>*/}
+              {/*              <Table.Cell>{value.distance}</Table.Cell>*/}
+              {/*              <Table.Cell>{value.temperature}</Table.Cell>*/}
+              {/*              <Table.Cell>{value.velMag}</Table.Cell>*/}
+              {/*              <Table.Cell selectable onClick={() => removeStarFromList(index)}>*/}
+              {/*                Remove*/}
+              {/*              </Table.Cell>*/}
+              {/*            </Table.Row>*/}
+
+              {/*        )*/}
+              {/*      })*/}
+              {/*    }*/}
+              {/*  </Table.Body>*/}
+
+              {/*</Table>*/}
+              <Grid verticalAlign='middle'>
+                <Grid.Row inverted as='h1'>Bookmarked Stars:</Grid.Row>
+                <Grid.Row columns={5}>
+                    <Grid.Column>Star Name</Grid.Column>
+                    <Grid.Column>Distance</Grid.Column>
+                    <Grid.Column>Temperature</Grid.Column>
+                    <Grid.Column>Velocity Magnitude</Grid.Column>
+                    <Grid.Column>Remove Star</Grid.Column>
+                </Grid.Row>
+                  {
+                    bookmarkList.map((value, index) => {
+                      return (
+                          <Grid.Row columns={5}>
+                            <Grid.Column>{value.name}</Grid.Column>
+                            <Grid.Column>{value.distance}</Grid.Column>
+                            <Grid.Column>{value.temperature}</Grid.Column>
+                            <Grid.Column>{value.velMag}</Grid.Column>
+                            <Grid.Column>
+                              <Button icon color="red" circular onClick={() => removeStarFromList(index)}>
+                                  <Icon name="x"/>
+                              </Button>
+                            </Grid.Column>
+                          </Grid.Row>
+
+                      )
+                    })
+                  }
+              </Grid>
+            </div>
             <div className='legend'>
                 <div className="grid-item">Star Color</div>
                 <div className="grid-item-r">Red</div>
