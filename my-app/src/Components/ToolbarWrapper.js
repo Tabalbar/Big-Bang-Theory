@@ -16,6 +16,7 @@ function ToolbarWrapper(
         handleSetFilterValues,
         filterValues,
         handleSetVelMagValues,
+        removeStarFromList,
         velMagValues,
         toggleVel,
         handleToggleVel,
@@ -51,6 +52,7 @@ function ToolbarWrapper(
                 cameraMovingToHome={cameraMovingToHome}
                 setCameraMovingToHome={setCameraMovingToHome}
                 handleBookmark={handleBookmark}
+                removeStarFromList={removeStarFromList}
             />
         </>
     )

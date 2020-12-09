@@ -46,6 +46,7 @@ function Visualization(
     const [distanceValues, setDistanceValues] = useState([0,500]);
     const [velMagValues, setVelMagValues] = useState([0,9821]);
     const [filterValues, setFilterValues] = useState({
+
         distance: [0,500],
         velMag: [0,9821],
         velArrows: true
@@ -54,6 +55,14 @@ function Visualization(
     const [toggleVel, setToggleVel] = useState(true);
     const [cameraAxisView, setCameraAxisView] = useState()
     const [miniMapCameraPosition, setMiniMapCameraPosition] = useState(null);
+
+    const removeStarFromList = (index) => {
+        console.log(index)
+      let temp = bookmarkList;
+        temp.splice(index, 1);
+        console.log(temp)
+      setBookmarkList([...temp])
+    }
 
     const handleHomeButton = () => {
         const tmpCameraPosition = {
@@ -327,6 +336,7 @@ console.log(velMagValues)
                     cameraMovingToHome={cameraMovingToHome}
                     setCameraMovingToHome={setCameraMovingToHome}
                     handleBookmark={handleBookmark}
+                    removeStarFromList={removeStarFromList}
                 />
                 <div className='miniMap'>
                     <Canvas
