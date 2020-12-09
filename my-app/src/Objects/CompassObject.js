@@ -7,11 +7,10 @@ function CompassObject(props) {
     const mesh = useRef()
 
     // useFrame((state) => {
-    //     console.log(mesh.obj)
+    //     console.log(props.miniMapCameraPosition === null ? 1: props.miniMapCameraPosition.z)
     //
     // });
 
-console.log(props.miniMapCameraPosition === null ? 1: props.miniMapCameraPosition.z)
     return (
         <mesh
             {...props}

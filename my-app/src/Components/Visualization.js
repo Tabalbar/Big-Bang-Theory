@@ -89,9 +89,11 @@ function Visualization(
             temperature: '5772',
             ra: planetInfo[0].ra,
             dec: planetInfo[0].dec,
+            position: planetInfo[0].position,
             distance: planetInfo[0].distance,
             velocityDirection: [10,230, 5],
             velMag: 230.271,
+            size: [0.1,0.1,0.1],
             vel_is_valid: "True",
             realColor: 'Yellow'
         });
@@ -99,7 +101,7 @@ function Visualization(
         setToggleLines(true)
         setCameraMovingToHome(true)
     };
-console.log(velMagValues)
+
     const updateStarPosition = (indexNum) => {
         const tmpCameraPosition = {
             x: starInfo[indexNum].position[0],
@@ -129,6 +131,8 @@ console.log(velMagValues)
             notable: starInfo[indexNum].notable,
             ra: starInfo[indexNum].ra,
             dec: starInfo[indexNum].dec,
+            size: [0.1,0.1,0.1],
+            position: starInfo[indexNum].position,
             distance: starInfo[indexNum].distance,
             realPosition: starInfo[indexNum].realPosition,
             temperature: starInfo[indexNum].temperature,
@@ -170,7 +174,9 @@ console.log(velMagValues)
             notable: bookmarkList[indexNum].notable,
             ra: bookmarkList[indexNum].ra,
             dec: bookmarkList[indexNum].dec,
+            size: [0.1,0.1,0.1],
             distance: bookmarkList[indexNum].distance,
+            position: bookmarkList[indexNum].position,
             realPosition: bookmarkList[indexNum].realPosition,
             temperature: bookmarkList[indexNum].temperature,
             brightness: bookmarkList[indexNum].brightness,

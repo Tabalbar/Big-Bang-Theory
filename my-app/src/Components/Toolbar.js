@@ -34,7 +34,7 @@ function Toolbar(
         distanceValues,
         handleSetDistanceValues,
         bookmarkList,
-        // goToBookmarkedStar,
+        goToBookmarkedStar,
         removeStarFromList,
         handleSetFilterValues,
         filterValues,
@@ -120,6 +120,9 @@ function Toolbar(
                     <Grid>
                         .
                         <Grid.Row columns={8}>
+                            <Grid.Column floated={'right'}>
+                                <Button circular icon onClick={() => setModalIsOpen(true)}>?</Button>
+                            </Grid.Column>
                             <Grid.Column>
                                 <Button color='yellow' style={{color: 'black'}} onClick={handleHomeButton}>Back to
                                     Sun</Button>
@@ -173,9 +176,7 @@ function Toolbar(
                                 <Button onClick={handleBookmark} color='blue' icon>Bookmark <Icon color='yellow'
                                                                                                   name='star'/></Button>
                             </Grid.Column>
-                            <Grid.Column floated={'right'}>
-                                <Button circular icon onClick={() => setModalIsOpen(true)}>?</Button>
-                            </Grid.Column>
+
 
                         </Grid.Row>
 
@@ -243,59 +244,70 @@ function Toolbar(
                 {/*  </Table.Body>*/}
 
                 {/*</Table>*/}
-                <Grid verticalAlign='middle'>
-                    <Grid.Row inverted as='h3' columns={1}>
-                        <Grid.Column>
-                            Bookmark List:
-                        </Grid.Column>
-
-                    </Grid.Row>
-                    <Grid.Row>
-                            <Button onClick={handleOpenBookmark} icon size='tiny'>
+                <div className='tableStyle'>
+                    <Grid verticalAlign='middle'>
+                        <Grid.Row as='h3' columns={2}>
+                            <Button style={{marginLeft: 10, marginTop: 5}}  onClick={handleOpenBookmark} icon size='tiny'>
                                 {
                                     openBookmark ?
                                         <Icon name='arrow up'/>
-                                        :
+:
                                         <Icon name='arrow down'/>
 
                                 }
+
                             </Button>
-                    </Grid.Row>
-                    {
-                        openBookmark ?
-                            <>
-                                <Grid.Row columns={10}>
-                                    <Grid.Column>Star Name (Hover)</Grid.Column>
-                                    <Grid.Column>Distance (ly)</Grid.Column>
-                                    <Grid.Column>Temperature (K)</Grid.Column>
-                                    <Grid.Column>Velocity Magnitude (Km/s)</Grid.Column>
-                                    <Grid.Column>Remove Star</Grid.Column>
-                                </Grid.Row>
-                                {
-                                    bookmarkList.map((value, index) => {
-                                        return (
-                                            <Grid.Row columns={10}>
-                                                <Grid.Column><Popup content={value.name} trigger={<h5>Star</h5>} /></Grid.Column>
-                                                <Grid.Column>{value.distance}</Grid.Column>
-                                                <Grid.Column>{value.temperature}</Grid.Column>
-                                                <Grid.Column>{value.vel_is_valid === "True" ? value.velMag : "None"}</Grid.Column>
-                                                <Grid.Column>
-                                                    <Button icon color="red" circular
-                                                            onClick={() => removeStarFromList(index)}>
-                                                        <Icon name="x"/>
-                                                    </Button>
-                                                </Grid.Column>
-                                            </Grid.Row>
+                            <Grid.Column textAlign='middle'>
+                                    Bookmarked Stars
+                            </Grid.Column>
 
-                                        )
-                                    })
-                                }
-                            </>
-                            :
-                            null
-                    }
 
-                </Grid>
+
+                        </Grid.Row>
+                        <Grid.Row>
+
+                        </Grid.Row>
+                        {
+                            openBookmark ?
+                                <>
+                                    {/*<Button style={{marginLeft: 20}} onClick={handleOpenBookmark} icon size='tiny'>*/}
+                                    {/*    <Icon name='arrow up'/>*/}
+
+                                    {/*</Button>*/}
+                                    <Grid.Row columns={5}>
+                                        <Grid.Column>Star Name (Hover)</Grid.Column>
+                                        <Grid.Column>Distance (ly)</Grid.Column>
+                                        <Grid.Column>Temperature (K)</Grid.Column>
+                                        <Grid.Column>Velocity Magnitude (Km/s)</Grid.Column>
+                                        <Grid.Column>Remove Star</Grid.Column>
+                                    </Grid.Row>
+                                    {
+                                        bookmarkList.map((value, index) => {
+                                            return (
+                                                <Grid.Row columns={5}>
+                                                    <Grid.Column><Popup content={value.name}
+                                                                        trigger={<h5 onClick={()=>goToBookmarkedStar(index)}>Star</h5>}/></Grid.Column>
+                                                    <Grid.Column>{value.distance}</Grid.Column>
+                                                    <Grid.Column>{value.temperature}</Grid.Column>
+                                                    <Grid.Column>{value.vel_is_valid === "True" ? value.velMag : "None"}</Grid.Column>
+                                                    <Grid.Column>
+                                                        <Button icon color="red" circular
+                                                                onClick={() => removeStarFromList(index)}>
+                                                            <Icon name="x"/>
+                                                        </Button>
+                                                    </Grid.Column>
+                                                </Grid.Row>
+
+                                            )
+                                        })
+                                    }
+                                </>
+                                :
+                                null
+                        }
+
+                    </Grid>
+                </div>
             </div>
             <div className='legend'>
                 <div className="grid-item">Star Color</div>
@@ -322,13 +334,21 @@ function Toolbar(
                 <div className="grid-item">Velocity</div>
                 <div className="grid-item"><Icon name='arrow up' color='black'/></div>
                 <div className="grid-item">0-100km/s</div>
-                <div className="grid-item"><Icon name='arrow up' color='black'/><Icon name='arrow up' color='black'/></div>
+                <div className="grid-item"><Icon name='arrow up' color='black'/><Icon name='arrow up' color='black'/>
+                </div>
                 <div className="grid-item">100-200km/s</div>
-                <div className="grid-item"><Icon name='arrow up' color='black'/><Icon name='arrow up' color='black'/><Icon name='arrow up' color='black'/></div>
+                <div className="grid-item"><Icon name='arrow up' color='black'/><Icon name='arrow up'
+                                                                                      color='black'/><Icon
+                    name='arrow up' color='black'/></div>
                 <div className="grid-item">200-300km/s</div>
-                <div className="grid-item"><Icon name='arrow up' color='black'/><Icon name='arrow up' color='black'/><Icon name='arrow up' color='black'/><Icon name='arrow up' color='black'/></div>
+                <div className="grid-item"><Icon name='arrow up' color='black'/><Icon name='arrow up'
+                                                                                      color='black'/><Icon
+                    name='arrow up' color='black'/><Icon name='arrow up' color='black'/></div>
                 <div className="grid-item">300-400km/s</div>
-                <div className="grid-item"><Icon name='arrow up' color='black'/><Icon name='arrow up' color='black'/><Icon name='arrow up' color='black'/><Icon name='arrow up' color='black'/><Icon name='arrow up' color='black'/></div>
+                <div className="grid-item"><Icon name='arrow up' color='black'/><Icon name='arrow up'
+                                                                                      color='black'/><Icon
+                    name='arrow up' color='black'/><Icon name='arrow up' color='black'/><Icon name='arrow up'
+                                                                                              color='black'/></div>
                 <div className="grid-item">&gt;400km/s</div>
                 <div className="grid-item"><Icon name='arrow up' color='green'/></div>
                 <div className="grid-item">Positive Y velocity</div>
@@ -337,9 +357,9 @@ function Toolbar(
             </div>
 
             <div>
-                <Modal isOpen={modalIsOpen} portalClassName="modal">
+                <Modal isOpen={modalIsOpen} portalClassName={modalIsOpen ? "modal": null}>
                     <button className="mini basic red circular ui icon button" onClick={() => setModalIsOpen(false)}>
-                        <i className="x icon"></i>
+                        <i className="x icon"/>
                     </button>
                     <h1 className="modalHeader">
                         A 3D-Visualization of Stellar Bodies in the Milky Way
@@ -347,11 +367,12 @@ function Toolbar(
                     <p className="modalText">
                         This visualization is an interactive 3-dimensional application to
                         view and understand the relative positions and motions of stars within our local vicinity of the
-                        Milky Way galaxy.
+                        Milky Way galaxy.<br/>
                         Data provided by The Global Astrometric Interferometer for Astrophysics, GAIA: a European space
                         mission providing
-                        astrometry, photometry, and spectroscopy of more than 1000 million stars in the Milky Way (1% of
-                        total stars in galaxy).
+                        astronomy, photometry,
+                        and spectroscopy of more than 1000 million stars in the Milky Way (1% of
+                        total stars in galaxy).<br/>
                         Raw data pulled from the second GAIA data release (2018)
                         Transformed into cartesian galactocentric values using Astro.py python packages
                     </p>
@@ -359,32 +380,33 @@ function Toolbar(
                         How to use the visualization
                     </h3>
                     <p className="modalText">
-                        Focus: Left click on a star to move the camera's position to that star.
+                        <b>Focus:</b><br/> Left click on a star to move the camera's position to that star.<br/>
                         The camera will now be focused the star's position. (The default focused star is the Earth’s
                         sun).
                     </p>
                     <p className="modalText">
-                        Pan: Click and hold the right mouse button to pan the camera through space.
+                        <b>Pan:</b><br/> Click and hold the right mouse button to pan the camera through space.
                     </p>
                     <p className="modalText">
-                        Rotation: Click and hold the left mouse button to change the camera's position around the
+                        <b>Rotation:</b><br/> Click and hold the left mouse button to change the camera's position around the
                         focused star.
                     </p>
                     <p className="modalText">
-                        Zoom: Scrolling the mouse wheel towards you will zoom the camera out and scrolling the mouse
+                        <b>Zoom:</b><br/> Scrolling the mouse wheel towards you will zoom the camera out and scrolling the mouse
                         wheel forward will zoom the camera in.
                     </p>
                     <p className="modalText">
-                        Filter: Use the options labeled “Distance” and “Velocity Magnitude” to filter the stars based on
+                        <b>Filter:</b><br/> Use the options labeled “Distance” and “Velocity Magnitude” to filter the stars based on
                         a min and max value.
-                        Use the “”Velocity Arrow” checkbox to turn the star vectors on/off. When you are ready to filter
+                        Use the “”Velocity Arrow” checkbox to turn the star vectors on/off.<br/>
+                        When you are ready to filter
                         the stars, click on the button labeled “Filter”.
                     </p>
                     <p className="modalText">
-                        Bookmark: Click on the star you want to bookmark. Once the camera is focused on the star, use
+                        <b>Bookmark:</b><br/> Click on the star you want to bookmark. Once the camera is focused on the star, use
                         the blue star button in the toolbar to bookmark it.
-                        The star’s description will appear on the left of the window.
-                        You may use this table to compare star data and using the button labeled “Go” will move the
+                        The star’s description will appear on the left of the window.<br/>
+                        You may use this table to compare star data and clicking on the star name will move the
                         camera to the bookmarked star’s position.
                         Using the Red X button will remove the star from the bookmarked list.
 
