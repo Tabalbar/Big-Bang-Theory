@@ -55,8 +55,8 @@
     grid-gap: 0px 0px;
     grid-template-columns: auto auto auto auto auto auto;
     position: fixed;
-    top: 0%;
-    left: 17%;
+    top: 9%;
+    left: 50%;
     width: 32%;
     height: 8%;
     background-color: black;
