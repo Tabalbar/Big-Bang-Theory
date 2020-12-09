@@ -14,6 +14,8 @@ import Selected from "../Objects/Selected";
 import Pin from "../Objects/Pin";
 import * as THREE from "three";
 import Toolbar from "./Toolbar";
+import CompassObject from "../Objects/CompassObject";
+import MinimapCamera from "../HelperFunctions/MinimapCamera";
 
 
 function Visualization(
@@ -51,6 +53,7 @@ function Visualization(
     const [bookmarkList, setBookmarkList] = useState([]);
     const [toggleVel, setToggleVel] = useState(true);
     const [cameraAxisView, setCameraAxisView] = useState()
+    const [miniMapCameraPosition, setMiniMapCameraPosition] = useState(null);
 
     const handleHomeButton = () => {
         const tmpCameraPosition = {
@@ -198,8 +201,8 @@ console.log(velMagValues)
         setToggleVel(prevState => !prevState);
     }
 
-    const handleBookmark = (indexNum) => {
-        setBookmarkList(prevState => [...prevState, starInfo[indexNum]])
+    const handleBookmark = () => {
+        setBookmarkList(prevState => [...prevState, focusDescription])
     };
 
     return (
@@ -260,7 +263,6 @@ console.log(velMagValues)
                                             active={active}
                                             focusDescription={focusDescription}
                                             filterValues={filterValues}
-                                            handleBookmark={handleBookmark}
                                         />
                                         :
                                         null
@@ -297,6 +299,7 @@ console.log(velMagValues)
                                 setCameraMoving={setCameraMoving}
                                 cameraMovingToHome={cameraMovingToHome}
                                 setCameraMovingToHome={setCameraMovingToHome}
+                                setMiniMapCameraPosition={setMiniMapCameraPosition}
                             />
                     }
                     <Stats
@@ -323,7 +326,53 @@ console.log(velMagValues)
                     setCameraMoving={setCameraMoving}
                     cameraMovingToHome={cameraMovingToHome}
                     setCameraMovingToHome={setCameraMovingToHome}
+                    handleBookmark={handleBookmark}
                 />
+                <div className='miniMap'>
+                    <Canvas
+                        camera={{far: 10000000, position: [0, 0, 3], fov: 75}}
+                    >
+                        <ambientLight/>
+                        <pointLight position={[10, 10, 10]}/>
+                        <CompassObject
+                            position={[selectedPosition.x, selectedPosition.y, selectedPosition.z]}
+                            selectedPosition={selectedPosition}
+                            miniMapCameraPosition={miniMapCameraPosition}
+                        />
+                        <MinimapCamera
+                            cameraPosition={cameraPosition}
+                            cameraMoving={cameraMoving}
+                            setCameraMoving={setCameraMoving}
+                            cameraMovingToHome={cameraMovingToHome}
+                            setCameraMovingToHome={setCameraMovingToHome}
+                            miniMapCameraPosition={miniMapCameraPosition}
+                            selectedPosition={selectedPosition}
+                        />
+                        {/*{*/}
+                        {/*    _.times(starInfo.length, (i) => (*/}
+                        {/*        <>*/}
+
+                        {/*            {*/}
+                        {/*                starInfo[i].distance >= filterValues.distance[0] && starInfo[i].distance <= filterValues.distance[1] && starInfo[i].velMag >= filterValues.velMag[0] && starInfo[i].velMag <= filterValues.velMag[1] ?*/}
+                        {/*                    <CompassObject*/}
+                        {/*                        color={starInfo[i].color}*/}
+                        {/*                        indexNum={i}*/}
+                        {/*                        position={starInfo[i].position}*/}
+                        {/*                        updateStarPosition={updateStarPosition}*/}
+                        {/*                        cameraPosition={cameraPosition}*/}
+                        {/*                        cameraMoving={cameraMoving}*/}
+
+                        {/*                    />*/}
+                        {/*                    :*/}
+                        {/*                    null*/}
+                        {/*            }*/}
+
+
+                        {/*        </>*/}
+                        {/*    ))*/}
+                        {/*}*/}
+                    </Canvas>
+                </div>
             </div>
         </>
     )

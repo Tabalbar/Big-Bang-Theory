@@ -7,7 +7,7 @@ import Sphere from "../Objects/Sphere";
 import starInfo from "../newStarData";
 import Star from "../Objects/Star";
 import StarArrow from "../Objects/StarArrow";
-import {Button, Grid, Container, List, Header, Label} from "semantic-ui-react";
+import {Button, Grid, Container, List, Header, Icon} from "semantic-ui-react";
 import InputRange from "react-input-range";
 import Slider from "@material-ui/core/Slider";
 import {Radio} from "framework7-react";
@@ -35,13 +35,14 @@ function Toolbar(
         handleSetVelMagValues,
         velMagValues,
         toggleVel,
-        handleToggleVel
+        handleToggleVel,
+        handleBookmark
     }
 ) {
 
 
     // Ref to the controls, so that we can update them on every frame using useFrame
-    const[modalIsOpen, setModalIsOpen] = useState(true)
+    const[modalIsOpen, setModalIsOpen] = useState(false)
     return (
         <>
             {/*<Grid centered={true}>*/}
@@ -110,7 +111,7 @@ function Toolbar(
                 <Container>
                     <Grid>
                         .
-                        <Grid.Row columns={7}>
+                        <Grid.Row columns={8}>
                             <Grid.Column>
                                 <Button color='yellow' style={{color: 'black'}} onClick={handleHomeButton}>Back to
                                     Sun</Button>
@@ -160,12 +161,15 @@ function Toolbar(
                             <Grid.Column>
                                 <Button onClick={handleSetFilterValues}>Filter</Button>
                             </Grid.Column>
-
-                            <Grid.Column className='about'>
-                                <Button onClick={() => setModalIsOpen(true)}>About</Button>
+                            <Grid.Column>
+                                <Button onClick={handleBookmark} color='blue' icon >Bookmark <Icon color='yellow' name='star'/></Button>
+                            </Grid.Column>
+                            <Grid.Column floated={'right'}>
+                                <Button circular icon onClick={() => setModalIsOpen(true)}>?</Button>
                             </Grid.Column>
 
                         </Grid.Row>
+
 
 
                     </Grid>
@@ -215,6 +219,7 @@ function Toolbar(
                 <div className="grid-item">10,000-30,000K</div>
                 <div className="grid-item">&gt; 33,000K</div>
             </div>
+
 
             <div className='legend-2'>
                 <div className="grid-item"># of Arrows</div>
@@ -288,25 +293,7 @@ function Toolbar(
             </div>
 
 
-            {/*<div className='miniMap'>*/}
-            {/*    <Canvas*/}
-            {/*        camera={{far: 10000000, position: [0, 0, 3], fov: 75}}*/}
-            {/*    >*/}
-            {/*        <ambientLight/>*/}
-            {/*        <pointLight position={[10, 10, 10]}/>*/}
-            {/*        <CompassObject*/}
-            {/*        cameraPosition={cameraPosition}*/}
-            {/*        />*/}
-            {/*        <CameraControls*/}
-            {/*            cameraPosition={cameraPosition}*/}
-            {/*            cameraMoving={cameraMoving}*/}
-            {/*            setCameraMoving={setCameraMoving}*/}
-            {/*            cameraMovingToHome={cameraMovingToHome}*/}
-            {/*            setCameraMovingToHome={setCameraMovingToHome}*/}
-            {/*        />*/}
 
-            {/*    </Canvas>*/}
-            {/*</div>*/}
         </>
     )
 }
