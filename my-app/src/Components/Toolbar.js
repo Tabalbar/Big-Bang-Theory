@@ -53,6 +53,7 @@ function Toolbar(
     const [modalIsOpen, setModalIsOpen] = useState(true)
     return (
         <>
+
             {/*<Grid centered={true}>*/}
             {/*    <Grid.Row columns={3}>*/}
             {/*        <Grid.Column>*/}
@@ -116,14 +117,15 @@ function Toolbar(
 
 
             <div className='toolBar'>
+
                 <Container>
+
                     <Grid>
                         .
-                        <Grid.Row columns={8}>
-                            <Grid.Column floated={'right'}>
-                                <Button circular icon onClick={() => setModalIsOpen(true)}>?</Button>
-                            </Grid.Column>
+                        <Grid.Row columns={7}>
+
                             <Grid.Column>
+
                                 <Button color='yellow' style={{color: 'black'}} onClick={handleHomeButton}>Back to
                                     Sun</Button>
                             </Grid.Column>
@@ -133,7 +135,6 @@ function Toolbar(
                                 </Header>
                             </Grid.Column>
                             <Grid.Column>
-
                                 <p style={{textAlign: 'center'}}>
                                     Distance<br/> {filterValues.distance[0]} to {filterValues.distance[1]}
                                 </p>
@@ -175,6 +176,8 @@ function Toolbar(
                             <Grid.Column>
                                 <Button onClick={handleBookmark} color='blue' icon>Bookmark <Icon color='yellow'
                                                                                                   name='star'/></Button>
+                                <Button size='tiny'  circular icon onClick={() => setModalIsOpen(true)}>?</Button>
+
                             </Grid.Column>
 
 
@@ -182,7 +185,9 @@ function Toolbar(
 
 
                     </Grid>
+
                 </Container>
+
             </div>
             {/*        </Grid.Column>*/}
             {/*    </Grid.Row>*/}
@@ -396,15 +401,17 @@ function Toolbar(
                         wheel forward will zoom the camera in.
                     </p>
                     <p className="modalText">
-                        <b>Filter:</b><br/> Use the options labeled “Distance” and “Velocity Magnitude” to filter the stars based on
-                        a min and max value.
+                        <b>Filter:</b><br/> Use the options labeled “Distance” and “Velocity Magnitude” to filter the stars<br/> based on
+                        the selected min and max values.<br/>
                         Use the “”Velocity Arrow” checkbox to turn the star vectors on/off.<br/>
                         When you are ready to filter
                         the stars, click on the button labeled “Filter”.
                     </p>
                     <p className="modalText">
-                        <b>Bookmark:</b><br/> Click on the star you want to bookmark. Once the camera is focused on the star, use
-                        the blue star button in the toolbar to bookmark it.
+                        <b>Bookmark:</b><br/> Click on the star you want to bookmark.<br/>
+                        Then use
+                        the blue button labeled "Bookmark" in the toolbar
+                        to bookmark it.<br/>
                         The star’s description will appear on the left of the window.<br/>
                         You may use this table to compare star data and clicking on the star name will move the
                         camera to the bookmarked star’s position.
@@ -420,7 +427,7 @@ function Toolbar(
                         Credit
                     </h3>
                     <h3 className="modalCredit">
-                        Created by: Roderick Tabalba, Jeff Kleyner, Kameron Wong, Christopher Nishimura
+                        Created by: <a  href='https://tabalbar.github.io/' target="_blank">Roderick Tabalba</a>, <a href='http://www2.hawaii.edu/~jeff2012/' target="_blank">Jeff Kleyner</a>, <a href='https://github.com/wongk711' target="_blank">Kameron Wong</a>, <a href='https://chris-nishimura.github.io/' target="_blank">Christopher Nishimura</a>
                     </h3>
                 </Modal>
             </div>

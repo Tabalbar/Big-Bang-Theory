@@ -69,11 +69,11 @@ function StarArrow(props) {
 function GetColor(bool){
     if(bool === 1)
     {
-        return "green"
+        return "#3AE21D"
     }
     else
     {
-        return"purple"
+        return"#C51DE2"
     }
 }
 

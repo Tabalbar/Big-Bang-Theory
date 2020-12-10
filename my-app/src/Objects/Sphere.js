@@ -103,12 +103,12 @@ function Sphere(props) {
                 {
                     _.times((3), i => (
                         <arrowHelper
-                            args={[new THREE.Vector3(props.velocityDirection[0],props.velocityDirection[1],props.velocityDirection[2]), new THREE.Vector3(0, Math.sign(props.velocityDirection[1])*2, 0), (.45*i*2), "green", 1, 1]}/>
+                            args={[new THREE.Vector3(props.velocityDirection[0],props.velocityDirection[1],props.velocityDirection[2]), new THREE.Vector3(0, Math.sign(props.velocityDirection[1])*2, 0), (.45*i*2), "#3AE21D", 1, 1]}/>
                     ))
                 }
                 {/*<arrowHelper*/}
                 {/*    args={[new THREE.Vector3(x, y, z), new THREE.Vector3(0, 0, 0), (0.45*10), 'green', 1, 1]}/>*/}
-                <meshStandardMaterial attach='material' color={'green'}/>
+                <meshStandardMaterial attach='material' color={'#3AE21D'}/>
             </mesh>
             {/*<line ref={mesh} geometry={geometry}>*/}
             {/*    <lineBasicMaterial attach="material" color={'#9c88ff'} linewidth={100}/>*/}
