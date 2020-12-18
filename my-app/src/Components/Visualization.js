@@ -16,6 +16,7 @@ import * as THREE from "three";
 import Toolbar from "./Toolbar";
 import CompassObject from "../Objects/CompassObject";
 import MinimapCamera from "../HelperFunctions/MinimapCamera";
+import NewStar from "../Objects/NewStar";
 
 
 function Visualization(
@@ -43,11 +44,11 @@ function Visualization(
         realColor: 'Yellow'
     });
     const [toggleLines, setToggleLines] = useState(true);
-    const [distanceValues, setDistanceValues] = useState([0,500]);
+    const [distanceValues, setDistanceValues] = useState([0,3216]);
     const [velMagValues, setVelMagValues] = useState([0,9821]);
     const [filterValues, setFilterValues] = useState({
 
-        distance: [0,500],
+        distance: [0,3216],
         velMag: [0,9821],
         velArrows: true
     })
@@ -251,40 +252,42 @@ function Visualization(
                         position={[selectedPosition.x, selectedPosition.y, selectedPosition.z]}
                         size={[selectedSize.innerRadius, selectedSize.outerRadius, 10000]}
                     />
+                    <NewStar
+                        starInfo={starInfo}
+                    />
+                    {/*{*/}
+                    {/*    _.times(starInfo.length, (i) => (*/}
+                    {/*        <>*/}
 
-                    {
-                        _.times(starInfo.length, (i) => (
-                            <>
-
-                                {
-                                    starInfo[i].distance >= filterValues.distance[0] && starInfo[i].distance <= filterValues.distance[1] && starInfo[i].velMag >= filterValues.velMag[0] && starInfo[i].velMag <= filterValues.velMag[1] ?
-                                        <Star
-                                            color={starInfo[i].color}
-                                            size={[.1,.1,.1]}
-                                            indexNum={i}
-                                            position={starInfo[i].position}
-                                            updateStarPosition={updateStarPosition}
-                                            cameraPosition={cameraPosition}
-                                            cameraMoving={cameraMoving}
-                                            temperature={starInfo[i].temperature}
-                                            setCameraMoving={setCameraMoving}
-                                            velocityDirection={starInfo[i].velocityDirection}
-                                            vel_is_valid={starInfo[i].vel_is_valid}
-                                            velMag={starInfo[i].velMag}
-                                            setActive={setActive}
-                                            starInfo={starInfo[i]}
-                                            active={active}
-                                            focusDescription={focusDescription}
-                                            filterValues={filterValues}
-                                        />
-                                        :
-                                        null
-                                }
+                    {/*            {*/}
+                    {/*                starInfo[i].distance >= filterValues.distance[0] && starInfo[i].distance <= filterValues.distance[1] && starInfo[i].velMag >= filterValues.velMag[0] && starInfo[i].velMag <= filterValues.velMag[1] ?*/}
+                    {/*                    <Star*/}
+                    {/*                        color={starInfo[i].color}*/}
+                    {/*                        size={[.1,.1,.1]}*/}
+                    {/*                        indexNum={i}*/}
+                    {/*                        position={starInfo[i].position}*/}
+                    {/*                        updateStarPosition={updateStarPosition}*/}
+                    {/*                        cameraPosition={cameraPosition}*/}
+                    {/*                        cameraMoving={cameraMoving}*/}
+                    {/*                        temperature={starInfo[i].temperature}*/}
+                    {/*                        setCameraMoving={setCameraMoving}*/}
+                    {/*                        velocityDirection={starInfo[i].velocityDirection}*/}
+                    {/*                        vel_is_valid={starInfo[i].vel_is_valid}*/}
+                    {/*                        velMag={starInfo[i].velMag}*/}
+                    {/*                        setActive={setActive}*/}
+                    {/*                        starInfo={starInfo[i]}*/}
+                    {/*                        active={active}*/}
+                    {/*                        focusDescription={focusDescription}*/}
+                    {/*                        filterValues={filterValues}*/}
+                    {/*                    />*/}
+                    {/*                    :*/}
+                    {/*                    null*/}
+                    {/*            }*/}
 
 
-                            </>
-                        ))
-                    }
+                    {/*        </>*/}
+                    {/*    ))*/}
+                    {/*}*/}
                     {/*{*/}
                     {/*    toggleLines ?*/}
                     {/*    _.times(starInfo.length, (i)=>(*/}

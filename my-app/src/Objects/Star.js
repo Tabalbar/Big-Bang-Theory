@@ -47,94 +47,95 @@ function Star(props) {
                     onPointerOver={(e) => setHover(true)}
                     onPointerOut={(e) => setHover(false)}
                 >
-                    {
-                        hover ?
-                            <Html scaleFactor={3}>
-                                {/*<div className='focusedDescription'>*/}
-                                {/*    <p>*/}
-                                {/*        <strong style={{fontSize: 40}}>{props.focusDescription.name}</strong><br/><br/>*/}
-                                {/*        <b>Description:</b> {props.focusDescription.funFact}<br/>*/}
-                                {/*        <b>Ra: </b>{props.focusDescription.ra} Deg<br/>*/}
-                                {/*        <b>Dec: </b>{props.focusDescription.dec} Deg <br/>*/}
-                                {/*        <b>Distance: </b>{props.focusDescription.distance} Light year(s)<br/>*/}
-                                {/*        <b>Temperature:</b> {props.focusDescription.temperature} K<br/>*/}
-                                {/*        {*/}
-                                {/*            props.focusDescription.vel_is_valid === 'True' ?*/}
-                                {/*                <>*/}
-                                {/*                    <b>Velocity Magnitude: </b>{props.focusDescription.velMag} Km/s<br/>*/}
-                                {/*                </>*/}
-                                {/*                :*/}
-                                {/*                null*/}
-                                {/*        }*/}
-                                {/*        <b>Color:</b> {props.focusDescription.realColor}*/}
-                                {/*    </p>*/}
-                                {/*</div>*/}
-                                {/*{*/}
-                                {/*    cameraFocused ?*/}
-                                {/*        null*/}
-                                {/*        :*/}
-                                <div className='starDescription'>
-                                    <p>
-                                        <strong style={{fontSize: 40}}>{props.starInfo.name}</strong><br/><br/>
-                                        <b>Description:</b> {props.starInfo.funFact}<br/>
-                                        <b>Ra: </b>{props.starInfo.ra} Deg<br/>
-                                        <b>Dec: </b>{props.starInfo.dec} Deg <br/>
-                                        <b>Distance: </b>{props.starInfo.distance} Light year(s)<br/>
-                                        <b>Temperature:</b> {props.starInfo.temperature} K<br/>
-                                        {
-                                            props.starInfo.vel_is_valid === 'True' ?
-                                                <>
-                                                    <b>Velocity Magnitude: </b>{props.starInfo.velMag} Km/s<br/>
-                                                </>
-                                                :
-                                                null
-                                        }
-                                        <b>Color:</b> {props.starInfo.realColor}
-                                    </p>
-                                </div>
-                                {/*// }*/}
-
-                            </Html>
-                            :
-                            null
-                    }
-                    {/*<Html scaleFactor={2}>*/}
-                    {/*    <div>*/}
-                    {/*        <Button color='blue' onClick={() => {*/}
-                    {/*            props.handleBookmark(props.indexNum);*/}
-                    {/*            setIsSelected(true)*/}
-                    {/*        }} icon>*/}
-                    {/*            {*/}
-                    {/*                isSelected ?*/}
-                    {/*                    <Icon color='yellow' name='star'/>*/}
-                    {/*                    :*/}
-                    {/*                    <Icon color='yellow' name='star outline'/>*/}
-                    {/*            }*/}
-                    {/*        </Button>*/}
-                    {/*    </div>*/}
-                    {/*</Html>*/}
-                    {/*    </Html>*/}
-                    {/*    :*/}
-                    {/*    null*/}
-                }
-                {/*<Html scaleFactor={2}>*/}
-                    {/*<div>*/}
-                    {/*    <Button color='blue' onClick={() => {*/}
-                    {/*        props.handleBookmark(props.indexNum);*/}
-                    {/*        setIsSelected(true)*/}
-                    {/*    }} icon>*/}
-                    {/*        {*/}
-                    {/*            isSelected ?*/}
-                    {/*                <Icon color='yellow' name='star'/>*/}
-                    {/*                :*/}
-                    {/*                <Icon color='yellow' name='star outline'/>*/}
-                    {/*        }*/}
-                    {/*    </Button>*/}
-                    {/*</div>*/}
-                {/*</Html>*/}
-
                     <meshStandardMaterial attach='material' color={ReturnColor(props.temperature)}/>
                 </mesh>
+                {/*{*/}
+                {/*    hover ?*/}
+                {/*        <Html scaleFactor={3}>*/}
+                {/*            /!*<div className='focusedDescription'>*!/*/}
+                {/*            /!*    <p>*!/*/}
+                {/*            /!*        <strong style={{fontSize: 40}}>{props.focusDescription.name}</strong><br/><br/>*!/*/}
+                {/*            /!*        <b>Description:</b> {props.focusDescription.funFact}<br/>*!/*/}
+                {/*            /!*        <b>Ra: </b>{props.focusDescription.ra} Deg<br/>*!/*/}
+                {/*            /!*        <b>Dec: </b>{props.focusDescription.dec} Deg <br/>*!/*/}
+                {/*            /!*        <b>Distance: </b>{props.focusDescription.distance} Light year(s)<br/>*!/*/}
+                {/*            /!*        <b>Temperature:</b> {props.focusDescription.temperature} K<br/>*!/*/}
+                {/*            /!*        {*!/*/}
+                {/*            /!*            props.focusDescription.vel_is_valid === 'True' ?*!/*/}
+                {/*            /!*                <>*!/*/}
+                {/*            /!*                    <b>Velocity Magnitude: </b>{props.focusDescription.velMag} Km/s<br/>*!/*/}
+                {/*            /!*                </>*!/*/}
+                {/*            /!*                :*!/*/}
+                {/*            /!*                null*!/*/}
+                {/*            /!*        }*!/*/}
+                {/*            /!*        <b>Color:</b> {props.focusDescription.realColor}*!/*/}
+                {/*            /!*    </p>*!/*/}
+                {/*            /!*</div>*!/*/}
+                {/*            /!*{*!/*/}
+                {/*            /!*    cameraFocused ?*!/*/}
+                {/*            /!*        null*!/*/}
+                {/*            /!*        :*!/*/}
+                {/*            <div className='starDescription'>*/}
+                {/*                <p>*/}
+                {/*                    <strong style={{fontSize: 40}}>{props.starInfo.name}</strong><br/><br/>*/}
+                {/*                    <b>Description:</b> {props.starInfo.funFact}<br/>*/}
+                {/*                    <b>Ra: </b>{props.starInfo.ra} Deg<br/>*/}
+                {/*                    <b>Dec: </b>{props.starInfo.dec} Deg <br/>*/}
+                {/*                    <b>Distance: </b>{props.starInfo.distance} Light year(s)<br/>*/}
+                {/*                    <b>Temperature:</b> {props.starInfo.temperature} K<br/>*/}
+                {/*                    {*/}
+                {/*                        props.starInfo.vel_is_valid === 'True' ?*/}
+                {/*                            <>*/}
+                {/*                                <b>Velocity Magnitude: </b>{props.starInfo.velMag} Km/s<br/>*/}
+                {/*                            </>*/}
+                {/*                            :*/}
+                {/*                            null*/}
+                {/*                    }*/}
+                {/*                    <b>Color:</b> {props.starInfo.realColor}*/}
+                {/*                </p>*/}
+                {/*            </div>*/}
+                {/*            /!*/}
+
+                {/*        </Html>*/}
+                {/*        :*/}
+                {/*        null*/}
+                {/*}*/}
+                {/*<Html scaleFactor={2}>*/}
+                {/*    <div>*/}
+                {/*        <Button color='blue' onClick={() => {*/}
+                {/*            props.handleBookmark(props.indexNum);*/}
+                {/*            setIsSelected(true)*/}
+                {/*        }} icon>*/}
+                {/*            {*/}
+                {/*                isSelected ?*/}
+                {/*                    <Icon color='yellow' name='star'/>*/}
+                {/*                    :*/}
+                {/*                    <Icon color='yellow' name='star outline'/>*/}
+                {/*            }*/}
+                {/*        </Button>*/}
+                {/*    </div>*/}
+                {/*</Html>*/}
+                {/*    </Html>*/}
+                {/*    :*/}
+                {/*    null*/}
+                }
+                {/*<Html scaleFactor={2}>*/}
+                {/*<div>*/}
+                {/*    <Button color='blue' onClick={() => {*/}
+                {/*        props.handleBookmark(props.indexNum);*/}
+                {/*        setIsSelected(true)*/}
+                {/*    }} icon>*/}
+                {/*        {*/}
+                {/*            isSelected ?*/}
+                {/*                <Icon color='yellow' name='star'/>*/}
+                {/*                :*/}
+                {/*                <Icon color='yellow' name='star outline'/>*/}
+                {/*        }*/}
+                {/*    </Button>*/}
+                {/*</div>*/}
+                {/*</Html>*/}
+
+
                 {/*{*/}
                 {/*    props.vel_is_valid === "True" && props.filterValues.velArrows ?*/}
                 {/*        <mesh*/}
@@ -149,17 +150,17 @@ function Star(props) {
                 {/*        :*/}
                 {/*        null*/}
                 {/*}*/}
-                {
-                    props.vel_is_valid === "True" && props.filterValues.velArrows ?
-                        <StarArrow
-                            position={props.position}
-                            velocityDirection={[x, y, z]}
-                            normalizedVelMag={props.starInfo.normalizedVelMag}
+                {/*{*/}
+                {/*    props.vel_is_valid === "True" && props.filterValues.velArrows ?*/}
+                {/*        <StarArrow*/}
+                {/*            position={props.position}*/}
+                {/*            velocityDirection={[x, y, z]}*/}
+                {/*            normalizedVelMag={props.starInfo.normalizedVelMag}*/}
 
-                        />
-                        :
-                        null
-                }
+                {/*        />*/}
+                {/*        :*/}
+                {/*        null*/}
+                {/*}*/}
                 {/*<StarArrow*/}
                 {/*    position={new THREE.Vector3(props.position[0],props.position[1],props.position[2])}*/}
                 {/*    velocityDirection={new THREE.Vector3(0,0,0)}*/}
